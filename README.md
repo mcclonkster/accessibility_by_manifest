@@ -17,6 +17,9 @@ adapters live in `accessibility_by_manifest.inputs`, output adapters live in
 `accessibility_by_manifest.outputs`, and compatibility entry points wire those
 modules into the shared lifecycle.
 
+Project intent and architecture decisions are tracked as living docs in
+`docs/design/`.
+
 ## Input: PPTX
 
 Extract one PowerPoint deck, or a folder of decks, into accessibility manifests

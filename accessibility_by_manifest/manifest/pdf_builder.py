@@ -140,9 +140,11 @@ class ManifestBuilder:
             "document_security": document_security,
             "document_interactivity": document_interactivity,
             "document_warning_entries": self.document_warning_entries,
+            "review_entries": [],
             "page_entries": self.page_entries,
             "raw_block_entries": self.raw_block_entries,
             "normalized_block_entries": [],
+            "normalized_table_entries": [],
             "projected_target": {
                 "target_package_part": "word/document.xml",
                 "document_title_strategy": document_title_strategy,

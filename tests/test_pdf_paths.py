@@ -47,4 +47,6 @@ def test_pdf_output_paths_include_extractor_manifest_names(tmp_path: Path) -> No
 
     assert paths.manifest_json == tmp_path / "out" / "Financial Report_manifest.json"
     assert paths.extractor_manifest_dir == tmp_path / "out" / "Financial Report_extractor_manifests"
+    assert paths.normalized_manifest_json == tmp_path / "out" / "Financial Report_normalized_manifest.json"
+    assert paths.review_queue_json == tmp_path / "out" / "Financial Report_review_queue.json"
     assert paths.extractor_manifest_json("pdfminer.six") == tmp_path / "out" / "Financial Report_extractor_manifests" / "Financial Report_pdfminer_six_manifest.json"

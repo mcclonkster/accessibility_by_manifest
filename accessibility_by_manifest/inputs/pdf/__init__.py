@@ -10,7 +10,9 @@ from accessibility_by_manifest.inputs.pdf.extractors.pypdf import PypdfAdapter
 from accessibility_by_manifest.inputs.pdf.paths import PdfOutputPaths, PdfRun
 from accessibility_by_manifest.manifest.pdf_builder import ManifestBuilder
 from accessibility_by_manifest.manifest.pdf_validate import validate_manifest
+from accessibility_by_manifest.normalize.pdf import normalize_pdf_manifest
 from accessibility_by_manifest.pipeline import ManifestPipelineContext
+from accessibility_by_manifest.review.pdf import review_pdf_manifest
 
 
 def build_manifest_from_pdf(context: ManifestPipelineContext[PdfManifestConfig, PdfRun, PdfOutputPaths]) -> dict:
@@ -20,5 +22,7 @@ def build_manifest_from_pdf(context: ManifestPipelineContext[PdfManifestConfig, 
     PikepdfAdapter().populate(builder)
     PdfminerAdapter().populate(builder)
     manifest = builder.build()
+    manifest = normalize_pdf_manifest(manifest)
+    manifest = review_pdf_manifest(manifest)
     validate_manifest(manifest)
     return manifest

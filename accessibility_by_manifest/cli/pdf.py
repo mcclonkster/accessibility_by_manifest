@@ -35,6 +35,7 @@ def print_result(result: PdfManifestResult, index: int, total: int) -> None:
     print(f"Message: {result.message}")
     print(f"Output folder: {result.run.output_dir}")
     print(f"Manifest JSON: {result.output_paths.manifest_json}")
+    print(f"Draft DOCX: {result.output_paths.projected_docx}")
     print(f"Extractor manifests: {result.output_paths.extractor_manifest_dir}")
     if result.manifest:
         summary = result.manifest["document_summary"]

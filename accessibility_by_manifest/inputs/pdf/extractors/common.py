@@ -30,6 +30,8 @@ def safe_value(value: Any, *, max_depth: int = 5) -> Any:
             stream_error = str(exc)
         else:
             stream_error = None
+        if stream_bytes is None and stream_error and "object of type" in stream_error:
+            return str(value)
         return {
             "type": type(value).__name__,
             "object_ref": object_reference(value),
@@ -40,13 +42,12 @@ def safe_value(value: Any, *, max_depth: int = 5) -> Any:
         }
     if isinstance(value, Sequence) and not isinstance(value, (str, bytes, bytearray)):
         return [safe_value(item, max_depth=max_depth - 1) for item in value]
-    if hasattr(value, "idnum") and hasattr(value, "generation"):
-        return {"object_ref": f"{value.idnum} {value.generation} R"}
     ref = object_reference(value)
     if ref:
         return {"object_ref": ref}
-    if hasattr(value, "indirect_reference"):
-        return safe_value(getattr(value, "indirect_reference"), max_depth=max_depth - 1)
+    indirect_reference = safe_getattr(value, "indirect_reference")
+    if indirect_reference is not None:
+        return safe_value(indirect_reference, max_depth=max_depth - 1)
     return str(value)
 
 
@@ -57,9 +58,18 @@ def safe_key(value: Any) -> str:
 
 
 def object_reference(value: Any) -> str | None:
-    if hasattr(value, "idnum") and hasattr(value, "generation"):
-        return f"{value.idnum} {value.generation} R"
-    objgen = getattr(value, "objgen", None)
+    idnum = safe_getattr(value, "idnum")
+    generation = safe_getattr(value, "generation")
+    if idnum is not None and generation is not None:
+        return f"{idnum} {generation} R"
+    objgen = safe_getattr(value, "objgen")
     if isinstance(objgen, tuple) and len(objgen) == 2 and objgen != (0, 0):
         return f"{objgen[0]} {objgen[1]} R"
     return None
+
+
+def safe_getattr(value: Any, name: str) -> Any:
+    try:
+        return getattr(value, name)
+    except Exception:
+        return None

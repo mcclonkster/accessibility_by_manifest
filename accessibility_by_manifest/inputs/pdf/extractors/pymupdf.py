@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from typing import Any
+from xml.etree import ElementTree
 
 from accessibility_by_manifest.inputs.pdf.extractors.common import safe_value
 from accessibility_by_manifest.manifest.pdf_builder import ManifestBuilder, warning_entry
@@ -21,10 +22,15 @@ class PyMuPDFAdapter:
             builder.page_count = document.page_count
             builder.byte_length = builder.input_path.stat().st_size
             builder.metadata = dict(document.metadata or {})
-            builder.xmp_present = bool(get_xmp_metadata(document))
+            xmp_metadata = get_xmp_metadata(document)
+            xmp_fields = parse_xmp_metadata(xmp_metadata)
+            builder.xmp_present = bool(xmp_metadata)
+            builder.metadata.update({key: value for key, value in xmp_fields.items() if value and not builder.metadata.get(key)})
             builder.extractor_evidence["pymupdf"] = {
                 "document_metadata": builder.metadata,
-                "xmp_metadata_length": len(get_xmp_metadata(document)),
+                "xmp_metadata_length": len(xmp_metadata),
+                "xmp_metadata": xmp_metadata,
+                "xmp_fields": xmp_fields,
                 "needs_pass": getattr(document, "needs_pass", None),
                 "is_encrypted": getattr(document, "is_encrypted", None),
                 "page_count": document.page_count,
@@ -37,7 +43,7 @@ class PyMuPDFAdapter:
                 raw_blocks = text_dict.get("blocks", [])
                 text_blocks = [block for block in raw_blocks if block.get("type") == 0 and block_text(block)]
                 image_blocks = [block for block in raw_blocks if block.get("type") == 1]
-                annotation_entries = annotation_entries_for_page(page)
+                annotation_entries, annotation_evidence = annotation_entries_for_page(page)
                 widgets = list_or_empty(page.widgets())
                 annotation_count = len(annotation_entries)
                 form_field_count = len(widgets)
@@ -98,6 +104,7 @@ class PyMuPDFAdapter:
                                 "image_xref_count": len(page.get_images(full=True)),
                                 "font_entries": safe_value(page.get_fonts(full=True)),
                                 "link_entries": safe_value(page.get_links()),
+                                "annotation_evidence": annotation_evidence,
                                 "widget_count": form_field_count,
                                 "page_rect": bbox_to_list(page.rect),
                                 "cropbox": bbox_to_list(page.cropbox),
@@ -119,17 +126,68 @@ def get_xmp_metadata(document: Any) -> str:
         return ""
 
 
+def parse_xmp_metadata(xmp_metadata: str) -> dict[str, Any]:
+    if not xmp_metadata.strip():
+        return {}
+    namespaces = {
+        "dc": "http://purl.org/dc/elements/1.1/",
+        "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    }
+    try:
+        root = ElementTree.fromstring(xmp_metadata)
+    except ElementTree.ParseError as exc:
+        return {"parse_error": str(exc)}
+    return {
+        "title": first_rdf_text(root, ".//dc:title", namespaces),
+        "author": first_rdf_text(root, ".//dc:creator", namespaces),
+        "subject": first_rdf_text(root, ".//dc:description", namespaces),
+        "keywords": first_rdf_items(root, ".//dc:subject", namespaces),
+        "language": first_rdf_text(root, ".//dc:language", namespaces),
+    }
+
+
+def first_rdf_text(root: ElementTree.Element, path: str, namespaces: dict[str, str]) -> str | None:
+    element = root.find(path, namespaces)
+    if element is None:
+        return None
+    items = rdf_child_texts(element)
+    if items:
+        return clean_text(items[0]) or None
+    return clean_text(element.text or "") or None
+
+
+def first_rdf_items(root: ElementTree.Element, path: str, namespaces: dict[str, str]) -> list[str] | None:
+    element = root.find(path, namespaces)
+    if element is None:
+        return None
+    items = [item for item in (clean_text(value) for value in rdf_child_texts(element)) if item]
+    return items or None
+
+
+def rdf_child_texts(element: ElementTree.Element) -> list[str]:
+    texts = []
+    for child in element.iter():
+        if child is element:
+            continue
+        text = clean_text(child.text or "")
+        if text:
+            texts.append(text)
+    return texts
+
+
 def list_or_empty(value: Any) -> list[Any]:
     if value is None:
         return []
     return list(value)
 
 
-def annotation_entries_for_page(page: Any) -> list[dict[str, Any]]:
+def annotation_entries_for_page(page: Any) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     entries: list[dict[str, Any]] = []
+    evidence: list[dict[str, Any]] = []
     for annotation in list_or_empty(page.annots()):
         info = getattr(annotation, "info", {}) or {}
         subtype = annotation.type[1] if getattr(annotation, "type", None) else None
+        rect = bbox_to_list(annotation.rect)
         entries.append(
             {
                 "annotation_subtype": clean_text(subtype) or None,
@@ -138,6 +196,16 @@ def annotation_entries_for_page(page: Any) -> list[dict[str, Any]]:
                 "url": None,
                 "dest": None,
                 "manual_review_required": True,
+            }
+        )
+        evidence.append(
+            {
+                "kind": "annotation",
+                "annotation_subtype": clean_text(subtype) or None,
+                "rect": rect,
+                "raw_info": safe_value(info),
+                "raw_type": safe_value(getattr(annotation, "type", None)),
+                "xref": getattr(annotation, "xref", None),
             }
         )
     for link in list_or_empty(page.get_links()):
@@ -153,7 +221,17 @@ def annotation_entries_for_page(page: Any) -> list[dict[str, Any]]:
                 "manual_review_required": True,
             }
         )
-    return entries
+        evidence.append(
+            {
+                "kind": "link",
+                "annotation_subtype": "link",
+                "rect": bbox_to_list(link.get("from")),
+                "url": uri,
+                "dest": dest,
+                "raw_link": safe_value(link),
+            }
+        )
+    return entries, evidence
 
 
 def link_destination(link: dict[str, Any]) -> str | list[Any] | None:

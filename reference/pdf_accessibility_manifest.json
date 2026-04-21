@@ -20,9 +20,11 @@
     "document_security",
     "document_interactivity",
     "document_warning_entries",
+    "review_entries",
     "page_entries",
     "raw_block_entries",
     "normalized_block_entries",
+    "normalized_table_entries",
     "projected_target"
   ],
   "properties": {
@@ -75,6 +77,12 @@
         "$ref": "#/$defs/warning_entry"
       }
     },
+    "review_entries": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/review_entry"
+      }
+    },
     "page_entries": {
       "type": "array",
       "items": {
@@ -91,6 +99,12 @@
       "type": "array",
       "items": {
         "$ref": "#/$defs/normalized_block_entry"
+      }
+    },
+    "normalized_table_entries": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/normalized_table_entry"
       }
     },
     "projected_target": {
@@ -176,6 +190,66 @@
         },
         "manual_review_required": {
           "type": "boolean"
+        }
+      }
+    },
+    "review_entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "issue_code",
+        "severity",
+        "scope",
+        "target_ref",
+        "reason",
+        "source_refs",
+        "confidence_context",
+        "suggested_action"
+      ],
+      "properties": {
+        "issue_code": {
+          "type": "string"
+        },
+        "severity": {
+          "type": "string",
+          "enum": [
+            "info",
+            "warning",
+            "error"
+          ]
+        },
+        "scope": {
+          "type": "string",
+          "enum": [
+            "document",
+            "page",
+            "block",
+            "table",
+            "row",
+            "figure",
+            "metadata",
+            "reading_order",
+            "projection"
+          ]
+        },
+        "target_ref": {
+          "$ref": "#/$defs/nullable_string"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "source_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "confidence_context": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "suggested_action": {
+          "$ref": "#/$defs/nullable_string"
         }
       }
     },
@@ -1045,6 +1119,119 @@
         },
         "manual_review_required": {
           "type": "boolean"
+        }
+      }
+    },
+    "normalized_table_entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "table_id",
+        "page_span",
+        "source_block_ids",
+        "row_entries",
+        "header_candidate_row_indexes",
+        "confidence",
+        "basis",
+        "warning_entries"
+      ],
+      "properties": {
+        "table_id": {
+          "type": "string"
+        },
+        "page_span": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {
+            "type": "integer",
+            "minimum": 1
+          }
+        },
+        "source_block_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "row_entries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/normalized_table_row_entry"
+          }
+        },
+        "header_candidate_row_indexes": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 1
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low",
+            "unknown"
+          ]
+        },
+        "basis": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "warning_entries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/warning_entry"
+          }
+        }
+      }
+    },
+    "normalized_table_row_entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "row_index",
+        "cell_block_ids",
+        "bbox",
+        "header_candidate",
+        "confidence",
+        "basis"
+      ],
+      "properties": {
+        "row_index": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "cell_block_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "bbox": {
+          "$ref": "#/$defs/bbox"
+        },
+        "header_candidate": {
+          "type": "boolean"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low",
+            "unknown"
+          ]
+        },
+        "basis": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
       }
     },

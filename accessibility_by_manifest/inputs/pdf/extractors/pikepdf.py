@@ -36,10 +36,14 @@ class PikepdfAdapter:
         names = root.get("/Names")
         acroform = root.get("/AcroForm")
         open_action = root.get("/OpenAction")
+        document_language = safe_value(root.get("/Lang"))
+        outlines = root.get("/Outlines")
         page_mode = root.get("/PageMode")
         page_layout = root.get("/PageLayout")
         viewer_preferences = root.get("/ViewerPreferences")
 
+        if document_language:
+            builder.metadata["language"] = document_language
         builder.document_accessibility.update(
             {
                 "mark_info": mark_info,
@@ -72,6 +76,11 @@ class PikepdfAdapter:
             "acroform": safe_value(acroform),
             "names": safe_value(names),
             "struct_tree_root": safe_value(struct_tree),
+            "document_language": document_language,
+            "outlines": safe_value(outlines),
+            "role_map": safe_value(struct_tree.get("/RoleMap") if struct_tree else None),
+            "parent_tree": safe_value(struct_tree.get("/ParentTree") if struct_tree else None),
+            "structure_children": safe_value(struct_tree.get("/K") if struct_tree else None),
         }
 
         for index, page in enumerate(pdf.pages, start=1):

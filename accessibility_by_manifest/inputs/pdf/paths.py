@@ -15,6 +15,8 @@ class PdfRun:
 class PdfOutputPaths:
     manifest_json: Path
     extractor_manifest_dir: Path
+    normalized_manifest_json: Path
+    review_queue_json: Path
     projected_docx: Path
     preview_image_dir: Path
 
@@ -69,6 +71,8 @@ def output_paths(run: PdfRun) -> PdfOutputPaths:
     return PdfOutputPaths(
         manifest_json=run.output_dir / f"{stem}_manifest.json",
         extractor_manifest_dir=run.output_dir / f"{stem}_extractor_manifests",
+        normalized_manifest_json=run.output_dir / f"{stem}_normalized_manifest.json",
+        review_queue_json=run.output_dir / f"{stem}_review_queue.json",
         projected_docx=run.output_dir / f"{stem}_draft.docx",
         preview_image_dir=run.output_dir / f"{stem}_page_images",
     )

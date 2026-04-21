@@ -30,12 +30,44 @@ def write_json_manifest(path: Path, data: dict[str, Any], overwrite: bool) -> No
 
 def write_pdf_manifest_bundle(output_paths: PdfOutputPaths, manifest: dict[str, Any], overwrite: bool) -> None:
     write_json_manifest(output_paths.manifest_json, manifest, overwrite)
+    write_json_manifest(output_paths.normalized_manifest_json, normalized_manifest_view(manifest), overwrite)
+    write_json_manifest(output_paths.review_queue_json, review_queue_view(manifest), overwrite)
     for extractor_name in PDF_EXTRACTOR_NAMES:
         write_json_manifest(
             output_paths.extractor_manifest_json(extractor_name),
             extractor_manifest_view(manifest, extractor_name),
             overwrite,
         )
+
+
+def normalized_manifest_view(manifest: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "view_kind": "pdf_normalized_manifest_view",
+        "manifest_version": manifest.get("manifest_version"),
+        "source_manifest": manifest.get("source_package", {}).get("input_file_name"),
+        "source_manifest_path": manifest.get("source_package", {}).get("input_file_path"),
+        "document_summary": deepcopy(manifest.get("document_summary", {})),
+        "document_metadata": deepcopy(manifest.get("document_metadata", {})),
+        "document_accessibility": deepcopy(manifest.get("document_accessibility", {})),
+        "normalized_block_entries": deepcopy(manifest.get("normalized_block_entries", [])),
+        "normalized_table_entries": deepcopy(manifest.get("normalized_table_entries", [])),
+        "review_entries": deepcopy(manifest.get("review_entries", [])),
+        "projected_target": deepcopy(manifest.get("projected_target", {})),
+        "notes": ["Derived from the master manifest without rerunning extraction."],
+    }
+
+
+def review_queue_view(manifest: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "view_kind": "pdf_review_queue_view",
+        "manifest_version": manifest.get("manifest_version"),
+        "source_manifest": manifest.get("source_package", {}).get("input_file_name"),
+        "source_manifest_path": manifest.get("source_package", {}).get("input_file_path"),
+        "document_summary": deepcopy(manifest.get("document_summary", {})),
+        "document_warning_entries": deepcopy(manifest.get("document_warning_entries", [])),
+        "review_entries": deepcopy(manifest.get("review_entries", [])),
+        "notes": ["Derived from the master manifest without rerunning extraction."],
+    }
 
 
 def extractor_manifest_view(manifest: dict[str, Any], extractor_name: str) -> dict[str, Any]:
@@ -55,6 +87,7 @@ def extractor_manifest_view(manifest: dict[str, Any], extractor_name: str) -> di
     data["document_warning_entries"] = [
         warning for warning in manifest.get("document_warning_entries", []) if warning_belongs_to_extractor(warning, extractor_name)
     ]
+    data["review_entries"] = []
     data["page_entries"] = [extractor_page_entry(page_entry, extractor_name) for page_entry in manifest.get("page_entries", [])]
     data["raw_block_entries"] = [
         extractor_block_entry(block_entry, extractor_name)
@@ -66,6 +99,7 @@ def extractor_manifest_view(manifest: dict[str, Any], extractor_name: str) -> di
         for block_entry in manifest.get("normalized_block_entries", [])
         if extractor_name in block_entry.get("extractor_evidence", {})
     ]
+    data["normalized_table_entries"] = []
     update_extractor_summary(data)
     return data
 
