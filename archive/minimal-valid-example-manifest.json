@@ -1,0 +1,136 @@
+{
+  "manifest_version": "1.0",
+  "manifest_kind": "pptx_to_docx_remediation_manifest",
+  "generated_at_utc": "2026-04-18T18:35:00Z",
+  "generator": {
+    "script_name": "script_1_extract",
+    "script_version": "1.0.0"
+  },
+  "source_package": {
+    "format_family": "OOXML",
+    "package_model": "OPC",
+    "document_vocabulary": "PresentationML",
+    "input_file_name": "memory_deck.pptx",
+    "input_file_path": "memory_deck.pptx"
+  },
+  "target_package": {
+    "format_family": "OOXML",
+    "package_model": "OPC",
+    "document_vocabulary": "WordprocessingML",
+    "draft_output_file_name": "memory_deck_companion.docx",
+    "draft_output_file_path": "memory_deck_companion.docx"
+  },
+  "run_config": {
+    "include_preview_images": false,
+    "preview_image_dir": null,
+    "title_fallback_mode": "FIRST_TEXT_LINE",
+    "text_order_mode": "TOP_LEFT",
+    "slide_separator_mode": "PAGE_BREAK"
+  },
+  "manifest_summary": {
+    "total_slides": 1,
+    "slides_with_warnings": 0,
+    "detected_visual_entries": 0,
+    "detected_visual_entries_missing_descriptions": 0
+  },
+  "manifest_warning_entries": [],
+  "slide_entries": [
+    {
+      "slide_number": 1,
+      "observed_source": {
+        "package_part": "ppt/slides/slide1.xml",
+        "relationships_part": "ppt/slides/_rels/slide1.xml.rels",
+        "presentationml_root": "p:sld",
+        "common_slide_path": "/p:sld/p:cSld",
+        "shape_tree_path": "/p:sld/p:cSld/p:spTree",
+        "notes_part_present": false,
+        "preview_image_candidates": []
+      },
+      "normalized_workflow": {
+        "chosen_title": "Memory Systems",
+        "title_source": "TITLE_PLACEHOLDER",
+        "grouped_content_detected": false,
+        "reading_order_low_confidence": false,
+        "skipped_shape_content_detected": false,
+        "preview_match_ambiguous": false,
+        "connector_relationship_warning": false,
+        "manual_review_required": false
+      },
+      "projected_target": {
+        "target_package_part": "word/document.xml",
+        "projected_slide_heading_text": "Slide 1. Memory Systems",
+        "projected_slide_heading_style": "Heading1",
+        "projected_slide_separator_mode": "PAGE_BREAK",
+        "projection_status": "planned"
+      },
+      "warning_entries": [],
+      "text_block_entries": [
+        {
+          "observed_source": {
+            "package_part": "ppt/slides/slide1.xml",
+            "shape_tree_path": "/p:sld/p:cSld/p:spTree/p:sp[1]",
+            "shape_kind": "p:sp",
+            "shape_id": 2,
+            "shape_name": "Title 1",
+            "placeholder_type": "title",
+            "geometry": {
+              "x": 457200,
+              "y": 274638,
+              "cx": 8229600,
+              "cy": 914400
+            },
+            "text_body_path": "p:txBody",
+            "from_group": false
+          },
+          "normalized_workflow": {
+            "source_kind": "text",
+            "source_name": "Title 1",
+            "ordered_position": 1,
+            "reading_order_sort_key": {
+              "top": 274638,
+              "left": 457200
+            }
+          },
+          "projected_target": {
+            "target_package_part": "word/document.xml",
+            "target_object_kind": "paragraph_sequence",
+            "target_path_hint": "/w:document/w:body",
+            "projection_status": "planned"
+          },
+          "warning_entries": [],
+          "paragraph_entries": [
+            {
+              "observed_source": {
+                "drawingml_paragraph_path": "p:txBody/a:p[1]",
+                "paragraph_level_raw": 0,
+                "list_markup_kind": null,
+                "list_markup_value": null
+              },
+              "normalized_workflow": {
+                "text": "Memory Systems",
+                "level": 0,
+                "list_kind": "plain",
+                "list_marker_hint": "",
+                "ordered_sequence_reconstructable": false
+              },
+              "projected_target": {
+                "target_package_part": "word/document.xml",
+                "target_object_kind": "paragraph",
+                "target_path_hint": "/w:document/w:body/w:p[2]",
+                "paragraph_style": "Normal",
+                "numbering_plan": {
+                  "mode": "plain",
+                  "num_id": null,
+                  "ilvl": null
+                },
+                "projection_status": "planned"
+              },
+              "warning_entries": []
+            }
+          ]
+        }
+      ],
+      "visual_entries": []
+    }
+  ]
+}

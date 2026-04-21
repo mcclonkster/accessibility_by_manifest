@@ -1,0 +1,66 @@
+{
+  "manifest_version": "2.0",
+  "manifest_kind": "pptx_manifest",
+  "generated_at_utc": "not-a-date",
+  "generator": {
+    "script_name": "script_1_extract"
+  },
+  "source_package": {
+    "format_family": "OOXML",
+    "package_model": "ZIP",
+    "document_vocabulary": "PresentationML",
+    "input_file_name": "memory_deck.pptx",
+    "input_file_path": "memory_deck.pptx"
+  },
+  "target_package": {
+    "format_family": "OOXML",
+    "package_model": "OPC",
+    "document_vocabulary": "WordprocessingML",
+    "draft_output_file_name": "memory_deck_companion.docx",
+    "draft_output_file_path": "memory_deck_companion.docx"
+  },
+  "run_config": {
+    "include_preview_images": false,
+    "preview_image_dir": null,
+    "title_fallback_mode": "USE_ANYTHING",
+    "text_order_mode": "VISUAL",
+    "slide_separator_mode": "SECTION_BREAK"
+  },
+  "manifest_summary": {
+    "total_slides": 1,
+    "slides_with_warnings": 0,
+    "detected_visual_entries": 0,
+    "detected_visual_entries_missing_descriptions": 0
+  },
+  "manifest_warning_entries": [],
+  "slide_entries": [
+    {
+      "slide_number": 0,
+      "observed_source": {
+        "package_part": "ppt/slides/slide1.xml",
+        "relationships_part": "ppt/slides/_rels/slide1.xml.rels",
+        "presentationml_root": "slide"
+      },
+      "normalized_workflow": {
+        "chosen_title": "",
+        "title_source": "AUTO",
+        "grouped_content_detected": false,
+        "reading_order_low_confidence": false,
+        "skipped_shape_content_detected": false,
+        "preview_match_ambiguous": false,
+        "connector_relationship_warning": false,
+        "manual_review_required": false
+      },
+      "projected_target": {
+        "target_package_part": "word/document.xml",
+        "projected_slide_heading_text": "Slide 0. Test",
+        "projected_slide_heading_style": "Heading1",
+        "projected_slide_separator_mode": "PAGE_BREAK",
+        "projection_status": "done"
+      },
+      "warning_entries": [],
+      "text_block_entries": [],
+      "visual_entries": []
+    }
+  ]
+}

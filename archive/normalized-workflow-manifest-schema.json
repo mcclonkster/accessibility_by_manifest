@@ -1,0 +1,1037 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/schemas/pptx-to-docx-remediation-manifest.schema.json",
+  "title": "PPTX to DOCX Remediation Manifest",
+  "description": "Authoritative machine-readable manifest for a PowerPoint-to-DOCX remediation workflow. This schema captures source-side technical provenance, normalized workflow meaning, target-side projection, and explicit warnings.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "manifest_version",
+    "manifest_kind",
+    "generated_at_utc",
+    "generator",
+    "source_package",
+    "target_package",
+    "run_config",
+    "manifest_summary",
+    "manifest_warning_entries",
+    "slide_entries"
+  ],
+  "properties": {
+    "manifest_version": {
+      "type": "string",
+      "const": "1.0"
+    },
+    "manifest_kind": {
+      "type": "string",
+      "const": "pptx_to_docx_remediation_manifest"
+    },
+    "generated_at_utc": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "generator": {
+      "$ref": "#/$defs/generator"
+    },
+    "source_package": {
+      "$ref": "#/$defs/package_identity_source"
+    },
+    "target_package": {
+      "$ref": "#/$defs/package_identity_target"
+    },
+    "run_config": {
+      "$ref": "#/$defs/run_config"
+    },
+    "manifest_summary": {
+      "$ref": "#/$defs/manifest_summary"
+    },
+    "manifest_warning_entries": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/warning_entry"
+      }
+    },
+    "slide_entries": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/slide_entry"
+      }
+    }
+  },
+  "$defs": {
+    "generator": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "script_name",
+        "script_version"
+      ],
+      "properties": {
+        "script_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "script_version": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "package_identity_source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "format_family",
+        "package_model",
+        "document_vocabulary",
+        "input_file_name",
+        "input_file_path"
+      ],
+      "properties": {
+        "format_family": {
+          "type": "string",
+          "const": "OOXML"
+        },
+        "package_model": {
+          "type": "string",
+          "const": "OPC"
+        },
+        "document_vocabulary": {
+          "type": "string",
+          "const": "PresentationML"
+        },
+        "input_file_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "input_file_path": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "package_identity_target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "format_family",
+        "package_model",
+        "document_vocabulary",
+        "draft_output_file_name",
+        "draft_output_file_path"
+      ],
+      "properties": {
+        "format_family": {
+          "type": "string",
+          "const": "OOXML"
+        },
+        "package_model": {
+          "type": "string",
+          "const": "OPC"
+        },
+        "document_vocabulary": {
+          "type": "string",
+          "const": "WordprocessingML"
+        },
+        "draft_output_file_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "draft_output_file_path": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "run_config": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "include_preview_images",
+        "preview_image_dir",
+        "title_fallback_mode",
+        "text_order_mode",
+        "slide_separator_mode"
+      ],
+      "properties": {
+        "include_preview_images": {
+          "type": "boolean"
+        },
+        "preview_image_dir": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "title_fallback_mode": {
+          "type": "string",
+          "enum": [
+            "FIRST_TEXT_LINE",
+            "UNTITLED_ONLY"
+          ]
+        },
+        "text_order_mode": {
+          "type": "string",
+          "enum": [
+            "TOP_LEFT"
+          ]
+        },
+        "slide_separator_mode": {
+          "type": "string",
+          "enum": [
+            "PAGE_BREAK",
+            "BLANK_LINE"
+          ]
+        }
+      }
+    },
+    "manifest_summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "total_slides",
+        "slides_with_warnings",
+        "detected_visual_entries",
+        "detected_visual_entries_missing_descriptions"
+      ],
+      "properties": {
+        "total_slides": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "slides_with_warnings": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "detected_visual_entries": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "detected_visual_entries_missing_descriptions": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "warning_entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "warning_code",
+        "warning_message",
+        "warning_scope",
+        "manual_review_required"
+      ],
+      "properties": {
+        "warning_code": {
+          "type": "string",
+          "minLength": 1
+        },
+        "warning_message": {
+          "type": "string",
+          "minLength": 1
+        },
+        "warning_scope": {
+          "type": "string",
+          "enum": [
+            "manifest",
+            "slide",
+            "text_block",
+            "paragraph",
+            "visual"
+          ]
+        },
+        "manual_review_required": {
+          "type": "boolean"
+        }
+      }
+    },
+    "geometry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "x",
+        "y",
+        "cx",
+        "cy"
+      ],
+      "properties": {
+        "x": {
+          "type": "integer"
+        },
+        "y": {
+          "type": "integer"
+        },
+        "cx": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "cy": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "slide_entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "slide_number",
+        "observed_source",
+        "normalized_workflow",
+        "projected_target",
+        "warning_entries",
+        "text_block_entries",
+        "visual_entries"
+      ],
+      "properties": {
+        "slide_number": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "observed_source": {
+          "$ref": "#/$defs/slide_observed_source"
+        },
+        "normalized_workflow": {
+          "$ref": "#/$defs/slide_normalized_workflow"
+        },
+        "projected_target": {
+          "$ref": "#/$defs/slide_projected_target"
+        },
+        "warning_entries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/warning_entry"
+          }
+        },
+        "text_block_entries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/text_block_entry"
+          }
+        },
+        "visual_entries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/visual_entry"
+          }
+        }
+      }
+    },
+    "slide_observed_source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "package_part",
+        "relationships_part",
+        "presentationml_root"
+      ],
+      "properties": {
+        "package_part": {
+          "type": "string",
+          "minLength": 1
+        },
+        "relationships_part": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "presentationml_root": {
+          "type": "string",
+          "const": "p:sld"
+        },
+        "common_slide_path": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "shape_tree_path": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "notes_part_present": {
+          "type": "boolean"
+        },
+        "preview_image_candidates": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "slide_normalized_workflow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "chosen_title",
+        "title_source",
+        "grouped_content_detected",
+        "reading_order_low_confidence",
+        "skipped_shape_content_detected",
+        "preview_match_ambiguous",
+        "connector_relationship_warning",
+        "manual_review_required"
+      ],
+      "properties": {
+        "chosen_title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "title_source": {
+          "type": "string",
+          "enum": [
+            "TITLE_PLACEHOLDER",
+            "FIRST_TEXT_LINE",
+            "UNTITLED_FALLBACK"
+          ]
+        },
+        "grouped_content_detected": {
+          "type": "boolean"
+        },
+        "reading_order_low_confidence": {
+          "type": "boolean"
+        },
+        "skipped_shape_content_detected": {
+          "type": "boolean"
+        },
+        "preview_match_ambiguous": {
+          "type": "boolean"
+        },
+        "connector_relationship_warning": {
+          "type": "boolean"
+        },
+        "manual_review_required": {
+          "type": "boolean"
+        }
+      }
+    },
+    "slide_projected_target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "target_package_part",
+        "projected_slide_heading_text",
+        "projected_slide_heading_style",
+        "projected_slide_separator_mode",
+        "projection_status"
+      ],
+      "properties": {
+        "target_package_part": {
+          "type": "string",
+          "const": "word/document.xml"
+        },
+        "projected_slide_heading_text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "projected_slide_heading_style": {
+          "type": "string",
+          "minLength": 1
+        },
+        "projected_slide_separator_mode": {
+          "type": "string",
+          "enum": [
+            "PAGE_BREAK",
+            "BLANK_LINE"
+          ]
+        },
+        "projection_status": {
+          "type": "string",
+          "enum": [
+            "planned",
+            "written",
+            "omitted",
+            "manual_only"
+          ]
+        }
+      }
+    },
+    "text_block_entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "observed_source",
+        "normalized_workflow",
+        "projected_target",
+        "warning_entries",
+        "paragraph_entries"
+      ],
+      "properties": {
+        "observed_source": {
+          "$ref": "#/$defs/text_block_observed_source"
+        },
+        "normalized_workflow": {
+          "$ref": "#/$defs/text_block_normalized_workflow"
+        },
+        "projected_target": {
+          "$ref": "#/$defs/text_block_projected_target"
+        },
+        "warning_entries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/warning_entry"
+          }
+        },
+        "paragraph_entries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/paragraph_entry"
+          }
+        }
+      }
+    },
+    "text_block_observed_source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "package_part",
+        "shape_tree_path",
+        "shape_kind",
+        "shape_name",
+        "geometry",
+        "from_group"
+      ],
+      "properties": {
+        "package_part": {
+          "type": "string",
+          "minLength": 1
+        },
+        "shape_tree_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "shape_kind": {
+          "type": "string",
+          "minLength": 1
+        },
+        "shape_id": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "shape_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "placeholder_type": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "geometry": {
+          "$ref": "#/$defs/geometry"
+        },
+        "text_body_path": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "from_group": {
+          "type": "boolean"
+        }
+      }
+    },
+    "text_block_normalized_workflow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_kind",
+        "source_name",
+        "ordered_position"
+      ],
+      "properties": {
+        "source_kind": {
+          "type": "string",
+          "enum": [
+            "text",
+            "table_cell"
+          ]
+        },
+        "source_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ordered_position": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "reading_order_sort_key": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "top",
+            "left"
+          ],
+          "properties": {
+            "top": {
+              "type": "integer"
+            },
+            "left": {
+              "type": "integer"
+            }
+          }
+        }
+      }
+    },
+    "text_block_projected_target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "target_package_part",
+        "target_object_kind",
+        "target_path_hint",
+        "projection_status"
+      ],
+      "properties": {
+        "target_package_part": {
+          "type": "string",
+          "const": "word/document.xml"
+        },
+        "target_object_kind": {
+          "type": "string",
+          "enum": [
+            "paragraph_sequence"
+          ]
+        },
+        "target_path_hint": {
+          "type": "string",
+          "minLength": 1
+        },
+        "projection_status": {
+          "type": "string",
+          "enum": [
+            "planned",
+            "written",
+            "omitted",
+            "manual_only"
+          ]
+        }
+      }
+    },
+    "paragraph_entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "observed_source",
+        "normalized_workflow",
+        "projected_target",
+        "warning_entries"
+      ],
+      "properties": {
+        "observed_source": {
+          "$ref": "#/$defs/paragraph_observed_source"
+        },
+        "normalized_workflow": {
+          "$ref": "#/$defs/paragraph_normalized_workflow"
+        },
+        "projected_target": {
+          "$ref": "#/$defs/paragraph_projected_target"
+        },
+        "warning_entries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/warning_entry"
+          }
+        }
+      }
+    },
+    "paragraph_observed_source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "drawingml_paragraph_path"
+      ],
+      "properties": {
+        "drawingml_paragraph_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "paragraph_level_raw": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "list_markup_kind": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "list_markup_value": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "paragraph_normalized_workflow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "text",
+        "level",
+        "list_kind",
+        "list_marker_hint",
+        "ordered_sequence_reconstructable"
+      ],
+      "properties": {
+        "text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "level": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "list_kind": {
+          "type": "string",
+          "enum": [
+            "plain",
+            "bullet",
+            "number"
+          ]
+        },
+        "list_marker_hint": {
+          "type": "string"
+        },
+        "ordered_sequence_reconstructable": {
+          "type": "boolean"
+        }
+      }
+    },
+    "paragraph_projected_target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "target_package_part",
+        "target_object_kind",
+        "target_path_hint",
+        "paragraph_style",
+        "numbering_plan",
+        "projection_status"
+      ],
+      "properties": {
+        "target_package_part": {
+          "type": "string",
+          "const": "word/document.xml"
+        },
+        "target_object_kind": {
+          "type": "string",
+          "enum": [
+            "paragraph",
+            "list_paragraph"
+          ]
+        },
+        "target_path_hint": {
+          "type": "string",
+          "minLength": 1
+        },
+        "paragraph_style": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "numbering_plan": {
+          "$ref": "#/$defs/numbering_plan"
+        },
+        "projection_status": {
+          "type": "string",
+          "enum": [
+            "planned",
+            "written",
+            "omitted",
+            "manual_only"
+          ]
+        }
+      }
+    },
+    "numbering_plan": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "num_id",
+        "ilvl"
+      ],
+      "properties": {
+        "mode": {
+          "type": "string",
+          "enum": [
+            "plain",
+            "bullet_list",
+            "ordered_list",
+            "plain_fallback"
+          ]
+        },
+        "num_id": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "ilvl": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        }
+      }
+    },
+    "visual_entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "observed_source",
+        "normalized_workflow",
+        "projected_target",
+        "warning_entries"
+      ],
+      "properties": {
+        "observed_source": {
+          "$ref": "#/$defs/visual_observed_source"
+        },
+        "normalized_workflow": {
+          "$ref": "#/$defs/visual_normalized_workflow"
+        },
+        "projected_target": {
+          "$ref": "#/$defs/visual_projected_target"
+        },
+        "warning_entries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/warning_entry"
+          }
+        }
+      }
+    },
+    "visual_observed_source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "package_part",
+        "shape_tree_path",
+        "shape_kind",
+        "shape_name",
+        "from_group"
+      ],
+      "properties": {
+        "package_part": {
+          "type": "string",
+          "minLength": 1
+        },
+        "relationships_part": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "shape_tree_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "shape_kind": {
+          "type": "string",
+          "minLength": 1
+        },
+        "shape_id": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "shape_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "geometry": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/geometry"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "related_part": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/related_part"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "non_visual_properties": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/non_visual_properties"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "from_group": {
+          "type": "boolean"
+        }
+      }
+    },
+    "related_part": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "relationship_id",
+        "target_part"
+      ],
+      "properties": {
+        "relationship_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "target_part": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "non_visual_properties": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "descr",
+        "title"
+      ],
+      "properties": {
+        "descr": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        }
+      }
+    },
+    "visual_normalized_workflow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "label",
+        "visual_type",
+        "description",
+        "description_source",
+        "manual_review_required"
+      ],
+      "properties": {
+        "label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "visual_type": {
+          "type": "string",
+          "enum": [
+            "chart",
+            "photo",
+            "screenshot",
+            "table image",
+            "diagram",
+            "icon set",
+            "other detected visual"
+          ]
+        },
+        "description": {
+          "type": "string"
+        },
+        "description_source": {
+          "type": "string",
+          "enum": [
+            "descr",
+            "title",
+            "missing"
+          ]
+        },
+        "manual_review_required": {
+          "type": "boolean"
+        }
+      }
+    },
+    "visual_projected_target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "target_package_part",
+        "target_object_kind",
+        "target_path_hint",
+        "associated_drawing_reference",
+        "projection_status"
+      ],
+      "properties": {
+        "target_package_part": {
+          "type": "string",
+          "const": "word/document.xml"
+        },
+        "target_object_kind": {
+          "type": "string",
+          "enum": [
+            "visual_description_paragraph"
+          ]
+        },
+        "target_path_hint": {
+          "type": "string",
+          "minLength": 1
+        },
+        "associated_drawing_reference": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/associated_drawing_reference"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "projection_status": {
+          "type": "string",
+          "enum": [
+            "planned",
+            "written",
+            "omitted",
+            "manual_only"
+          ]
+        }
+      }
+    },
+    "associated_drawing_reference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "word_relationship_id",
+        "word_media_part"
+      ],
+      "properties": {
+        "word_relationship_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "word_media_part": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  }
+}

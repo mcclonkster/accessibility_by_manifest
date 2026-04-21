@@ -1,0 +1,280 @@
+{
+  "manifest_version": "1.0",
+  "manifest_kind": "pptx_to_docx_remediation_manifest",
+  "generated_at_utc": "2026-04-18T18:35:00Z",
+  "generator": {
+    "script_name": "script_1_extract",
+    "script_version": "1.0.0"
+  },
+  "source_package": {
+    "format_family": "OOXML",
+    "package_model": "OPC",
+    "document_vocabulary": "PresentationML",
+    "input_file_name": "memory_deck.pptx",
+    "input_file_path": "memory_deck.pptx"
+  },
+  "target_package": {
+    "format_family": "OOXML",
+    "package_model": "OPC",
+    "document_vocabulary": "WordprocessingML",
+    "draft_output_file_name": "memory_deck_companion.docx",
+    "draft_output_file_path": "memory_deck_companion.docx"
+  },
+  "run_config": {
+    "include_preview_images": true,
+    "preview_image_dir": "./previews",
+    "title_fallback_mode": "FIRST_TEXT_LINE",
+    "text_order_mode": "TOP_LEFT",
+    "slide_separator_mode": "PAGE_BREAK"
+  },
+  "manifest_summary": {
+    "total_slides": 1,
+    "slides_with_warnings": 1,
+    "detected_visual_entries": 1,
+    "detected_visual_entries_missing_descriptions": 0
+  },
+  "manifest_warning_entries": [],
+  "slide_entries": [
+    {
+      "slide_number": 7,
+      "observed_source": {
+        "package_part": "ppt/slides/slide7.xml",
+        "relationships_part": "ppt/slides/_rels/slide7.xml.rels",
+        "presentationml_root": "p:sld",
+        "common_slide_path": "/p:sld/p:cSld",
+        "shape_tree_path": "/p:sld/p:cSld/p:spTree",
+        "notes_part_present": false,
+        "preview_image_candidates": [
+          "slide_007.png"
+        ]
+      },
+      "normalized_workflow": {
+        "chosen_title": "Memory Systems",
+        "title_source": "TITLE_PLACEHOLDER",
+        "grouped_content_detected": false,
+        "reading_order_low_confidence": false,
+        "skipped_shape_content_detected": true,
+        "preview_match_ambiguous": false,
+        "connector_relationship_warning": true,
+        "manual_review_required": true
+      },
+      "projected_target": {
+        "target_package_part": "word/document.xml",
+        "projected_slide_heading_text": "Slide 7. Memory Systems",
+        "projected_slide_heading_style": "Heading1",
+        "projected_slide_separator_mode": "PAGE_BREAK",
+        "projection_status": "planned"
+      },
+      "warning_entries": [
+        {
+          "warning_code": "CONNECTOR_RELATIONSHIP_WARNING",
+          "warning_message": "This slide may use shape relationships or connectors to convey meaning that the output does not preserve.",
+          "warning_scope": "slide",
+          "manual_review_required": true
+        }
+      ],
+      "text_block_entries": [
+        {
+          "observed_source": {
+            "package_part": "ppt/slides/slide7.xml",
+            "shape_tree_path": "/p:sld/p:cSld/p:spTree/p:sp[1]",
+            "shape_kind": "p:sp",
+            "shape_id": 2,
+            "shape_name": "Title 1",
+            "placeholder_type": "title",
+            "has_placeholder_semantics": true,
+            "source_text_container_type": "placeholder_text",
+            "geometry": {
+              "x": 457200,
+              "y": 274638,
+              "cx": 8229600,
+              "cy": 914400
+            },
+            "text_body_path": "p:txBody",
+            "from_group": false
+          },
+          "normalized_workflow": {
+            "source_kind": "text",
+            "source_name": "Title 1",
+            "ordered_position": 1,
+            "reading_order_sort_key": {
+              "top": 274638,
+              "left": 457200
+            },
+            "interpreted_text_role": "title_candidate",
+            "role_confidence": "high",
+            "auto_merge_allowed": false
+          },
+          "projected_target": {
+            "target_package_part": "word/document.xml",
+            "target_object_kind": "paragraph_sequence",
+            "target_path_hint": "/w:document/w:body",
+            "projection_status": "planned"
+          },
+          "warning_entries": [],
+          "paragraph_entries": [
+            {
+              "observed_source": {
+                "drawingml_paragraph_path": "p:txBody/a:p[1]",
+                "paragraph_level_raw": 0,
+                "list_markup_kind": null,
+                "list_markup_value": null
+              },
+              "normalized_workflow": {
+                "text": "Memory Systems",
+                "level": 0,
+                "list_kind": "plain",
+                "list_marker_hint": "",
+                "ordered_sequence_reconstructable": false
+              },
+              "projected_target": {
+                "target_package_part": "word/document.xml",
+                "target_object_kind": "paragraph",
+                "target_path_hint": "/w:document/w:body/w:p[2]",
+                "paragraph_style": "Normal",
+                "numbering_plan": {
+                  "mode": "plain",
+                  "num_id": null,
+                  "ilvl": null
+                },
+                "projection_status": "planned"
+              },
+              "warning_entries": []
+            }
+          ]
+        },
+        {
+          "observed_source": {
+            "package_part": "ppt/slides/slide7.xml",
+            "shape_tree_path": "/p:sld/p:cSld/p:spTree/p:sp[5]",
+            "shape_kind": "p:sp",
+            "shape_id": 9,
+            "shape_name": "TextBox 8",
+            "placeholder_type": null,
+            "has_placeholder_semantics": false,
+            "source_text_container_type": "standalone_text_box",
+            "geometry": {
+              "x": 6035040,
+              "y": 1874520,
+              "cx": 1828800,
+              "cy": 548640
+            },
+            "text_body_path": "p:txBody",
+            "from_group": false
+          },
+          "normalized_workflow": {
+            "source_kind": "text",
+            "source_name": "TextBox 8",
+            "ordered_position": 2,
+            "reading_order_sort_key": {
+              "top": 1874520,
+              "left": 6035040
+            },
+            "interpreted_text_role": "unknown",
+            "role_confidence": "low",
+            "auto_merge_allowed": false
+          },
+          "projected_target": {
+            "target_package_part": "word/document.xml",
+            "target_object_kind": "paragraph_sequence",
+            "target_path_hint": "/w:document/w:body",
+            "projection_status": "planned"
+          },
+          "warning_entries": [
+            {
+              "warning_code": "STANDALONE_TEXT_BOX_ROLE_UNCERTAIN",
+              "warning_message": "Standalone text box role is uncertain.",
+              "warning_scope": "text_block",
+              "manual_review_required": true
+            },
+            {
+              "warning_code": "STANDALONE_TEXT_BOX_NOT_MERGED",
+              "warning_message": "Standalone text box was preserved separately and not auto-merged.",
+              "warning_scope": "text_block",
+              "manual_review_required": true
+            }
+          ],
+          "paragraph_entries": [
+            {
+              "observed_source": {
+                "drawingml_paragraph_path": "p:txBody/a:p[1]",
+                "paragraph_level_raw": 0,
+                "list_markup_kind": "a:buAutoNum",
+                "list_markup_value": "arabicPeriod"
+              },
+              "normalized_workflow": {
+                "text": "Chunking helps recall",
+                "level": 1,
+                "list_kind": "number",
+                "list_marker_hint": "[numbered]",
+                "ordered_sequence_reconstructable": false
+              },
+              "projected_target": {
+                "target_package_part": "word/document.xml",
+                "target_object_kind": "paragraph",
+                "target_path_hint": "/w:document/w:body/w:p[5]",
+                "paragraph_style": "Normal",
+                "numbering_plan": {
+                  "mode": "plain_fallback",
+                  "num_id": null,
+                  "ilvl": null
+                },
+                "projection_status": "planned"
+              },
+              "warning_entries": [
+                {
+                  "warning_code": "TRUE_ORDERED_SEQUENCE_NOT_PRESERVED",
+                  "warning_message": "Numbering intent was observed, but true ordered sequence is not reconstructable.",
+                  "warning_scope": "paragraph",
+                  "manual_review_required": true
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "visual_entries": [
+        {
+          "observed_source": {
+            "package_part": "ppt/slides/slide7.xml",
+            "relationships_part": "ppt/slides/_rels/slide7.xml.rels",
+            "shape_tree_path": "/p:sld/p:cSld/p:spTree/p:pic[1]",
+            "shape_kind": "p:pic",
+            "shape_id": 4,
+            "shape_name": "Picture 3",
+            "geometry": {
+              "x": 6400800,
+              "y": 1600200,
+              "cx": 2286000,
+              "cy": 2286000
+            },
+            "related_part": {
+              "relationship_id": "rId5",
+              "target_part": "ppt/media/image1.png"
+            },
+            "non_visual_properties": {
+              "descr": "Diagram of sensory, short-term, and long-term memory",
+              "title": ""
+            },
+            "from_group": false
+          },
+          "normalized_workflow": {
+            "label": "Visual 1",
+            "visual_type": "diagram",
+            "description": "Diagram of sensory, short-term, and long-term memory",
+            "description_source": "descr",
+            "manual_review_required": true
+          },
+          "projected_target": {
+            "target_package_part": "word/document.xml",
+            "target_object_kind": "visual_description_paragraph",
+            "target_path_hint": "/w:document/w:body/w:p[8]",
+            "associated_drawing_reference": null,
+            "projection_status": "planned"
+          },
+          "warning_entries": []
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+OOXML / OPC package
+  ├─ source document vocabulary: PresentationML
+  │    ├─ slide parts
+  │    ├─ shape trees
+  │    ├─ text bodies
+  │    ├─ placeholders
+  │    ├─ tables
+  │    ├─ pictures / charts
+  │    └─ relationships to media and other parts
+  │
+  ├─ normalized workflow model
+  │    ├─ observed_source
+  │    ├─ normalized_workflow
+  │    ├─ projected_target
+  │    └─ warning_entries
+  │
+  └─ target document vocabulary: WordprocessingML
+       ├─ document body
+       ├─ heading paragraphs
+       ├─ plain paragraphs
+       ├─ list paragraphs
+       ├─ visual-description paragraphs
+       └─ page breaks / section separation

@@ -1,0 +1,75 @@
+{
+  "source_package": {
+    "format_family": "OOXML",
+    "package_model": "OPC",
+    "document_vocabulary": "PresentationML",
+    "input_file_name": "memory_deck.pptx",
+    "input_file_path": "memory_deck.pptx"
+  },
+  "slide_source_example": {
+    "package_part": "ppt/slides/slide7.xml",
+    "relationships_part": "ppt/slides/_rels/slide7.xml.rels",
+    "presentationml_root": "p:sld",
+    "common_slide_path": "/p:sld/p:cSld",
+    "shape_tree_path": "/p:sld/p:cSld/p:spTree",
+    "source_text_objects": [
+      {
+        "shape_tree_path": "/p:sld/p:cSld/p:spTree/p:sp[1]",
+        "shape_kind": "p:sp",
+        "shape_id": 2,
+        "shape_name": "Title 1",
+        "has_placeholder_semantics": true,
+        "placeholder_type": "title",
+        "source_text_container_type": "placeholder_text",
+        "geometry": {
+          "x": 457200,
+          "y": 274638,
+          "cx": 8229600,
+          "cy": 914400
+        },
+        "text_body_path": "p:txBody",
+        "drawingml_paragraph_paths": [
+          "p:txBody/a:p[1]"
+        ],
+        "from_group": false
+      },
+      {
+        "shape_tree_path": "/p:sld/p:cSld/p:spTree/p:sp[5]",
+        "shape_kind": "p:sp",
+        "shape_id": 9,
+        "shape_name": "TextBox 8",
+        "has_placeholder_semantics": false,
+        "placeholder_type": null,
+        "source_text_container_type": "standalone_text_box",
+        "geometry": {
+          "x": 6035040,
+          "y": 1874520,
+          "cx": 1828800,
+          "cy": 548640
+        },
+        "text_body_path": "p:txBody",
+        "drawingml_paragraph_paths": [
+          "p:txBody/a:p[1]"
+        ],
+        "from_group": false
+      }
+    ],
+    "source_visual_objects": [
+      {
+        "shape_tree_path": "/p:sld/p:cSld/p:spTree/p:pic[1]",
+        "shape_kind": "p:pic",
+        "shape_id": 4,
+        "shape_name": "Picture 3",
+        "related_part": {
+          "relationship_id": "rId5",
+          "target_part": "ppt/media/image1.png"
+        },
+        "non_visual_properties": {
+          "descr": "Diagram of sensory, short-term, and long-term memory",
+          "title": ""
+        },
+        "from_group": false
+      }
+    ]
+  }
+}

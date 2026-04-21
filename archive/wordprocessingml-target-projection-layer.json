@@ -1,0 +1,70 @@
+{
+  "target_package": {
+    "format_family": "OOXML",
+    "package_model": "OPC",
+    "document_vocabulary": "WordprocessingML",
+    "main_part": "word/document.xml",
+    "supporting_parts": [
+      "word/styles.xml",
+      "word/numbering.xml",
+      "word/_rels/document.xml.rels"
+    ]
+  },
+  "projected_objects": [
+    {
+      "object_id": "slide-7-heading",
+      "target_package_part": "word/document.xml",
+      "target_object_kind": "heading_paragraph",
+      "target_path_hint": "/w:document/w:body/w:p[1]",
+      "wordprocessingml_projection": {
+        "paragraph_style": "Heading1",
+        "text": "Slide 7. Memory Systems"
+      },
+      "projection_status": "planned"
+    },
+    {
+      "object_id": "slide-7-title-paragraph",
+      "target_package_part": "word/document.xml",
+      "target_object_kind": "paragraph",
+      "target_path_hint": "/w:document/w:body/w:p[2]",
+      "wordprocessingml_projection": {
+        "paragraph_style": "Normal",
+        "text": "Memory Systems"
+      },
+      "projection_status": "planned"
+    },
+    {
+      "object_id": "slide-7-standalone-textbox-8",
+      "target_package_part": "word/document.xml",
+      "target_object_kind": "paragraph",
+      "target_path_hint": "/w:document/w:body/w:p[5]",
+      "wordprocessingml_projection": {
+        "paragraph_style": "Normal",
+        "text": "[numbered] Chunking helps recall"
+      },
+      "projection_status": "planned",
+      "projection_warning": "Plain fallback used because true ordered sequence is not reconstructable."
+    },
+    {
+      "object_id": "slide-7-visual-1-description",
+      "target_package_part": "word/document.xml",
+      "target_object_kind": "visual_description_paragraph",
+      "target_path_hint": "/w:document/w:body/w:p[8]",
+      "wordprocessingml_projection": {
+        "paragraph_style": "Normal",
+        "text": "Visual 1. Diagram: Diagram of sensory, short-term, and long-term memory."
+      },
+      "projection_status": "planned"
+    },
+    {
+      "object_id": "slide-7-separator",
+      "target_package_part": "word/document.xml",
+      "target_object_kind": "page_break",
+      "target_path_hint": "/w:document/w:body/w:p[9]",
+      "wordprocessingml_projection": {
+        "break_type": "page"
+      },
+      "projection_status": "planned"
+    }
+  ]
+}

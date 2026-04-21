@@ -1,0 +1,9 @@
+/.DS_Store
+**/.DS_Store
+__pycache__/
+.pytest_cache/
+*.pyc
+*.egg-info/
+*_workflow_output/
+*.tmp
+test_outputs/
