@@ -5,22 +5,25 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "accessibility-by-manifest"
 version = "0.1.0"
-description = "Manifest-centered accessibility workflows for extracting, normalizing, and projecting documents."
+description = "Manifest-centered accessibility pipelines for extracting, normalizing, and projecting documents."
 requires-python = ">=3.11"
 dependencies = [
   "jsonschema",
   "PyMuPDF",
+  "pypdf",
+  "pikepdf",
+  "pdfminer.six",
   "python-pptx",
   "python-docx",
   "PyYAML",
 ]
 
 [project.scripts]
-pptx-to-docx-accessibility = "pptx_to_docx_accessibility.cli:main"
-pdf-to-docx-accessibility = "pdf_to_docx_accessibility.cli:main"
+accessibility-manifest-pptx = "accessibility_by_manifest.cli.pptx:main"
+accessibility-manifest-pdf = "accessibility_by_manifest.cli.pdf:main"
 
 [tool.setuptools.packages.find]
-include = ["pptx_to_docx_accessibility*", "pdf_to_docx_accessibility*"]
+include = ["accessibility_by_manifest*"]
 exclude = ["archive*", "test_inputs*", "test_outputs*", "tests*"]
 
 [tool.pytest.ini_options]

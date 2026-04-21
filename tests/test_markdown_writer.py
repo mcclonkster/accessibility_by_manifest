@@ -1,7 +1,7 @@
 from pathlib import Path
 
-from pptx_to_docx_accessibility.markdown_writer import build_slides_markdown
-from pptx_to_docx_accessibility.models import Manifest, ParagraphEntry, SlideEntry, TextBlockEntry
+from accessibility_by_manifest.manifest.pptx import Manifest, ParagraphEntry, SlideEntry, TextBlockEntry
+from accessibility_by_manifest.outputs.markdown import build_slides_markdown
 
 
 def test_slides_markdown_uses_markdown_image_convention_with_relative_path(tmp_path: Path) -> None:

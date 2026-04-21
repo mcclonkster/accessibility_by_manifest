@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from pptx_to_docx_accessibility.paths import discover_pptx_files, plan_runs
+from accessibility_by_manifest.inputs.pptx.paths import discover_pptx_files, plan_runs
 
 
 def test_discover_pptx_files_skips_powerpoint_lock_files(tmp_path: Path) -> None:
@@ -26,3 +26,13 @@ def test_plan_runs_uses_single_output_dir_for_file_input(tmp_path: Path) -> None
 
     assert len(runs) == 1
     assert runs[0].output_dir == output_root
+
+
+def test_plan_runs_uses_manifest_output_suffix_for_folder_input(tmp_path: Path) -> None:
+    deck = tmp_path / "Deck Name.pptx"
+    deck.write_text("not a real pptx", encoding="utf-8")
+
+    runs = plan_runs([deck], tmp_path, None)
+
+    assert len(runs) == 1
+    assert runs[0].output_dir == tmp_path / "Deck Name_manifest_output"

@@ -2,9 +2,9 @@ import base64
 from pathlib import Path
 from zipfile import ZipFile
 
-from pptx_to_docx_accessibility.docx_writer import write_slides_docx
-from pptx_to_docx_accessibility.models import Manifest, ParagraphEntry, SlideEntry, TextBlockEntry
-from pptx_to_docx_accessibility.paths import OutputPaths
+from accessibility_by_manifest.inputs.pptx.paths import OutputPaths
+from accessibility_by_manifest.manifest.pptx import Manifest, ParagraphEntry, SlideEntry, TextBlockEntry
+from accessibility_by_manifest.outputs.docx import write_slides_docx
 
 
 ONE_PIXEL_PNG = (
@@ -26,7 +26,7 @@ def test_slides_docx_embeds_slide_image_alt_text_and_normalized_style_colors(tmp
         manifest_yaml=tmp_path / "manifest.yaml",
         extract_report=tmp_path / "extract.md",
         review_notes=tmp_path / "review.md",
-        remediation_report=tmp_path / "remediation.md",
+        review_report=tmp_path / "review_report.md",
         slide_image_dir=image_dir,
     )
     manifest = Manifest(

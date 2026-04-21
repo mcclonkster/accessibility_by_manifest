@@ -1,31 +1,37 @@
 # Accessibility by Manifest
 
-Manifest-centered accessibility workflows for moving documents through:
+Manifest-centered accessibility pipelines move documents through:
 
 1. input-specific extraction
 2. normalized accessibility evidence
 3. output-specific projection
 
-The core idea is that each input adapter writes evidence into a manifest, and
-each output adapter reads from that manifest. That keeps the workflow flexible:
-PPTX, PDF, DOCX, Markdown, and later PDF output can share the same normalization
-contract instead of becoming one-off converters.
+The core code path is `input -> manifest -> output`. Each input adapter writes
+evidence into a manifest, and each output adapter reads from that manifest. That
+keeps the architecture flexible: PPTX, PDF, DOCX, Markdown, and later PDF output
+can share the same normalization contract instead of becoming one-off
+input/output converters.
 
-## PPTX to DOCX
+Shared orchestration lives in `accessibility_by_manifest.pipeline`. Input
+adapters live in `accessibility_by_manifest.inputs`, output adapters live in
+`accessibility_by_manifest.outputs`, and compatibility entry points wire those
+modules into the shared lifecycle.
 
-Convert one PowerPoint deck, or a folder of decks, into DOCX accessibility
-review artifacts.
+## Input: PPTX
+
+Extract one PowerPoint deck, or a folder of decks, into accessibility manifests
+and review artifacts.
 
 Recommended use from this folder:
 
 ```bash
-/Users/computerk/Library/CloudStorage/Dropbox/0_VSCode/.venv/bin/python -m pptx_to_docx_accessibility "/path/to/deck-or-folder" --output-dir "/path/to/output-folder" --overwrite --require-slide-images
+python -m accessibility_by_manifest.cli.pptx "/path/to/deck-or-folder" --output-dir "/path/to/output-folder" --overwrite --require-slide-images
 ```
 
 Shorter form, if your shell is already using the project virtualenv:
 
 ```bash
-python3 -m pptx_to_docx_accessibility "/path/to/deck-or-folder" --output-dir "/path/to/output-folder" --overwrite --require-slide-images
+python3 -m accessibility_by_manifest.cli.pptx "/path/to/deck-or-folder" --output-dir "/path/to/output-folder" --overwrite --require-slide-images
 ```
 
 The package attempts to re-run itself with the project virtualenv if plain
@@ -40,7 +46,7 @@ Outputs for each deck:
 - YAML manifest
 - extract report
 - review notes
-- remediation report
+- review report
 - rendered slide images, when rendering succeeds
 
 Useful options:
@@ -56,7 +62,7 @@ Useful options:
 
 Slide-image rendering is optional by default, but use `--require-slide-images`
 for normal production runs. If LibreOffice or `pdftoppm` fails without that
-flag, the workflow continues with text extraction and records warnings.
+flag, the pipeline continues with text extraction and records warnings.
 
 External render prerequisites:
 
@@ -69,35 +75,32 @@ those images, extracted slide text as real Word paragraphs, visual-description
 notes when metadata exists, review warnings, and style color normalization for
 black text on white backgrounds.
 
-## PDF to DOCX Manifest
+## Input: PDF
 
-Extract first-pass PDF evidence into the `pdf_to_docx_accessibility_manifest`
-v0.1 JSON shape. This milestone uses PyMuPDF first and writes a schema-valid
-manifest. DOCX projection for PDFs is not implemented yet.
+Extract first-pass PDF evidence into the `pdf_accessibility_manifest`
+v0.1 JSON shape. The PDF input path runs PyMuPDF, pypdf, pikepdf, and
+pdfminer.six, then writes both a master manifest and one filtered manifest per
+extractor. DOCX projection for PDFs is not implemented yet.
 
 Recommended use from this folder:
 
 ```bash
-/Users/computerk/Library/CloudStorage/Dropbox/0_VSCode/.venv/bin/python3 -m pdf_to_docx_accessibility "/path/to/pdf-or-folder" --output-dir "/path/to/output-folder" --overwrite
+python -m accessibility_by_manifest.cli.pdf "/path/to/pdf-or-folder" --output-dir "/path/to/output-folder" --overwrite
 ```
 
 Outputs for each PDF:
 
-- JSON manifest
+- master JSON manifest
+- extractor-specific JSON manifests under `{pdf_stem}_extractor_manifests/`
 
-The first PyMuPDF pass populates:
+The PDF extractors populate:
 
 - source PDF facts and SHA-256 fingerprint
-- partial document metadata
+- document metadata, XMP presence, page labels, outlines, named destinations,
+  viewer preferences, permissions, form evidence, and JavaScript/XFA signals
 - document-level text/image/annotation/form counts
-- page geometry and page-level evidence
+- page geometry, page object dictionaries, resources, content-stream refs, and
+  page-level extractor evidence
 - annotations and links
-- raw text blocks with bounding boxes, span text, and basic style hints
-
-Deferred adapters:
-
-- pypdf for canonical metadata, outlines, page labels, named destinations, page
-  mode/layout, and permissions
-- pikepdf for MarkInfo, structure tree detection, content-stream evidence, and
-  lower-level object provenance
-- pdfminer.six for richer text spans and typography evidence
+- raw text blocks with bounding boxes, span text, font/style hints, and
+  pdfminer character-level evidence

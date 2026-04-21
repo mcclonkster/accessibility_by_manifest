@@ -1,4 +1,4 @@
-from pptx_to_docx_accessibility.text_utils import clean_text
+from accessibility_by_manifest.inputs.pptx.text_utils import clean_text
 
 
 def test_clean_text_removes_xml_illegal_control_characters() -> None:
