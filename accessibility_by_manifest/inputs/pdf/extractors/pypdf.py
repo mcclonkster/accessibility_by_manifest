@@ -4,6 +4,10 @@ from typing import Any
 
 from accessibility_by_manifest.inputs.pdf.extractors.common import safe_value
 from accessibility_by_manifest.manifest.pdf_builder import ManifestBuilder, warning_entry
+from accessibility_by_manifest.util.logging import get_logger
+
+
+logger = get_logger("inputs.pdf.extractors.pypdf")
 
 
 class PypdfAdapter:
@@ -28,6 +32,7 @@ class PypdfAdapter:
         except Exception as exc:
             builder.document_warning_entries.append(warning_entry("PYPDF_OPEN_FAILED", f"pypdf could not open the PDF: {exc}", "document"))
             return
+        logger.info("pypdf opened %s with %s page(s)", builder.input_path, len(reader.pages))
 
         metadata = safe_value(reader.metadata or {})
         normalized_metadata = normalize_metadata(metadata)
@@ -76,6 +81,12 @@ class PypdfAdapter:
                 "page_object": safe_value(reader.pages[page_number - 1].indirect_reference if page_number - 1 < len(reader.pages) else None),
                 "page_keys": safe_value(list(reader.pages[page_number - 1].keys()) if page_number - 1 < len(reader.pages) else []),
             }
+        logger.info(
+            "pypdf extraction completed: outlines=%s page_labels=%s forms=%s",
+            bool(outline_entries),
+            bool(page_labels),
+            bool(fields),
+        )
 
 
 def normalize_metadata(metadata: dict[str, Any]) -> dict[str, Any]:

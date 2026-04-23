@@ -1,0 +1,6 @@
+interface:
+  display_name: "Opensource Pipeline"
+  short_description: "Open-source pipeline: fork, sanitize, and package private projects for safe public release. Chains 3 agents (forker, sanitizer, packager). Triggers: '/opensource', 'open source this', 'make this public', 'prepare for open source'."
+  default_prompt: "Use the opensource-pipeline skill."
+policy:
+  allow_implicit_invocation: true

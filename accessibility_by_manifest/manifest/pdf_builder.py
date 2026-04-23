@@ -84,12 +84,14 @@ class ManifestBuilder:
             "all_xfa_html": None,
             **self.document_interactivity,
         }
+        primary_extractor = "pymupdf"
+        secondary_extractors = [name for name in self.extractor_versions if name != primary_extractor]
         return {
             "manifest_version": "0.1",
             "manifest_kind": "pdf_accessibility_manifest",
             "extractor_provenance": {
-                "primary_extractor": "pymupdf",
-                "secondary_extractors": ["pypdf", "pikepdf", "pdfminer.six"],
+                "primary_extractor": primary_extractor,
+                "secondary_extractors": secondary_extractors,
                 "extractor_versions": self.extractor_versions,
                 "notes": [],
             },

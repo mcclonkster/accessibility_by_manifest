@@ -5,7 +5,11 @@ from xml.etree import ElementTree
 
 from accessibility_by_manifest.inputs.pdf.extractors.common import safe_value
 from accessibility_by_manifest.manifest.pdf_builder import ManifestBuilder, warning_entry
+from accessibility_by_manifest.util.logging import get_logger
 from accessibility_by_manifest.util.pdf_text import clean_text
+
+
+logger = get_logger("inputs.pdf.extractors.pymupdf")
 
 
 class PyMuPDFAdapter:
@@ -18,6 +22,7 @@ class PyMuPDFAdapter:
             raise RuntimeError("PyMuPDF is required for PDF extraction.") from exc
 
         with fitz.open(builder.input_path) as document:
+            logger.info("PyMuPDF opened %s with %s page(s)", builder.input_path, document.page_count)
             builder.extractor_versions["pymupdf"] = getattr(fitz, "version", [None])[0]
             builder.page_count = document.page_count
             builder.byte_length = builder.input_path.stat().st_size
@@ -117,6 +122,13 @@ class PyMuPDFAdapter:
 
                 for block_index, block in enumerate(text_blocks, start=1):
                     builder.raw_block_entries.append(raw_block_entry(page_number, block_index, block))
+            logger.info(
+                "PyMuPDF extraction completed: pages=%s raw_blocks=%s annotations=%s figures=%s",
+                builder.page_count,
+                len(builder.raw_block_entries),
+                builder.annotation_count,
+                builder.figure_candidate_count,
+            )
 
 
 def get_xmp_metadata(document: Any) -> str:

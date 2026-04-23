@@ -49,7 +49,13 @@ def normalize_pdf_manifest(manifest: dict[str, Any]) -> dict[str, Any]:
 def selected_raw_blocks(raw_blocks: list[dict[str, Any]]) -> list[dict[str, Any]]:
     pymupdf_blocks = [block for block in raw_blocks if "pymupdf" in block.get("extractor_evidence", {})]
     if pymupdf_blocks:
-        return pymupdf_blocks
+        pymupdf_pages = {int(block.get("page_number") or 0) for block in pymupdf_blocks}
+        sidecar_fallback_blocks = [
+            block
+            for block in raw_blocks
+            if sidecar_recovery_present(block) and int(block.get("page_number") or 0) not in pymupdf_pages
+        ]
+        return [*pymupdf_blocks, *sidecar_fallback_blocks]
     return [block for block in raw_blocks if block.get("text", "").strip()]
 
 
@@ -137,6 +143,14 @@ def interpret_block_role(
     font_size = style_hints.get("font_size")
     font_weight = style_hints.get("font_weight")
     basis = ["raw_text_block"]
+    doctr_role = doctr_interpreted_role(raw_block)
+    if doctr_role is not None:
+        role, heading_level, confidence, role_basis = doctr_role
+        return role, heading_level, confidence, basis + role_basis
+    docling_role = docling_interpreted_role(raw_block)
+    if docling_role is not None:
+        role, heading_level, confidence, role_basis = docling_role
+        return role, heading_level, confidence, basis + role_basis
     if normalized_text_key(text) in repeated_artifacts and is_margin_region(raw_block):
         return "artifact", None, "medium", basis + ["repeated_header_footer_pattern"]
     if is_list_item(text):
@@ -240,10 +254,43 @@ def list_kind_for_role(role: str, raw_block: dict[str, Any]) -> str | None:
 def semantic_source_quality(raw_block: dict[str, Any]) -> str:
     structure = raw_block.get("structure_hints", {})
     if structure.get("tag_name") or structure.get("mcid") is not None:
+        if sidecar_recovery_present(raw_block):
+            return "low"
         return "high"
     if "pymupdf" in raw_block.get("extractor_evidence", {}) or "pdfminer.six" in raw_block.get("extractor_evidence", {}):
         return "low"
     return "unknown"
+
+
+def sidecar_recovery_present(raw_block: dict[str, Any]) -> bool:
+    evidence = raw_block.get("extractor_evidence", {})
+    return "docling" in evidence or "doctr" in evidence
+
+
+def doctr_interpreted_role(raw_block: dict[str, Any]) -> tuple[str, int | None, str, list[str]] | None:
+    if "doctr" not in raw_block.get("extractor_evidence", {}):
+        return None
+    return "paragraph", None, "medium", ["doctr_ocr_sidecar", "image_only_page", "ocr_text", "evidence_only"]
+
+
+def docling_interpreted_role(raw_block: dict[str, Any]) -> tuple[str, int | None, str, list[str]] | None:
+    if "docling" not in raw_block.get("extractor_evidence", {}):
+        return None
+    label = str(raw_block.get("structure_hints", {}).get("tag_name") or "").lower()
+    basis = ["docling_sidecar_hint", f"docling_label:{label}", "ai_parser_evidence_only"]
+    if label in {"heading", "section_header", "title"}:
+        return "heading", 1, "medium", basis
+    if label == "table":
+        return "table", None, "medium", basis
+    if label == "table_cell":
+        return "table_cell", None, "medium", basis
+    if label in {"page_header", "page_footer", "header", "footer"}:
+        return "artifact", None, "medium", basis
+    if label in {"picture", "figure", "image"}:
+        return "figure", None, "low", basis
+    if raw_block.get("text", "").strip():
+        return "paragraph", None, "medium", basis
+    return "unknown", None, "low", basis
 
 
 def normalization_warnings(raw_block: dict[str, Any], role: str, confidence: str) -> list[dict[str, Any]]:

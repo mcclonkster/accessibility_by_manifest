@@ -32,7 +32,7 @@ def write_pdf_manifest_bundle(output_paths: PdfOutputPaths, manifest: dict[str, 
     write_json_manifest(output_paths.manifest_json, manifest, overwrite)
     write_json_manifest(output_paths.normalized_manifest_json, normalized_manifest_view(manifest), overwrite)
     write_json_manifest(output_paths.review_queue_json, review_queue_view(manifest), overwrite)
-    for extractor_name in PDF_EXTRACTOR_NAMES:
+    for extractor_name in pdf_extractor_names(manifest):
         write_json_manifest(
             output_paths.extractor_manifest_json(extractor_name),
             extractor_manifest_view(manifest, extractor_name),
@@ -127,6 +127,14 @@ def keep_extractor_evidence(evidence: dict[str, Any], extractor_name: str) -> di
     return {extractor_name: deepcopy(evidence[extractor_name])} if extractor_name in evidence else {}
 
 
+def pdf_extractor_names(manifest: dict[str, Any]) -> tuple[str, ...]:
+    names = list(PDF_EXTRACTOR_NAMES)
+    for extractor_name in manifest.get("extractor_evidence", {}):
+        if extractor_name not in names:
+            names.append(extractor_name)
+    return tuple(names)
+
+
 def warning_belongs_to_extractor(warning: dict[str, Any], extractor_name: str) -> bool:
     warning_code = str(warning.get("warning_code", "")).lower()
     extractor_aliases = {
@@ -134,6 +142,8 @@ def warning_belongs_to_extractor(warning: dict[str, Any], extractor_name: str) -
         "pypdf": ("pypdf",),
         "pikepdf": ("pikepdf",),
         "pdfminer.six": ("pdfminer", "pdfminersix"),
+        "docling": ("docling",),
+        "doctr": ("doctr", "ocr"),
     }
     return any(warning_code.startswith(alias) for alias in extractor_aliases.get(extractor_name, (extractor_name,)))
 

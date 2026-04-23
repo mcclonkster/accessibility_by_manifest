@@ -1,0 +1,6 @@
+interface:
+  display_name: "Autonomous Agent Harness"
+  short_description: "Configure Codex, Claude Code, OpenCode, or another coding agent harness as a more autonomous system with persistent memory, scheduled operations, computer use, and task queuing. Replaces standalone agent frameworks (Hermes, AutoGPT) by leveraging harness-native scheduling, dispatch, MCP tools, and memory. Use when the user wants continuous autonomous operation, scheduled tasks, or a self-directing agent loop."
+  default_prompt: "Use the autonomous-agent-harness skill."
+policy:
+  allow_implicit_invocation: true

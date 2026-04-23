@@ -83,7 +83,8 @@ black text on white backgrounds.
 Extract first-pass PDF evidence into the `pdf_accessibility_manifest`
 v0.1 JSON shape. The PDF input path runs PyMuPDF, pypdf, pikepdf, and
 pdfminer.six, then writes both a master manifest and one filtered manifest per
-extractor. DOCX projection for PDFs is not implemented yet.
+extractor. It also writes normalized and review-only JSON views plus a draft
+DOCX projection from the normalized manifest.
 
 Recommended use from this folder:
 
@@ -93,8 +94,37 @@ python -m accessibility_by_manifest.cli.pdf "/path/to/pdf-or-folder" --output-di
 
 Outputs for each PDF:
 
+- run log at `{pdf_stem}.log`
 - master JSON manifest
 - extractor-specific JSON manifests under `{pdf_stem}_extractor_manifests/`
+- normalized manifest view
+- review queue view
+- draft DOCX review artifact
+- Adobe reference comparison JSON/Markdown, when same-stem Adobe exports are
+  present beside the input PDF
+
+Optional whole-document AI parser sidecars can be enabled explicitly:
+
+```bash
+python -m accessibility_by_manifest.cli.pdf "/path/to/pdf" --output-dir "/path/to/output-folder" --overwrite --ai-parser docling
+```
+
+The default is `--ai-parser none`. When Docling is requested, the pipeline runs
+it as sidecar evidence only and writes artifacts under
+`{pdf_stem}_ai_parser_outputs/docling/`. Docling output is not canonical and does
+not replace PyMuPDF, pypdf, pikepdf, or pdfminer.six evidence.
+
+Optional targeted OCR can also be enabled for image-only pages:
+
+```bash
+python -m accessibility_by_manifest.cli.pdf "/path/to/pdf" --output-dir "/path/to/output-folder" --overwrite --ocr-parser doctr
+```
+
+The default is `--ocr-parser none`. The `doctr` OCR sidecar lazy-loads the
+optional `python-doctr` package and only runs on pages already flagged as
+image-only by deterministic extraction. OCR text is recorded as review-required
+sidecar evidence under `extractor_evidence["doctr"]`; it does not replace the
+deterministic extractor spine.
 
 The PDF extractors populate:
 
@@ -107,3 +137,74 @@ The PDF extractors populate:
 - annotations and links
 - raw text blocks with bounding boxes, span text, font/style hints, and
   pdfminer character-level evidence
+- optional Docling reading-order, heading, table, figure, and artifact hints
+  when `--ai-parser docling` is used
+- optional doctr OCR text evidence for image-only pages when
+  `--ocr-parser doctr` is used
+
+The terminal prints a concise status summary. Detailed phase, extractor,
+normalization, review, output, and failure information is written to the `.log`
+file in the PDF's output folder.
+
+If Adobe-exported reference files are placed next to the source PDF with the
+same stem, the PDF pipeline writes `{pdf_stem}_adobe_reference_comparison.json`
+and `{pdf_stem}_adobe_reference_comparison.md` in that PDF's output folder.
+Recognized references include `{pdf_stem}.docx`, `{pdf_stem}.html`,
+`{pdf_stem}.xml`, `{pdf_stem}_files/`, `{pdf_stem}_print_pdf.pdf`,
+`{pdf_stem}-1_print_postscript.ps`, and matching files in `images/`.
+
+These Adobe exports are comparison evidence only. They show how Adobe
+interpreted the original PDF across export modes, which helps identify where
+the pipeline should learn from Adobe successes and failures. They are not
+canonical ground truth and do not replace the master manifest.
+
+## Input: DOCX
+
+Extract first-pass DOCX evidence into a DOCX input manifest:
+
+```bash
+python -m accessibility_by_manifest.cli.docx "/path/to/docx-or-folder" --output-dir "/path/to/output-folder" --overwrite
+```
+
+Outputs for each DOCX:
+
+- run log at `{docx_stem}.log`
+- DOCX JSON manifest at `{docx_stem}_docx_manifest.json`
+- normalized source-neutral IR at `{docx_stem}_docx_normalized_ir.json`
+
+The DOCX manifest records both the `python-docx` object-model view and the
+lower-level WordprocessingML/package view. It includes package parts,
+relationships, core and extended properties, settings, styles, numbering,
+sections, stories, headers, footers, media, drawings, hyperlinks, body blocks in
+source order, body paragraphs/runs, and body tables/cells. It also keeps raw
+package XML tag counts so Adobe-exported DOCX files can be compared against
+Adobe HTML/XML references and PDF-derived manifests without pretending any one
+export is canonical.
+
+The normalized IR is the structure view that later accessible DOCX/PDF outputs
+should read. It turns DOCX evidence into source-neutral nodes such as headings,
+paragraphs, list items, tables, figures, artifacts, and sections while retaining
+source references, confidence, review flags, and projection hints.
+
+## Optional Local Vision Alt Text
+
+Draft alt text can be generated with a local vision model. This is optional
+sidecar evidence for a later DOCX repair plan; it should not be treated as
+human-reviewed accessibility completion.
+
+With Ollama:
+
+```bash
+python -m accessibility_by_manifest.cli.vision_alt_text "/path/to/docx-or-images" --provider ollama --model llava --output "/path/to/alt_text.json" --overwrite
+```
+
+With LM Studio's OpenAI-compatible local server:
+
+```bash
+python -m accessibility_by_manifest.cli.vision_alt_text "/path/to/docx-or-images" --provider lmstudio --model "qwen2.5-vl" --output "/path/to/alt_text.json" --overwrite
+```
+
+Inputs can be an image file, a folder of images, or a DOCX file. For DOCX input,
+the tool extracts `word/media/*` images before sending them to the local model.
+The report records generated alt text, image kind, confidence, review notes,
+provider/model metadata, and any errors.

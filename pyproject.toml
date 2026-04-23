@@ -16,15 +16,28 @@ dependencies = [
   "python-pptx",
   "python-docx",
   "PyYAML",
+  "langgraph",
+  "pydantic",
+  "typer",
+]
+
+[project.optional-dependencies]
+ocr = [
+  "python-doctr",
 ]
 
 [project.scripts]
 accessibility-manifest-pptx = "accessibility_by_manifest.cli.pptx:main"
 accessibility-manifest-pdf = "accessibility_by_manifest.cli.pdf:main"
+accessibility-manifest-docx = "accessibility_by_manifest.cli.docx:main"
+accessibility-vision-alt-text = "accessibility_by_manifest.cli.vision_alt_text:main"
+pdf-accessibility = "pdf_accessibility.cli:main"
 
 [tool.setuptools.packages.find]
-include = ["accessibility_by_manifest*"]
+where = [".", "src"]
+include = ["accessibility_by_manifest*", "pdf_accessibility*"]
 exclude = ["archive*", "test_inputs*", "test_outputs*", "tests*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+pythonpath = ["src", "."]

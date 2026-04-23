@@ -20,7 +20,22 @@ Current top-level package boundaries:
 - **pikepdf**: low-level PDF objects, streams, MarkInfo, structure tree,
   resources, object provenance
 - **pdfminer.six**: layout text, typography, line evidence, character evidence
+- **Docling**: optional whole-document AI parser sidecar for reading-order,
+  heading, table, figure, and artifact hints; evidence only, not canonical
+- **python-doctr**: optional targeted OCR sidecar for pages already detected as
+  image-only; evidence only, review-required, and not a replacement for
+  deterministic extraction
 - **veraPDF**: optional external validator later, not an extractor
+
+Other AI parser candidates remain later evaluation targets:
+
+- **MinerU**: promising whole-document parser, but review license and runtime
+  footprint before integration
+- **marker-pdf**: promising whole-document parser, but GPL licensing makes direct
+  embedding a separate decision
+- **olmOCR**: useful OCR/VLM fallback for scanned or image-heavy PDFs
+- **nougat-ocr**: niche academic-paper parser, not a first choice for financial
+  reports
 
 ## Validator Boundary
 

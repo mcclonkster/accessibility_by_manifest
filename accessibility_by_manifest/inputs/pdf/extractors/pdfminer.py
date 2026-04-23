@@ -3,7 +3,11 @@ from __future__ import annotations
 from typing import Any
 
 from accessibility_by_manifest.manifest.pdf_builder import ManifestBuilder, warning_entry
+from accessibility_by_manifest.util.logging import get_logger
 from accessibility_by_manifest.util.pdf_text import clean_text
+
+
+logger = get_logger("inputs.pdf.extractors.pdfminer")
 
 
 class PdfminerAdapter:
@@ -88,8 +92,14 @@ class PdfminerAdapter:
                 "raw_blocks_added": sum(block_index_by_page.values()),
                 "pages_with_pdfminer_text": sorted(block_index_by_page),
             }
+            logger.info(
+                "pdfminer.six extraction completed: raw_blocks_added=%s pages_with_text=%s",
+                sum(block_index_by_page.values()),
+                len(block_index_by_page),
+            )
         except Exception as exc:
             builder.document_warning_entries.append(warning_entry("PDFMINER_EXTRACTION_FAILED", f"pdfminer.six extraction failed: {exc}", "document"))
+            logger.exception("pdfminer.six extraction failed")
 
 
 def text_items_for_element(element: Any, line_type: type, char_type: type) -> tuple[list[dict[str, Any]], dict[str, Any], dict[str, Any]]:

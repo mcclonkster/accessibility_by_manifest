@@ -15,6 +15,10 @@ Current extractor order:
 3. pikepdf
 4. pdfminer.six
 
+Optional sidecar parser order:
+
+5. Docling, only when explicitly requested with `--ai-parser docling`
+
 PyMuPDF remains the right first adapter because it gives the fastest useful path
 to page count, geometry, text-layer detection, image-only suspicion,
 annotations, links, images, fonts, and raw blocks.
@@ -26,6 +30,12 @@ detection, resources, and content-stream evidence.
 
 pdfminer.six layers richer layout, typography, line evidence, and character
 evidence.
+
+Docling is an optional whole-document AI parser sidecar. It may contribute
+reading-order, heading, table, figure, and artifact hints, but those hints remain
+comparison evidence under `extractor_evidence["docling"]`. They do not override
+the deterministic extractor spine and do not become canonical without
+normalization logic choosing to use them.
 
 ## v0.1 Direction
 

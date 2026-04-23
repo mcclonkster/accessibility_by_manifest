@@ -6,4 +6,5 @@ __pycache__/
 *.egg-info/
 *_workflow_output/
 *.tmp
-test_outputs/
+test_inputs/not_public
+test_outputs/not_public

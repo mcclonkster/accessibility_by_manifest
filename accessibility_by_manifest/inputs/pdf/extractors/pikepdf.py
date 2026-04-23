@@ -4,6 +4,10 @@ from typing import Any
 
 from accessibility_by_manifest.inputs.pdf.extractors.common import safe_value
 from accessibility_by_manifest.manifest.pdf_builder import ManifestBuilder, warning_entry
+from accessibility_by_manifest.util.logging import get_logger
+
+
+logger = get_logger("inputs.pdf.extractors.pikepdf")
 
 
 class PikepdfAdapter:
@@ -24,6 +28,7 @@ class PikepdfAdapter:
         builder.extractor_versions[self.extractor_name] = getattr(pikepdf, "__version__", None)
         try:
             with pikepdf.open(builder.input_path) as pdf:
+                logger.info("pikepdf opened %s with %s page(s)", builder.input_path, len(pdf.pages))
                 self._populate_from_pdf(builder, pdf)
         except Exception as exc:
             builder.document_warning_entries.append(warning_entry("PIKEPDF_OPEN_FAILED", f"pikepdf could not open the PDF: {exc}", "document"))
@@ -99,6 +104,12 @@ class PikepdfAdapter:
                 "content_stream_evidence": content_stream_evidence,
                 "struct_parents": safe_value(page.obj.get("/StructParents")),
             }
+        logger.info(
+            "pikepdf extraction completed: tagged=%s struct_tree=%s language=%s",
+            builder.document_accessibility.get("tagged_pdf_detected"),
+            builder.document_accessibility.get("struct_tree_detected"),
+            builder.metadata.get("language"),
+        )
 
 
 def javascript_present(names: Any, open_action: Any) -> bool:

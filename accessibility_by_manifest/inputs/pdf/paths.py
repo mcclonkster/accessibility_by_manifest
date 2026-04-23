@@ -14,9 +14,13 @@ class PdfRun:
 @dataclass(frozen=True)
 class PdfOutputPaths:
     manifest_json: Path
+    log_file: Path
     extractor_manifest_dir: Path
+    ai_parser_output_dir: Path
     normalized_manifest_json: Path
     review_queue_json: Path
+    adobe_reference_comparison_json: Path
+    adobe_reference_comparison_markdown: Path
     projected_docx: Path
     preview_image_dir: Path
 
@@ -24,6 +28,10 @@ class PdfOutputPaths:
         stem = self.manifest_json.stem.removesuffix("_manifest")
         extractor_slug = safe_name(extractor_name.replace(".", "_")).lower()
         return self.extractor_manifest_dir / f"{stem}_{extractor_slug}_manifest.json"
+
+    def ai_parser_dir(self, parser_name: str) -> Path:
+        parser_slug = safe_name(parser_name.replace(".", "_")).lower()
+        return self.ai_parser_output_dir / parser_slug
 
 
 def is_real_pdf(path: Path) -> bool:
@@ -70,9 +78,13 @@ def output_paths(run: PdfRun) -> PdfOutputPaths:
     stem = run.pdf_path.stem
     return PdfOutputPaths(
         manifest_json=run.output_dir / f"{stem}_manifest.json",
+        log_file=run.output_dir / f"{stem}.log",
         extractor_manifest_dir=run.output_dir / f"{stem}_extractor_manifests",
+        ai_parser_output_dir=run.output_dir / f"{stem}_ai_parser_outputs",
         normalized_manifest_json=run.output_dir / f"{stem}_normalized_manifest.json",
         review_queue_json=run.output_dir / f"{stem}_review_queue.json",
+        adobe_reference_comparison_json=run.output_dir / f"{stem}_adobe_reference_comparison.json",
+        adobe_reference_comparison_markdown=run.output_dir / f"{stem}_adobe_reference_comparison.md",
         projected_docx=run.output_dir / f"{stem}_draft.docx",
         preview_image_dir=run.output_dir / f"{stem}_page_images",
     )

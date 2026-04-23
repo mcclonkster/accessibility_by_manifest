@@ -16,6 +16,7 @@ The current active inputs are:
 
 - PPTX
 - PDF
+- DOCX
 
 The current active PDF extractors are:
 
@@ -84,6 +85,10 @@ The pipeline writes:
 
 The master manifest is canonical. The per-extractor manifests are derivative evidence snapshots, useful for debugging and comparison, but not equal systems of record.
 
+Adobe-exported reference files, when present beside a source PDF, are also comparison evidence. They show how Adobe interpreted the same original PDF across export modes such as DOCX, HTML, XML, print PDF, PostScript, and image assets. The pipeline should learn from where those references succeed and where they fail, but they are not ground truth and do not replace the master manifest.
+
+DOCX can also be processed as its own input. That is especially useful for Adobe-exported DOCX references because it lets the project inspect both the editable `python-docx` object model and the lower-level WordprocessingML package directly: ordered body blocks, stories, paragraphs, runs, tables, cells, styles, numbering, settings, relationships, media, drawings, headers, footers, sections, and raw package XML counts.
+
 We also split the project conceptually into four hard layers:
 
 ```text
@@ -100,6 +105,7 @@ The broader project vision is now:
 - make uncertainty explicit
 - support human review
 - project from manifests into DOCX, Markdown, reports, and eventually accessible PDF
+- compare against Adobe reference exports when available, without treating them as canonical
 - keep validators like veraPDF as optional external validation layers, not extractors
 
 Early outputs are review artifacts first, not assumed final accessible deliverables by default.
@@ -183,7 +189,11 @@ These boundaries should drive schema work, module layout, merge logic, and outpu
 
 13. Early outputs are review artifacts first, not assumed final accessible deliverables by default.
 
-Current project status: the repo is clean, the local venv works, and the test suite passes.
+14. Treat Adobe-exported reference files as comparison evidence that can guide normalization and projection work, not as source truth.
+
+15. Support DOCX as an input manifest source so Adobe DOCX exports and later native DOCX files can be inspected with the same manifest-first discipline.
+
+Current project status should be checked from the repo, because generated outputs and local reference files may change during active pipeline work.
 
 ## Living Design Docs
 

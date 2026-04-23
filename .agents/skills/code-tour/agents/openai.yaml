@@ -1,0 +1,6 @@
+interface:
+  display_name: "Code Tour"
+  short_description: "Create CodeTour `.tour` files — persona-targeted, step-by-step walkthroughs with real file and line anchors. Use for onboarding tours, architecture walkthroughs, PR tours, RCA tours, and structured \"explain how this works\" requests."
+  default_prompt: "Use the code-tour skill."
+policy:
+  allow_implicit_invocation: true

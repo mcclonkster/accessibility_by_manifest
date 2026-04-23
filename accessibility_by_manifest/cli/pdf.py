@@ -15,6 +15,19 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--no-recursive", action="store_true", help="Only scan the top level of a folder input.")
     parser.add_argument("--overwrite", action="store_true", help="Overwrite existing manifest outputs.")
     parser.add_argument("--dry-run", action="store_true", help="Extract and validate without writing outputs.")
+    parser.add_argument("--ai-parser", choices=("none", "docling"), default="none", help="Optional whole-document AI parser sidecar.")
+    parser.add_argument(
+        "--ocr-parser",
+        choices=("none", "doctr"),
+        default="none",
+        help="Optional targeted OCR sidecar for image-only pages.",
+    )
+    parser.add_argument(
+        "--ai-parser-output-mode",
+        choices=("artifacts",),
+        default="artifacts",
+        help="How optional AI parser sidecar outputs are written.",
+    )
     return parser
 
 
@@ -25,6 +38,9 @@ def config_from_args(args: argparse.Namespace) -> PdfManifestConfig:
         recursive=not args.no_recursive,
         overwrite=args.overwrite,
         dry_run=args.dry_run,
+        ai_parser=args.ai_parser,
+        ai_parser_output_mode=args.ai_parser_output_mode,
+        ocr_parser=args.ocr_parser,
     )
 
 
@@ -34,9 +50,16 @@ def print_result(result: PdfManifestResult, index: int, total: int) -> None:
     print(f"Status: {status}")
     print(f"Message: {result.message}")
     print(f"Output folder: {result.run.output_dir}")
+    print(f"Log file: {result.output_paths.log_file}")
     print(f"Manifest JSON: {result.output_paths.manifest_json}")
     print(f"Draft DOCX: {result.output_paths.projected_docx}")
     print(f"Extractor manifests: {result.output_paths.extractor_manifest_dir}")
+    if result.output_paths.adobe_reference_comparison_json.exists():
+        print(f"Adobe reference comparison: {result.output_paths.adobe_reference_comparison_json}")
+    if result.manifest and result.manifest.get("extractor_evidence", {}).get("docling"):
+        print(f"AI parser outputs: {result.output_paths.ai_parser_dir('docling')}")
+    if result.manifest and result.manifest.get("extractor_evidence", {}).get("doctr"):
+        print("OCR parser: doctr")
     if result.manifest:
         summary = result.manifest["document_summary"]
         accessibility = result.manifest["document_accessibility"]

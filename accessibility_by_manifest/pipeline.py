@@ -4,6 +4,8 @@ from collections.abc import Callable
 from dataclasses import dataclass
 from typing import Generic, TypeVar
 
+from accessibility_by_manifest.util.logging import get_logger, run_log
+
 
 ConfigT = TypeVar("ConfigT")
 RunT = TypeVar("RunT")
@@ -50,28 +52,43 @@ class ManifestPipeline(Generic[ConfigT, RunT, PathsT, ManifestT]):
     def run(self, config: ConfigT, run: RunT) -> ManifestPipelineResult[RunT, PathsT, ManifestT]:
         paths = self.output_paths_for_run(run)
         context = ManifestPipelineContext(config=config, run=run, output_paths=paths)
+        log_path = getattr(paths, "log_file", None)
+        if log_path is not None:
+            with run_log(log_path, overwrite=getattr(config, "overwrite", False)):
+                return self._run_with_context(context)
+        return self._run_with_context(context)
+
+    def _run_with_context(self, context: ManifestPipelineContext[ConfigT, RunT, PathsT]) -> ManifestPipelineResult[RunT, PathsT, ManifestT]:
+        logger = get_logger("pipeline")
         try:
+            logger.info("Pipeline run started: run=%r output_paths=%r", context.run, context.output_paths)
+            logger.info("Building manifest")
             manifest = self.build_manifest(context)
-            if getattr(config, "dry_run", False):
+            logger.info("Manifest build completed")
+            if getattr(context.config, "dry_run", False):
+                logger.info("Dry run completed; skipping output writes")
                 return ManifestPipelineResult(
-                    run=run,
-                    output_paths=paths,
+                    run=context.run,
+                    output_paths=context.output_paths,
                     ok=True,
                     message=self.dry_run_message,
                     manifest=manifest,
                 )
+            logger.info("Writing outputs")
             self.write_outputs(context, manifest)
+            logger.info("Output writes completed")
             return ManifestPipelineResult(
-                run=run,
-                output_paths=paths,
+                run=context.run,
+                output_paths=context.output_paths,
                 ok=True,
                 message=self.success_message(manifest),
                 manifest=manifest,
             )
         except Exception as exc:
+            logger.exception("Pipeline run failed")
             return ManifestPipelineResult(
-                run=run,
-                output_paths=paths,
+                run=context.run,
+                output_paths=context.output_paths,
                 ok=False,
                 message=self.error_message(exc),
             )

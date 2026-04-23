@@ -8,6 +8,7 @@ def review_pdf_manifest(manifest: dict[str, Any]) -> dict[str, Any]:
 
     manifest.setdefault("review_entries", [])
     add_missing_metadata_warnings(manifest)
+    add_image_only_page_warnings(manifest)
     add_reading_order_warnings(manifest)
     add_table_review_warnings(manifest)
     add_figure_review_warnings(manifest)
@@ -61,6 +62,49 @@ def add_missing_metadata_warnings(manifest: dict[str, Any]) -> None:
                 "DOCUMENT_LANGUAGE_MISSING",
                 "No document language was found in metadata or catalog evidence.",
                 "metadata",
+            ),
+        )
+
+
+def add_image_only_page_warnings(manifest: dict[str, Any]) -> None:
+    normalized_pages = {
+        int(page_number)
+        for block in manifest.get("normalized_block_entries", [])
+        for page_number in block.get("page_span", [])
+        if isinstance(page_number, int)
+    }
+    for page in manifest.get("page_entries", []):
+        observed = page.get("observed_source", {})
+        if not observed.get("image_only_page_suspected"):
+            continue
+        page_number = int(page.get("page_number") or 0)
+        has_sidecar_recovery = page_number in normalized_pages
+        issue_code = "IMAGE_ONLY_PAGE_WITH_SIDECAR_RECOVERY_REVIEW" if has_sidecar_recovery else "IMAGE_ONLY_PAGE_OCR_REQUIRED"
+        reason = (
+            "Image-only page has Docling/OCR sidecar recovery evidence; recovered text, regions, or structure require review."
+            if has_sidecar_recovery
+            else "Image-only page has no normalized text evidence; OCR or another recovery path is required."
+        )
+        append_review_entry(
+            manifest,
+            review_entry(
+                issue_code,
+                "warning",
+                "page",
+                f"page:{page_number}",
+                reason,
+                [f"page:{page_number}"],
+                {"image_only_page_suspected": True, "sidecar_recovery_present": has_sidecar_recovery},
+                "Review recovered text, regions, and table/figure structure before final accessible output." if has_sidecar_recovery else "Run OCR or a sidecar parser before final accessible output.",
+            ),
+        )
+    if any(page.get("observed_source", {}).get("image_only_page_suspected") for page in manifest.get("page_entries", [])):
+        append_document_warning(
+            manifest,
+            warning_entry(
+                "IMAGE_ONLY_PAGES_REQUIRE_REVIEW",
+                "One or more pages are image-only or scanned; recovered text/structure must be reviewed before final output.",
+                "ocr",
             ),
         )
 
