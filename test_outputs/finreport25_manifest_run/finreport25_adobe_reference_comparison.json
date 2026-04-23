@@ -1,0 +1,163 @@
+{
+  "report_kind": "adobe_reference_comparison",
+  "comparison_policy": "Adobe reference exports are comparison evidence. They show how Adobe interpreted the same source PDF across export modes, but they are not canonical ground truth and do not replace the master manifest.",
+  "source_pdf": {
+    "reference_kind": "source_pdf",
+    "path": "/Users/computerk/github/accessibility_by_manifest/test_inputs/finreport25.pdf",
+    "file_name": "finreport25.pdf",
+    "present": true,
+    "byte_size": 3338496
+  },
+  "pipeline_manifest_summary": {
+    "manifest_version": "0.1",
+    "input_file_name": "finreport25.pdf",
+    "input_file_path": "/Users/computerk/github/accessibility_by_manifest/test_inputs/finreport25.pdf",
+    "total_pages": 117,
+    "raw_block_count": 4151,
+    "normalized_block_count": 1242,
+    "annotation_count": 8,
+    "warning_count": 5,
+    "review_item_count": 69
+  },
+  "reference_summary": {
+    "any_reference_present": true,
+    "present_reference_kinds": [
+      "html_asset_dir",
+      "image_exports"
+    ],
+    "missing_reference_kinds": [
+      "docx",
+      "html",
+      "xml",
+      "print_pdf",
+      "postscript"
+    ]
+  },
+  "references": {
+    "docx": {
+      "reference_kind": "adobe_docx_export",
+      "path": "/Users/computerk/github/accessibility_by_manifest/test_inputs/finreport25.docx",
+      "file_name": "finreport25.docx",
+      "present": false,
+      "byte_size": null,
+      "paragraph_count": null,
+      "table_count": null,
+      "image_count": null,
+      "header_part_count": null,
+      "footer_part_count": null,
+      "numbering_present": null,
+      "text_character_count": null,
+      "text_sample": [],
+      "parse_warning": null
+    },
+    "html": {
+      "reference_kind": "adobe_html_export",
+      "path": "/Users/computerk/github/accessibility_by_manifest/test_inputs/finreport25.html",
+      "file_name": "finreport25.html",
+      "present": false,
+      "byte_size": null,
+      "table_count": null,
+      "image_count": null,
+      "heading_count": null,
+      "alt_attribute_count": null,
+      "linked_asset_count": null,
+      "text_character_count": null,
+      "text_sample": [],
+      "parse_warning": null
+    },
+    "xml": {
+      "reference_kind": "adobe_xml_export",
+      "path": "/Users/computerk/github/accessibility_by_manifest/test_inputs/finreport25.xml",
+      "file_name": "finreport25.xml",
+      "present": false,
+      "byte_size": null,
+      "tagged_pdf_doc_present": null,
+      "paragraph_tag_count": null,
+      "list_tag_count": null,
+      "list_item_tag_count": null,
+      "table_tag_count": null,
+      "table_row_tag_count": null,
+      "table_cell_tag_count": null,
+      "figure_tag_count": null,
+      "actual_text_attribute_count": null,
+      "alt_attribute_count": null,
+      "workbook_tag_count": null,
+      "worksheet_tag_count": null,
+      "text_character_count": null,
+      "text_sample": [],
+      "parse_warning": null
+    },
+    "html_asset_dir": {
+      "reference_kind": "adobe_html_asset_dir",
+      "path": "/Users/computerk/github/accessibility_by_manifest/test_inputs/finreport25_files",
+      "directory_name": "finreport25_files",
+      "present": true,
+      "asset_count": 97,
+      "png_count": 86,
+      "jpg_count": 11,
+      "other_file_count": 0,
+      "total_byte_size": 206868,
+      "sample_files": [
+        "Image_001.png",
+        "Image_002.jpg",
+        "Image_004.jpg",
+        "Image_006.jpg",
+        "Image_007.png",
+        "Image_008.png",
+        "Image_009.png",
+        "Image_010.png",
+        "Image_011.png",
+        "Image_012.png",
+        "Image_013.png",
+        "Image_014.png"
+      ]
+    },
+    "print_pdf": {
+      "reference_kind": "adobe_print_pdf",
+      "path": "/Users/computerk/github/accessibility_by_manifest/test_inputs/finreport25_print_pdf.pdf",
+      "file_name": "finreport25_print_pdf.pdf",
+      "present": false,
+      "byte_size": null
+    },
+    "postscript": {
+      "reference_kind": "adobe_print_postscript",
+      "path": "/Users/computerk/github/accessibility_by_manifest/test_inputs/finreport25-1_print_postscript.ps",
+      "file_name": "finreport25-1_print_postscript.ps",
+      "present": false,
+      "byte_size": null
+    },
+    "image_exports": {
+      "reference_kind": "adobe_image_exports",
+      "path": "/Users/computerk/github/accessibility_by_manifest/test_inputs/images",
+      "directory_name": "images",
+      "present": true,
+      "matching_image_count": 1,
+      "total_byte_size": 6561,
+      "sample_files": [
+        "finreport25_img_2.png"
+      ]
+    }
+  },
+  "comparison_observations": [
+    {
+      "code": "ADOBE_REFERENCE_POLICY",
+      "severity": "info",
+      "message": "Adobe reference exports are comparison evidence. They show how Adobe interpreted the same source PDF across export modes, but they are not canonical ground truth and do not replace the master manifest."
+    },
+    {
+      "code": "ADOBE_ASSETS_AVAILABLE",
+      "severity": "info",
+      "message": "Adobe exported image assets are available for image/figure comparison.",
+      "facts": {
+        "asset_count": 97,
+        "png_count": 86,
+        "jpg_count": 11
+      }
+    }
+  ],
+  "next_use": [
+    "Use these facts to compare Adobe's export choices against pipeline extraction, normalization, and draft output.",
+    "Prefer repeated successes across Adobe exports as hints, not as unreviewed truth.",
+    "Treat Adobe failures as useful negative examples when improving normalization and projection."
+  ]
+}

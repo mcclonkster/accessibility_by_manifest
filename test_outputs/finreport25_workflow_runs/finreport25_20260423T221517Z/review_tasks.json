@@ -1,0 +1,4302 @@
+[
+  {
+    "task_id": "review-1f5954a6af5c37b6",
+    "issue_code": "FIGURE_ALT_TEXT_SPOT_CHECK",
+    "severity": "warning",
+    "target_ref": "region-image-f67db80570ee3557",
+    "reason": "Small figure candidate should be spot-checked for decorative versus meaningful status.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": false,
+      "page_area_ratio": 0.036,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": false,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-5fe709c764adbefa",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-b89c1dcdd31262b7",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 35,
+      "numeric_line_count": 16,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-dc226f4e09d3086d",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-f260af4f2de286dc",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 19,
+      "numeric_line_count": 14,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-32b8c7c519197e48",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-cf493a17d5536024",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 37,
+      "numeric_line_count": 7,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-6d54e2eaf22df427",
+    "issue_code": "FIGURE_ALT_TEXT_SPOT_CHECK",
+    "severity": "warning",
+    "target_ref": "region-image-9afa051e810e5b71",
+    "reason": "Small figure candidate should be spot-checked for decorative versus meaningful status.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": false,
+      "page_area_ratio": 0.0247,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": false,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-627f22708f23a680",
+    "issue_code": "TABLE_STRUCTURE_SPOT_CHECK",
+    "severity": "warning",
+    "target_ref": "region-text-138d9af789c14633",
+    "reason": "Simple table candidate should be spot-checked before final accessibility claims.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 39,
+      "numeric_line_count": 4,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": false,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-35c78a462e94c01e",
+    "issue_code": "FIGURE_ALT_TEXT_SPOT_CHECK",
+    "severity": "warning",
+    "target_ref": "region-image-211ffd11719a1213",
+    "reason": "Small figure candidate should be spot-checked for decorative versus meaningful status.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": false,
+      "page_area_ratio": 0.008,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": false,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-2b90b1d589191ba4",
+    "issue_code": "TABLE_STRUCTURE_SPOT_CHECK",
+    "severity": "warning",
+    "target_ref": "region-text-dbd04f1a44972664",
+    "reason": "Simple table candidate should be spot-checked before final accessibility claims.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 34,
+      "numeric_line_count": 4,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": false,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-e65837fb71151573",
+    "issue_code": "FIGURE_ALT_TEXT_SPOT_CHECK",
+    "severity": "warning",
+    "target_ref": "region-image-c9a5ef74c4883af9",
+    "reason": "Small figure candidate should be spot-checked for decorative versus meaningful status.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": false,
+      "page_area_ratio": 0.0247,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": false,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-c6183907669134ed",
+    "issue_code": "FIGURE_ALT_TEXT_SPOT_CHECK",
+    "severity": "warning",
+    "target_ref": "region-image-29b6e25397e42544",
+    "reason": "Small figure candidate should be spot-checked for decorative versus meaningful status.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": false,
+      "page_area_ratio": 0.008,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": false,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-06ebc4dd358c09a6",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-5ef3dc1137dbe21f",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 34,
+      "numeric_line_count": 9,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-220f8cb17922998e",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-76d2b960104069d7",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 17,
+      "numeric_line_count": 11,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-7b9edf1fd0941130",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-e87101a9f33c5bab",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 76,
+      "numeric_line_count": 54,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-e74340f70800f924",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-4eb5278f823d6d75",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 30,
+      "numeric_line_count": 20,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-b04d6b0962b81a0f",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-e2ddfcc3d309338b",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 87,
+      "numeric_line_count": 60,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-c1c01d2cb5559f96",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-6370903aec062a52",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 14,
+      "numeric_line_count": 7,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-55261727913d6f1d",
+    "issue_code": "FIGURE_ALT_TEXT_SPOT_CHECK",
+    "severity": "warning",
+    "target_ref": "region-image-de795e561bba26c7",
+    "reason": "Small figure candidate should be spot-checked for decorative versus meaningful status.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": false,
+      "page_area_ratio": 0.0967,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": false,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-023fcf2181219f7c",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-094ffd7cab64c4ca",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": false,
+      "page_area_ratio": 0.2436,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-17291600929ee2cb",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-c9c53139661b8ff5",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": false,
+      "page_area_ratio": 0.1418,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-49e1a2ae5ce2b7bf",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-3641ae43a2f87e04",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 59,
+      "numeric_line_count": 42,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-8c6b6d93af695afd",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-88133194ce6169ab",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 72,
+      "numeric_line_count": 45,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-f19f4d1e3dbd947f",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-e0f4cacdd84a0521",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 8,
+      "numeric_line_count": 5,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-6d22918d3bcc6bf7",
+    "issue_code": "TABLE_STRUCTURE_SPOT_CHECK",
+    "severity": "warning",
+    "target_ref": "region-text-24979f00d5395df3",
+    "reason": "Simple table candidate should be spot-checked before final accessibility claims.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 5,
+      "numeric_line_count": 4,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": false,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-afeefc96613e1bc1",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-a0f390f60553ad29",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 52,
+      "numeric_line_count": 32,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-fc609bbe52364f69",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-1169a0fb910416cc",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 12,
+      "numeric_line_count": 7,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-39c78721b68a1bbe",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-1d10ec98d29b2e99",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 33,
+      "numeric_line_count": 19,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-9f292aa225f1dca5",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-73244712e910240a",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 15,
+      "numeric_line_count": 9,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-263baea2c4b9c1c8",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-95a7719d5e782970",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 12,
+      "numeric_line_count": 5,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-3fe908522cb692ea",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-b2a018e5fccc5a61",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 15,
+      "numeric_line_count": 5,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-14c9865677df1984",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-43d64248a44a0132",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 27,
+      "numeric_line_count": 12,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-11e03f1ea4207e29",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-44f4d0a37621f90d",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 20,
+      "numeric_line_count": 7,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-3b0d5730a879a98a",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-477d2357b3f1401e",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 18,
+      "numeric_line_count": 6,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-3f6aff1b0aadae61",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-947065d6f196f334",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 27,
+      "numeric_line_count": 9,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-49ea3e3f7d67b58d",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-ef0f1451bcbbbd9f",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 20,
+      "numeric_line_count": 9,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-a28992aa1d6b54ba",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-c70e469b283b53da",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 30,
+      "numeric_line_count": 14,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-9aa34c9af11e48f2",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-99d3b139af8a0a1b",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 33,
+      "numeric_line_count": 13,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-1ae9040a6747f4cb",
+    "issue_code": "TABLE_STRUCTURE_SPOT_CHECK",
+    "severity": "warning",
+    "target_ref": "region-text-c255b74197948342",
+    "reason": "Simple table candidate should be spot-checked before final accessibility claims.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 5,
+      "numeric_line_count": 3,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": false,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-372bf710b1c3fd7d",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-7b3d3672d022828f",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 13,
+      "numeric_line_count": 6,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-188c7e593bf0aa2c",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-7071fbdc827169e7",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 14,
+      "numeric_line_count": 7,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-bc16a9b9998be615",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-b65adc72697ab307",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 27,
+      "numeric_line_count": 13,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-043beb198fb6de8b",
+    "issue_code": "TABLE_STRUCTURE_SPOT_CHECK",
+    "severity": "warning",
+    "target_ref": "region-text-ed40f3c37f28e1cc",
+    "reason": "Simple table candidate should be spot-checked before final accessibility claims.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 4,
+      "numeric_line_count": 4,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": false,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-793d0a54ea6e8a6c",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-1ffd54521d045d4b",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 37,
+      "numeric_line_count": 7,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-caee025798e8609d",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-cf72dc28496c66de",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 37,
+      "numeric_line_count": 8,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-90e444498b2cffa1",
+    "issue_code": "TABLE_STRUCTURE_SPOT_CHECK",
+    "severity": "warning",
+    "target_ref": "region-text-b76d3be9bc182f0d",
+    "reason": "Simple table candidate should be spot-checked before final accessibility claims.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 22,
+      "numeric_line_count": 4,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": false,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-8bec8553ef5d7df0",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-782564852241579d",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 35,
+      "numeric_line_count": 7,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-ed4969f2024c439f",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-48a32ea2d15d2f54",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 40,
+      "numeric_line_count": 12,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-680e9c46500ec595",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-3086b33ab90b5da5",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 36,
+      "numeric_line_count": 5,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-0763773cea50ca69",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-e6a68a12a44014ba",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 35,
+      "numeric_line_count": 10,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-5c2b314640b039b7",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-581c850bf687ab9c",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 55,
+      "numeric_line_count": 20,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-9b7f426348c00788",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-2518b32638724954",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 24,
+      "numeric_line_count": 6,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-57906c48a258a0c9",
+    "issue_code": "TABLE_STRUCTURE_SPOT_CHECK",
+    "severity": "warning",
+    "target_ref": "region-text-cf440347a142f414",
+    "reason": "Simple table candidate should be spot-checked before final accessibility claims.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 6,
+      "numeric_line_count": 3,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": false,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-5043547394ebc069",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-72305ebd51adcfba",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 12,
+      "numeric_line_count": 5,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-bbef2241d580e345",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-9c6d3b5b43e7bcd5",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 19,
+      "numeric_line_count": 10,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-0a96680b1797983a",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-f64871acfdfab993",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 41,
+      "numeric_line_count": 25,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-f5485d43bbbadef4",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-68b074c0f5bafacf",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 39,
+      "numeric_line_count": 26,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-7cfe177b87fd1504",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-23f5857a7db0efb9",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 73,
+      "numeric_line_count": 40,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-97345622b4e13970",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-d6257eadd86eb38a",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 10,
+      "numeric_line_count": 9,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-bf53e323c138ea4d",
+    "issue_code": "TABLE_STRUCTURE_SPOT_CHECK",
+    "severity": "warning",
+    "target_ref": "region-text-bb9a9951c5a93dd4",
+    "reason": "Simple table candidate should be spot-checked before final accessibility claims.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 7,
+      "numeric_line_count": 7,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": false,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-84547be8e68d1252",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-f8b66019533801bb",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 10,
+      "numeric_line_count": 9,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-d373f9a1c28c65f9",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-1592631f6c5e318a",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 41,
+      "numeric_line_count": 34,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-205caa71339cb18e",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-0f541d2c5fc7ddb0",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 9,
+      "numeric_line_count": 6,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-a36618df01bea004",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-e681f047afa2e0ef",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 27,
+      "numeric_line_count": 16,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-a3ead02c93ef5241",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-1fbbb6f961de3709",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 8,
+      "numeric_line_count": 6,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-1b7987453423f615",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-0da3da6619db944d",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 24,
+      "numeric_line_count": 16,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-1fa1890d9b2d54f2",
+    "issue_code": "TABLE_STRUCTURE_SPOT_CHECK",
+    "severity": "warning",
+    "target_ref": "region-text-01366001504df447",
+    "reason": "Simple table candidate should be spot-checked before final accessibility claims.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 8,
+      "numeric_line_count": 4,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": false,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-a0a26d41fc9316fc",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-4959d99d288451c6",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 47,
+      "numeric_line_count": 28,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-872e111c8f6df6b4",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-77f57c492c5cc7aa",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 12,
+      "numeric_line_count": 5,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-dd62d3be28674366",
+    "issue_code": "TABLE_STRUCTURE_SPOT_CHECK",
+    "severity": "warning",
+    "target_ref": "region-text-dbc2908fef56a83d",
+    "reason": "Simple table candidate should be spot-checked before final accessibility claims.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 4,
+      "numeric_line_count": 4,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": false,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-a2196a6cce0b9f84",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-d88a08ad02814275",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 22,
+      "numeric_line_count": 6,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-077a80b583e5d563",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-5b553d98bd1f298d",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 34,
+      "numeric_line_count": 14,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-ca7774731a9b5e5d",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-c863fa9c9b0aaedf",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 34,
+      "numeric_line_count": 8,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-4ee6232554ff5234",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-4627c812a15f5d5a",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 35,
+      "numeric_line_count": 10,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-3144a53d0372334b",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-ea68e767c514eb5a",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 26,
+      "numeric_line_count": 11,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-44923545c61e716c",
+    "issue_code": "TABLE_STRUCTURE_SPOT_CHECK",
+    "severity": "warning",
+    "target_ref": "region-text-f40eb4c57359699a",
+    "reason": "Simple table candidate should be spot-checked before final accessibility claims.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 9,
+      "numeric_line_count": 4,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": false,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-4a6061916afe9316",
+    "issue_code": "TABLE_STRUCTURE_SPOT_CHECK",
+    "severity": "warning",
+    "target_ref": "region-text-6e1a0bc2a8efa900",
+    "reason": "Simple table candidate should be spot-checked before final accessibility claims.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 6,
+      "numeric_line_count": 3,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": false,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-6abaf81dfa001556",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-84eb2347ef84ff2a",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 15,
+      "numeric_line_count": 11,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-e806dc5277b979d2",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-55c15009c6cb389b",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 19,
+      "numeric_line_count": 13,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-7eb5bda5e016b75f",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-8528d8529d081079",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 34,
+      "numeric_line_count": 19,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-56d4f847d6349e16",
+    "issue_code": "TABLE_STRUCTURE_SPOT_CHECK",
+    "severity": "warning",
+    "target_ref": "region-text-d506f8d9bd615403",
+    "reason": "Simple table candidate should be spot-checked before final accessibility claims.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 10,
+      "numeric_line_count": 4,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": false,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-8ff30e7b609e9862",
+    "issue_code": "TABLE_STRUCTURE_SPOT_CHECK",
+    "severity": "warning",
+    "target_ref": "region-text-2c78681bf244c4fc",
+    "reason": "Simple table candidate should be spot-checked before final accessibility claims.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 7,
+      "numeric_line_count": 4,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": false,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-c888c377eafde4b7",
+    "issue_code": "TABLE_STRUCTURE_SPOT_CHECK",
+    "severity": "warning",
+    "target_ref": "region-text-3bf38da408f17ff2",
+    "reason": "Simple table candidate should be spot-checked before final accessibility claims.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 7,
+      "numeric_line_count": 7,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": false,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-1225491250798db9",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-ada1355a14c1473c",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 22,
+      "numeric_line_count": 7,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-0563338928ce9cbd",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-bd2ff7d90bb6c2cd",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 19,
+      "numeric_line_count": 10,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-b8860d60da0d25ca",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-593bdbd3c0303284",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 24,
+      "numeric_line_count": 10,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-737a10a7a61a8859",
+    "issue_code": "TABLE_STRUCTURE_SPOT_CHECK",
+    "severity": "warning",
+    "target_ref": "region-text-e22cc051dd7de741",
+    "reason": "Simple table candidate should be spot-checked before final accessibility claims.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 7,
+      "numeric_line_count": 3,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": false,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-97e99fb076318125",
+    "issue_code": "TABLE_STRUCTURE_SPOT_CHECK",
+    "severity": "warning",
+    "target_ref": "region-text-0d721feadb78b87f",
+    "reason": "Simple table candidate should be spot-checked before final accessibility claims.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 6,
+      "numeric_line_count": 4,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": false,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-b819106d917d80a2",
+    "issue_code": "TABLE_STRUCTURE_SPOT_CHECK",
+    "severity": "warning",
+    "target_ref": "region-text-f9ab3433c8306b15",
+    "reason": "Simple table candidate should be spot-checked before final accessibility claims.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 5,
+      "numeric_line_count": 5,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": false,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-c68aeb1a0d8a000e",
+    "issue_code": "TABLE_STRUCTURE_SPOT_CHECK",
+    "severity": "warning",
+    "target_ref": "region-text-c5f38e284a7ff647",
+    "reason": "Simple table candidate should be spot-checked before final accessibility claims.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 9,
+      "numeric_line_count": 3,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": false,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-d4528ccb2c4e16cb",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-0796f17363314395",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 16,
+      "numeric_line_count": 9,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-e4451fad3a5ea64f",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-6121b1df83d814af",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 59,
+      "numeric_line_count": 35,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-85b90890e8de3e43",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-94140c7f84338ab2",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 64,
+      "numeric_line_count": 42,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-408c0e7717929e06",
+    "issue_code": "TABLE_STRUCTURE_SPOT_CHECK",
+    "severity": "warning",
+    "target_ref": "region-text-4f209dab5eef36c8",
+    "reason": "Simple table candidate should be spot-checked before final accessibility claims.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 11,
+      "numeric_line_count": 4,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": false,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-8dcebcdd3c5ecc5c",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-2f4ed442c77a3e11",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 36,
+      "numeric_line_count": 20,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-c51b68294c44483d",
+    "issue_code": "TABLE_STRUCTURE_SPOT_CHECK",
+    "severity": "warning",
+    "target_ref": "region-text-7012620b39109f6f",
+    "reason": "Simple table candidate should be spot-checked before final accessibility claims.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 7,
+      "numeric_line_count": 3,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": false,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-8eb816ae56c0fad4",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-9c3bb8c53f0fe995",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 15,
+      "numeric_line_count": 11,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-d62db3ef70b17eba",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-09b39c433508fd90",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 24,
+      "numeric_line_count": 8,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-8e9a440765172973",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-d12f68a36a595475",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 37,
+      "numeric_line_count": 6,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-3cf7226c7d293ab5",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-cb0e7cbfead40352",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 9,
+      "numeric_line_count": 6,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-0d2245f8d2b368c8",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-d1b7391d72548b5c",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 19,
+      "numeric_line_count": 8,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-b58d91eb27927143",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-1073a3d23849737d",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 66,
+      "numeric_line_count": 28,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-f91c3a243d731751",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-792c0931af481be5",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 54,
+      "numeric_line_count": 16,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-e7c960fc3ae24b78",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-4df905ce51c42271",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 39,
+      "numeric_line_count": 12,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-69c8192c293ceb81",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-214dfdb97a58f851",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 52,
+      "numeric_line_count": 28,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-3c06255f9402fd59",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-588c2eb7e40025a9",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 24,
+      "numeric_line_count": 7,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-9b7e766c5b5e5698",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-4e6bade5a54dd1a5",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 44,
+      "numeric_line_count": 16,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-2d1ec6993f8c4c25",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-318f709590c575c7",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 74,
+      "numeric_line_count": 40,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-fe345ff95876d82c",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-cda7c7fedcbf4bda",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 22,
+      "numeric_line_count": 10,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-551471e21d2475ba",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-285a957fee3aac44",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 22,
+      "numeric_line_count": 20,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-8fc9abb336af26ff",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-4894ad4d675e9bdd",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 63,
+      "numeric_line_count": 30,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-ad84744b6cc1bec7",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-0d386bceb50d0e35",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 32,
+      "numeric_line_count": 20,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-7353b38d9c4c0c21",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-29af197a2c3857fe",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 10,
+      "numeric_line_count": 10,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-a77988b0c4df14f3",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-8f2ff595c95d522b",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 21,
+      "numeric_line_count": 10,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-a0e006636bcc340c",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-0c93c02cb7fcd2e9",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 10,
+      "numeric_line_count": 8,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-962be1952e4c83fc",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-8dc8f454a92cd1fe",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 80,
+      "numeric_line_count": 48,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-3af273c44e990e0c",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-51a243dd97bc3cb1",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 9,
+      "numeric_line_count": 8,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-267e954130bf00b5",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-6d7eab7f8a917c75",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 17,
+      "numeric_line_count": 8,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-66262be3335f1b6e",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-5790adf7d816514b",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 17,
+      "numeric_line_count": 8,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-295a37f228d0a4c7",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-55ad7401c2a3a3d7",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 9,
+      "numeric_line_count": 8,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-b20e95916a63fe91",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-bc9c4d42822ee5ba",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 67,
+      "numeric_line_count": 45,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-431c97414c7b59c5",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-dfef4e2bb6524791",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 20,
+      "numeric_line_count": 9,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-e6c51b0bb22e3921",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-f44810742a8dd229",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 20,
+      "numeric_line_count": 17,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-cae8ab0b9d049629",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-7effc6865d9265e2",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 9,
+      "numeric_line_count": 9,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-929b4eb62bf1f405",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-6d12ab5b5d9460b6",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 19,
+      "numeric_line_count": 9,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-70cffee1fda53684",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-beef3758f228b80a",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 10,
+      "numeric_line_count": 9,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-c702ffc5aa8399c2",
+    "issue_code": "TABLE_STRUCTURE_SPOT_CHECK",
+    "severity": "warning",
+    "target_ref": "region-text-158351d6f2d04809",
+    "reason": "Simple table candidate should be spot-checked before final accessibility claims.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 3,
+      "numeric_line_count": 3,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": false,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-b404757502328625",
+    "issue_code": "TABLE_STRUCTURE_SPOT_CHECK",
+    "severity": "warning",
+    "target_ref": "region-text-23f89c8b77cb99f4",
+    "reason": "Simple table candidate should be spot-checked before final accessibility claims.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 5,
+      "numeric_line_count": 5,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": false,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-023bd131ddc4e21d",
+    "issue_code": "TABLE_STRUCTURE_SPOT_CHECK",
+    "severity": "warning",
+    "target_ref": "region-text-60f7b388706cdae5",
+    "reason": "Simple table candidate should be spot-checked before final accessibility claims.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 4,
+      "numeric_line_count": 4,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": false,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-e62ee4c7ab6e5346",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-216afb95c051b2ef",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 29,
+      "numeric_line_count": 18,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-93e4c7eddc3eb9b9",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-10101655a9b62bd5",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 31,
+      "numeric_line_count": 24,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-d2fdf7bc5369d04e",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-c0bafd7444f2f62e",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 37,
+      "numeric_line_count": 24,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-2a2f953780ccaf16",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-5a40e27d848d3577",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 13,
+      "numeric_line_count": 6,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-73d86a7ff3f7641f",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-6cfa54b70f74a033",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 1.0,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-5a0d01b9b149086d",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-bd6ec5b2dd492bdc",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 0.0218,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-5dc6c4c8974c2332",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-2ab0e5edca12c2a0",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 0.0051,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-ec97b961fa233515",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-a6a79161bb5efa61",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 0.0032,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-e48d6edeb25fef23",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-bfafaf1458563676",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 0.0073,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-799103d2f49b07c7",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-6d3c9517b1747600",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 0.2258,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-f97fecdec9a1c055",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-773245cf53db7640",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 0.0002,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-bd6dab59f58bf92b",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-320b88407cbbe15d",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 0.0013,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-862878b805065340",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-3b2fda64f845ea2b",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 0.0017,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-a2bbb42849bb3142",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-c516c8cd58819496",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 0.001,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-1434b82db4592b0d",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-71d680b5a9a2dd90",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 0.0,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-730fcb4f7d1aa5e0",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-eae6ec502f99891f",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 0.0004,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-74fda6ab9d21998d",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-bb3dd1a7b94db69f",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 0.001,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-d8f2f9a993db67a7",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-9431a5d9190874ce",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 0.0009,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-458affc5d73f0df6",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-d45a7569bb9f4d8c",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 0.0007,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-56df509f516608a7",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-53ee217c4a4142d1",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 0.002,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-8a1f5b6bfd8534b1",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-5afecde288ea7fb6",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 0.0,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-f9ac78f681d763a2",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-d5b0e341ca0f31f8",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 21,
+      "numeric_line_count": 11,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-026e7420a013f285",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-64a5fe9ed308a61e",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 110,
+      "numeric_line_count": 49,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-534a5396561ceb14",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-2ca7cb46e590433a",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 99,
+      "numeric_line_count": 43,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-6877a40a8cefce2a",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-81a568fa5fb0647b",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 11,
+      "numeric_line_count": 5,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-d6e31233bba929a6",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-4e85d511aaf17c6a",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 21,
+      "numeric_line_count": 11,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-22b8872036d30f62",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-4031dd63c774403b",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 12,
+      "numeric_line_count": 6,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-7630b41c1dba4669",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-656d72a382be9107",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 12,
+      "numeric_line_count": 6,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-4e7af607d44a3782",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-d344e6a612883308",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 41,
+      "numeric_line_count": 24,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-2275538d3b22c005",
+    "issue_code": "TABLE_STRUCTURE_SPOT_CHECK",
+    "severity": "warning",
+    "target_ref": "region-text-375bc6f6c536f182",
+    "reason": "Simple table candidate should be spot-checked before final accessibility claims.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 9,
+      "numeric_line_count": 4,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": false,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-61f33590f090f21a",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-b95be19ab5bdfb8f",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 34,
+      "numeric_line_count": 19,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-77446b26b8046dc1",
+    "issue_code": "TABLE_STRUCTURE_SPOT_CHECK",
+    "severity": "warning",
+    "target_ref": "region-text-97e9139dc7ba205d",
+    "reason": "Simple table candidate should be spot-checked before final accessibility claims.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 9,
+      "numeric_line_count": 4,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": false,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-6be59baa9da0735d",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-8d48995dceb02d8f",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 15,
+      "numeric_line_count": 8,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-62eecdcec629c278",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-0543ce1b52ebc5fa",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 28,
+      "numeric_line_count": 19,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-b654fc4f305156cc",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-89367d1f45ee479f",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 20,
+      "numeric_line_count": 12,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-e67262b71c23c873",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-242efe5aa0c1cfe7",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 12,
+      "numeric_line_count": 6,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-5816e20137e29e2f",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-d65b0a8dc8ee7935",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 24,
+      "numeric_line_count": 15,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-ce01f4e61aa1701b",
+    "issue_code": "TABLE_STRUCTURE_SPOT_CHECK",
+    "severity": "warning",
+    "target_ref": "region-text-08e336be93082104",
+    "reason": "Simple table candidate should be spot-checked before final accessibility claims.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 7,
+      "numeric_line_count": 3,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": false,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-6847f00e31401e9b",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-32a4f11dc47d1d41",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 39,
+      "numeric_line_count": 19,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-eb99ddf5e2b3dd44",
+    "issue_code": "TABLE_STRUCTURE_SPOT_CHECK",
+    "severity": "warning",
+    "target_ref": "region-text-f8dc0f29250236dc",
+    "reason": "Simple table candidate should be spot-checked before final accessibility claims.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 7,
+      "numeric_line_count": 3,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": false,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-c18ecd76bd05344f",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-610652226cbf592d",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 51,
+      "numeric_line_count": 34,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-fa51c167d8bad20a",
+    "issue_code": "TABLE_STRUCTURE_SPOT_CHECK",
+    "severity": "warning",
+    "target_ref": "region-text-5c807887afa2d03f",
+    "reason": "Simple table candidate should be spot-checked before final accessibility claims.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 7,
+      "numeric_line_count": 3,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": false,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-976c46dc77d3e1ce",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-8d6f2cf2bf11aabd",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 12,
+      "numeric_line_count": 6,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-a0e2fe5d1a4342f4",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-74ae38d20092ab3a",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 10,
+      "numeric_line_count": 5,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-6b4a2aee751636d2",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-c3845b902e69f5af",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 17,
+      "numeric_line_count": 8,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-680be27b2c43b013",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-e6a75ba489ec0b02",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 23,
+      "numeric_line_count": 10,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-19b79e627e6b985c",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-d38da67332c2ce35",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 12,
+      "numeric_line_count": 6,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-d7d3be4a6a3374a6",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-4c387e17ef5851d7",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 10,
+      "numeric_line_count": 5,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-017dee82d1b1512f",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-62bf7a042baf85a0",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 10,
+      "numeric_line_count": 5,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-3401883929daf549",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-b8107b98d95d1113",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 18,
+      "numeric_line_count": 7,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-960d227b1e1dac1d",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-674ccfbe12446030",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 20,
+      "numeric_line_count": 10,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-3f5a69b88bdb9cc4",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-130aafffb2fe31bf",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 33,
+      "numeric_line_count": 6,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-55852fbdf199d421",
+    "issue_code": "FIGURE_ALT_TEXT_SPOT_CHECK",
+    "severity": "warning",
+    "target_ref": "region-image-f2258862af325539",
+    "reason": "Small figure candidate should be spot-checked for decorative versus meaningful status.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": false,
+      "page_area_ratio": 0.0247,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": false,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-ed74b423f9584cc8",
+    "issue_code": "FIGURE_ALT_TEXT_SPOT_CHECK",
+    "severity": "warning",
+    "target_ref": "region-image-227ec71169023f05",
+    "reason": "Small figure candidate should be spot-checked for decorative versus meaningful status.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": false,
+      "page_area_ratio": 0.008,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": false,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-62abaffdebf31e7a",
+    "issue_code": "TABLE_STRUCTURE_SPOT_CHECK",
+    "severity": "warning",
+    "target_ref": "region-text-67bf6b186bc9403e",
+    "reason": "Simple table candidate should be spot-checked before final accessibility claims.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 7,
+      "numeric_line_count": 3,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": false,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-4c68bcba1f8e3a99",
+    "issue_code": "TABLE_STRUCTURE_SPOT_CHECK",
+    "severity": "warning",
+    "target_ref": "region-text-7a8f71add4ac2110",
+    "reason": "Simple table candidate should be spot-checked before final accessibility claims.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 7,
+      "numeric_line_count": 3,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": false,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-a319005f8ceaf822",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-b0b1b92c752b02ab",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 15,
+      "numeric_line_count": 9,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-1519367cc36da747",
+    "issue_code": "TABLE_STRUCTURE_SPOT_CHECK",
+    "severity": "warning",
+    "target_ref": "region-text-7b6e3f3a5ad0976c",
+    "reason": "Simple table candidate should be spot-checked before final accessibility claims.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 7,
+      "numeric_line_count": 3,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": false,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-97c20b5343f7c89d",
+    "issue_code": "TABLE_STRUCTURE_SPOT_CHECK",
+    "severity": "warning",
+    "target_ref": "region-text-2aa64254222ca0ce",
+    "reason": "Simple table candidate should be spot-checked before final accessibility claims.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 7,
+      "numeric_line_count": 3,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": false,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-0e8f7606388acb91",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-ae8de25e87bb2482",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 40,
+      "numeric_line_count": 23,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-3214285e9dd38270",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-a8f9d1957c9a1034",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 23,
+      "numeric_line_count": 5,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-08c6de01bcbf51fd",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-14ffb29d6eb41162",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 21,
+      "numeric_line_count": 5,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-edcc95267155f3c5",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-882586fc210f02b4",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 25,
+      "numeric_line_count": 5,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-1d315e4c2d25dbf0",
+    "issue_code": "FIGURE_ALT_TEXT_SPOT_CHECK",
+    "severity": "warning",
+    "target_ref": "region-image-f17aaeb468807b03",
+    "reason": "Small figure candidate should be spot-checked for decorative versus meaningful status.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": false,
+      "page_area_ratio": 0.008,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": false,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-2a8138fc370887cd",
+    "issue_code": "FIGURE_ALT_TEXT_SPOT_CHECK",
+    "severity": "warning",
+    "target_ref": "region-image-a531865acec8f5e5",
+    "reason": "Small figure candidate should be spot-checked for decorative versus meaningful status.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": false,
+      "page_area_ratio": 0.0247,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": false,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-63cc9ed82e87b17a",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-b448993e00d92325",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 1.0,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-931c2053f0730e3c",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-03998957d49d148a",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 0.0969,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-1fa23d0ac27dc23f",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-4431ab8323defde5",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 0.0031,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-3d9effffbfd753e0",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-b9b0b83476e27be6",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 0.3201,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-80d224956d536073",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-5038d647113c2123",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 0.0,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-77e78c294ed0dbfb",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-d0410f0a095bb635",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 0.0,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-e5eed7e4cc2c2c0f",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-b793ee33553ab33a",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 0.0,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-2d4c459c58722c1c",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-8a4fe2398d6b0bb7",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 0.0,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-f9492b47814caec9",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-672d1d88ad342774",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 0.0,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-ec94e040fb9faa86",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-ff12f1a673a548be",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 0.0,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-f17508cc228bede2",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-f1b44036758d41d0",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 0.0,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-5b03314528b2d26f",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-88b4ebf400349bdc",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 0.0,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-c61a654973319b9c",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-3cafd60f6f40ced8",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 0.0,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-f1aed82f6037ee6a",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-93fc1d42c65c7d41",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 0.0,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-3ba27d51dbea92ee",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-1fbc18bf5bce8bd0",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 0.0,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-9ea0624161bf4791",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-bb91ad665e17cef7",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 0.0,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-36b52b140cfd850d",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-a9ac3bec6b3fdf2a",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 0.0015,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-095ad6676d79c0ce",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-c5a5c724be51ac77",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 0.0223,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-367b1aab6eecd262",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-7c9c72bfdb65f772",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 0.0019,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-9ad225b0d11925ca",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-2045514ce67d1216",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 0.0017,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-7418cb0c916076bd",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-282e4c3ca5ab14ec",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 0.0016,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-98686f7be1472b68",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-8bf71900405aa845",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 0.001,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-7eeeda67e06c1324",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-1db6f5991a6b0cf8",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 0.0001,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-b1c137b8b1fbd5de",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-c8fa3db9097f781a",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 0.0009,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-a4911782725caf8b",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-fee73c0a179397ea",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 0.0027,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-196077f108f1f0b3",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-8ab057bff6d52898",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 0.0001,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-9bfe6926e50b1a21",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-0eae3a85c187c8a5",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 0.0,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-d2899e29346ab145",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-fcff64fdd04f66da",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 0.0,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-1970fb32ff36aae2",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-0fbeed23a1f16a05",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 0.0,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-4a492ee13d0e1b47",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-9601281e1d056421",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 0.0,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-c4d309349ad55f4c",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-460041124ca38fb3",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 0.0,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-13112a7107823074",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-d6a761ac9fb0d082",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 0.0,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-b6760b6a7b2e38be",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-6c16d51b68d0e731",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 0.0,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-67ac56b22b79bb8a",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-eb36a88e8645c382",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 0.0,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-d3440990c5deb435",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-d6a2f5c126a2669b",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 0.0,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-cc4f6481e79770bf",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-24be35b80687d446",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 0.0,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-6da78a88eb4cb4e2",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-6481f4cbecf6c323",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 0.0,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-3614591a0745386c",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-f781ed9ee50ed680",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 0.0,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-293c0e0bc2020e6d",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-02fca7def76eda1c",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 0.0,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-7a0e032f8d9c4a21",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-f5766f03be695588",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 0.0,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-33a174e96346f739",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-db141ba5b5184424",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 0.0,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-9aeff91978765239",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-5969c6abc6d48396",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 0.0,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-f025536f1366ffa8",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-30d78db51ee580e4",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 0.0,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-f44980a1f9f5e214",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-35d8dfffaba74fc8",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 0.0,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-96f1b3ed947eaee8",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-328a5c5f2f0592a0",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 0.0,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-3d150a5e42de2925",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-ad9274fb67f02f32",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 0.0,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-be8e91217912eba8",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-0da075aee423ff65",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 0.0004,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-a584cfbde8db32d9",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-62748574ef761e0d",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 0.0002,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-240cf4f8d651796b",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-a4598a4ba77df5fa",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 0.0004,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-3a78158aa34092b1",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-56fac36b4a2ba20d",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 0.0003,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-f9840b3e7506078a",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-aa6cb23673a1fc48",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 0.0005,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-509f5af9e4791ecc",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-9e7a3621d8991919",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 0.0,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-61dddee549f0cb13",
+    "issue_code": "FIGURE_ALT_TEXT_REQUIRED",
+    "severity": "error",
+    "target_ref": "region-image-ee0d947dd1bf250a",
+    "reason": "Meaningful figure candidate needs trusted alt text before accessible finalization.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": true,
+      "page_area_ratio": 0.0,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-80790826064883cb",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-1cca442c6a5e9d17",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 42,
+      "numeric_line_count": 22,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-75d837e624d111f8",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-06bc2f5281007a38",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 25,
+      "numeric_line_count": 5,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-e4065d9534b2bec9",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-4fd792ab6b649f1a",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 21,
+      "numeric_line_count": 8,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-0ba0b7bf138338ea",
+    "issue_code": "FIGURE_ALT_TEXT_SPOT_CHECK",
+    "severity": "warning",
+    "target_ref": "region-image-3108768e50aa2703",
+    "reason": "Small figure candidate should be spot-checked for decorative versus meaningful status.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": false,
+      "page_area_ratio": 0.0105,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": false,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-9a15c3ec35cf6406",
+    "issue_code": "FIGURE_ALT_TEXT_SPOT_CHECK",
+    "severity": "warning",
+    "target_ref": "region-image-0fc07f647233d6de",
+    "reason": "Small figure candidate should be spot-checked for decorative versus meaningful status.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": false,
+      "page_area_ratio": 0.0247,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": false,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-0acc330c541203ce",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-42448f4146d266e5",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 10,
+      "numeric_line_count": 9,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-4c5a6b87b2ec7f69",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-409cebab5978a581",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 11,
+      "numeric_line_count": 5,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-b6d793ac6b03e00e",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-d5d0d28ec404bd16",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 8,
+      "numeric_line_count": 5,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-7bbbabd5ac36c1f5",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-40dd1ac587e4852e",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 11,
+      "numeric_line_count": 5,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-2dd994af0a507a5c",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-be91a1d7cc7294fe",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 8,
+      "numeric_line_count": 5,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-f8c0b5fe8d929479",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-2b74004bc2824b6e",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 16,
+      "numeric_line_count": 15,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-d3297198606beaab",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-a9f820be27233a6d",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 8,
+      "numeric_line_count": 7,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-3470f3d02dcc9060",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-71106eb08f02e2e7",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 29,
+      "numeric_line_count": 28,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-8add1d585da48c6c",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-80a64c16ad500717",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 9,
+      "numeric_line_count": 8,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-3fdcf0c471cc21c0",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-564cdb85c144ffa6",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 10,
+      "numeric_line_count": 9,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-0f7b2eea6b16f694",
+    "issue_code": "TABLE_STRUCTURE_SPOT_CHECK",
+    "severity": "warning",
+    "target_ref": "region-text-4312dec8b0b02c96",
+    "reason": "Simple table candidate should be spot-checked before final accessibility claims.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 7,
+      "numeric_line_count": 6,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": false,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-a43e741adf5e60ab",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-f9521bedc4e58c61",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 34,
+      "numeric_line_count": 7,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-85d6f58f5b24f046",
+    "issue_code": "FIGURE_ALT_TEXT_SPOT_CHECK",
+    "severity": "warning",
+    "target_ref": "region-image-dc9a72df5a284e6b",
+    "reason": "Small figure candidate should be spot-checked for decorative versus meaningful status.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": false,
+      "page_area_ratio": 0.0247,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": false,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-e6d3b80e09e2261f",
+    "issue_code": "FIGURE_ALT_TEXT_SPOT_CHECK",
+    "severity": "warning",
+    "target_ref": "region-image-8d3b44854d795a15",
+    "reason": "Small figure candidate should be spot-checked for decorative versus meaningful status.",
+    "suggested_action": "Confirm whether the figure is meaningful; provide alt text or mark decorative.",
+    "confidence_context": {
+      "image_only_page": false,
+      "page_area_ratio": 0.0096,
+      "blocking_threshold": "image-only page or image area >= 10% of page area"
+    },
+    "blocking": false,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-64df3eb59a56af40",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-b7acf49b0078f18d",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 15,
+      "numeric_line_count": 7,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-230025852f2b4b18",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-b3bb016fa7e70181",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 29,
+      "numeric_line_count": 18,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-19db563bc2a60bfe",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-b96d70f897341542",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 24,
+      "numeric_line_count": 12,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-37ff9992281a8f92",
+    "issue_code": "TABLE_HEADERS_UNCERTAIN",
+    "severity": "error",
+    "target_ref": "region-text-647c19fdfd534ba6",
+    "reason": "Table candidate needs header and cell relationship review.",
+    "suggested_action": "Review table boundaries, header rows, and reading order.",
+    "confidence_context": {
+      "line_count": 39,
+      "numeric_line_count": 10,
+      "blocking_threshold": "line_count >= 8 and numeric_line_count >= 5"
+    },
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  },
+  {
+    "task_id": "review-9301224d61e66a40",
+    "issue_code": "DOCUMENT_TITLE_MISSING",
+    "severity": "error",
+    "target_ref": "document",
+    "reason": "Document title is missing or empty.",
+    "suggested_action": "Set a trustworthy document title before final output.",
+    "confidence_context": {},
+    "blocking": true,
+    "resolved": false,
+    "source_finding_ids": []
+  }
+]

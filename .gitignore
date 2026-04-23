@@ -8,3 +8,6 @@ __pycache__/
 *.tmp
 test_inputs/not_public
 test_outputs/not_public
+finreport25_manifest.json
+test_outputs/finreport25_manifest_run/
+test_outputs/finreport25_workflow_runs/

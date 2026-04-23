@@ -1,0 +1,8 @@
+{
+  "validator": "internal_tagged_draft",
+  "checked_path": "/Users/computerk/github/accessibility_by_manifest/test_outputs/finreport25_workflow_runs/finreport25_20260423T221517Z/tagged_draft.pdf",
+  "blocking_finding_count": 0,
+  "finding_count": 0,
+  "passed": true,
+  "findings": []
+}
