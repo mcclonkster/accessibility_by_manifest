@@ -16,6 +16,7 @@ from pdf_accessibility.models.state import (
     TextBlockEvidence,
     TextSpanEvidence,
 )
+from pdf_accessibility.services.manifest_bridge import document_uses_shared_pdf_bridge
 from pdf_accessibility.utils.ids import event_id, stable_id
 
 NODE_NAME = "native_pdf_analysis"
@@ -23,27 +24,52 @@ NODE_NAME = "native_pdf_analysis"
 
 def run(document: DocumentState) -> list[NodeEvent]:
     events: list[NodeEvent] = []
+    shared_bridge = document_uses_shared_pdf_bridge(document)
+    pages_by_number = {page.page_number: page for page in document.pages}
     with fitz.open(document.source_path) as pdf:
-        events.append(
-            document_metadata_event(
-                event_id(NODE_NAME, "metadata", document.document_id),
-                NODE_NAME,
-                _document_metadata(pdf),
+        if not shared_bridge:
+            events.append(
+                document_metadata_event(
+                    event_id(NODE_NAME, "metadata", document.document_id),
+                    NODE_NAME,
+                    _document_metadata(pdf),
+                )
             )
-        )
         for index, page in enumerate(pdf, start=1):
             evidence = _page_evidence(page, index)
+            existing_page = pages_by_number.get(index)
             events.append(
                 page_evidence_event(
                     event_id(NODE_NAME, "page", index, document.document_id),
                     NODE_NAME,
                     index,
-                    geometry=evidence["geometry"],
-                    text_blocks=evidence["text_blocks"],
+                    geometry=existing_page.geometry if shared_bridge and existing_page is not None else evidence["geometry"],
+                    text_blocks=(
+                        existing_page.text_blocks
+                        if shared_bridge and existing_page is not None and existing_page.text_blocks
+                        else evidence["text_blocks"]
+                    ),
                     images=evidence["images"],
-                    links=evidence["links"],
-                    annotations=evidence["annotations"],
-                    font_names=evidence["font_names"],
+                    links=(
+                        existing_page.links
+                        if shared_bridge and existing_page is not None and existing_page.links
+                        else evidence["links"]
+                    ),
+                    annotations=(
+                        existing_page.annotations
+                        if shared_bridge and existing_page is not None and existing_page.annotations
+                        else evidence["annotations"]
+                    ),
+                    font_names=sorted(
+                        {
+                            *evidence["font_names"],
+                            *(
+                                existing_page.font_names
+                                if shared_bridge and existing_page is not None
+                                else []
+                            ),
+                        }
+                    ),
                 )
             )
     return events

@@ -19,14 +19,25 @@ def run(document: DocumentState) -> list[NodeEvent]:
     output_path = document.run_dir / "validator_findings.json"
     draft_path = document.output_artifacts.tagged_draft_pdf
     findings = validate_tagged_draft(draft_path, document.writeback_report) if draft_path else []
-    write_json(output_path, validator_report_payload(draft_path or document.run_dir / "tagged_draft.pdf", findings))
+    write_json(
+        output_path,
+        validator_report_payload(
+            draft_path,
+            findings,
+            skipped_reason="no_tagged_draft_available" if not draft_path else None,
+        ),
+    )
     artifact = artifact_record(
         artifact_id=f"artifact-{stable_id(NODE_NAME, output_path)}",
         name="validator_findings.json",
         path=output_path,
         artifact_type="json",
         producer_node=NODE_NAME,
-        metadata={"validator": "internal_tagged_draft", "finding_count": len(findings)},
+        metadata={
+            "validator": "internal_tagged_draft",
+            "finding_count": len(findings),
+            "draft_available": bool(draft_path and draft_path.exists()),
+        },
     )
     events: list[NodeEvent] = [
         artifact_registration_event(event_id(NODE_NAME, "artifact", document.document_id), NODE_NAME, artifact),

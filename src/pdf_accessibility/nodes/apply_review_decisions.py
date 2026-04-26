@@ -30,19 +30,23 @@ def run(document: DocumentState) -> list[NodeEvent]:
 
 
 def _load_review_decisions(document: DocumentState) -> list[ReviewDecision]:
-    path = document.run_dir / "review_decisions.json"
-    if not path.exists():
-        return []
-    try:
-        raw = json.loads(path.read_text(encoding="utf-8"))
-    except json.JSONDecodeError:
-        return []
-    if not isinstance(raw, list):
-        return []
-    decisions: list[ReviewDecision] = []
-    for item in raw:
-        try:
-            decisions.append(ReviewDecision.model_validate(item))
-        except ValidationError:
+    for path in (document.run_dir / "review_decisions_input.json", document.run_dir / "review_decisions.json"):
+        if not path.exists():
             continue
-    return decisions
+        try:
+            raw = json.loads(path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            continue
+        if isinstance(raw, dict):
+            raw = raw.get("decisions")
+        if not isinstance(raw, list):
+            continue
+        decisions: list[ReviewDecision] = []
+        for item in raw:
+            try:
+                decisions.append(ReviewDecision.model_validate(item))
+            except ValidationError:
+                continue
+        if decisions:
+            return decisions
+    return []

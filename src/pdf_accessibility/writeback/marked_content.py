@@ -18,7 +18,7 @@ def mark_simple_page_content(page, elements: list[StructureElementPlan]) -> dict
     writable = [
         element
         for element in sorted(elements, key=lambda item: item.mcid if item.mcid is not None else -1)
-        if element.mcid is not None and element.pdf_structure_role in {"H", "P"}
+        if element.mcid is not None and element.pdf_structure_role in {"H", "P", "LI"}
     ]
     if not writable:
         return {

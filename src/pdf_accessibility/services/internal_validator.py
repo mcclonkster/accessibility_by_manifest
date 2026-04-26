@@ -25,14 +25,24 @@ def validate_tagged_draft(pdf_path: Path, report: WritebackReport | None = None)
     return findings
 
 
-def validator_report_payload(pdf_path: Path, findings: list[ValidatorFinding]) -> dict[str, object]:
+def validator_report_payload(
+    pdf_path: Path | None,
+    findings: list[ValidatorFinding],
+    *,
+    skipped_reason: str | None = None,
+) -> dict[str, object]:
     blocking = [finding for finding in findings if finding.blocking and not finding.resolved]
+    draft_available = pdf_path is not None and pdf_path.exists()
+    validation_state = "completed" if draft_available else "skipped"
     return {
         "validator": "internal_tagged_draft",
-        "checked_path": str(pdf_path),
+        "checked_path": str(pdf_path) if draft_available else None,
+        "draft_available": draft_available,
+        "validation_state": validation_state,
+        "skipped_reason": None if draft_available else (skipped_reason or "no_tagged_draft_available"),
         "blocking_finding_count": len(blocking),
         "finding_count": len(findings),
-        "passed": not blocking,
+        "passed": draft_available and not blocking,
         "findings": [finding.model_dump(mode="json") for finding in findings],
     }
 
@@ -104,4 +114,3 @@ def _finding(issue_code: str, target_ref: str, message: str, severity: str = "er
         severity=severity,
         blocking=severity == "error",
     )
-

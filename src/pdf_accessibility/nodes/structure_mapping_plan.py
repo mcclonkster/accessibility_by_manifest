@@ -76,12 +76,16 @@ def _document_property_plan(document: DocumentState) -> DocumentPropertyPlan:
 def _element_for_unit(unit: NormalizedUnit) -> StructureElementPlan:
     role = _pdf_role(unit.unit_type)
     artifact = unit.unit_type == "artifact"
-    unresolved = unit.unit_type in {"unknown", "table", "figure"} or role is None
+    unresolved = unit.unit_type in {"unknown", "table", "figure", "list"} or role is None
     notes: list[str] = []
     if artifact:
         notes.append("Excluded from logical structure tree; candidate artifact.")
     if unit.unit_type == "table":
         notes.append("Table child structure is unresolved pending header/cell review.")
+    elif unit.unit_type == "list":
+        notes.append("Explicit list-container writeback is not implemented in the v0.1 draft writer.")
+    elif unit.unit_type == "list_item":
+        notes.append("Flat list item writeback is supported in the v0.1 draft writer.")
     elif unit.unit_type == "figure":
         notes.append("Figure mapping requires trusted alt text or decorative decision.")
     elif unit.unit_type == "unknown":

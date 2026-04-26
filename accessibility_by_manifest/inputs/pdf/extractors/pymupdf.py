@@ -121,6 +121,16 @@ class PyMuPDFAdapter:
                 )
 
                 for block_index, block in enumerate(text_blocks, start=1):
+                    block_id = f"p{page_number:04d}_b{block_index:04d}"
+                    if builder.config.include_rebuild_payloads:
+                        builder.debug_evidence.setdefault("pymupdf", {}).setdefault("raw_block_entries", []).append(
+                            {
+                                "block_id": block_id,
+                                "page_number": page_number,
+                                "source_ref": f"page:{page_number}/block:{block_index}",
+                                "raw_block": safe_value(block),
+                            }
+                        )
                     builder.raw_block_entries.append(raw_block_entry(page_number, block_index, block))
             logger.info(
                 "PyMuPDF extraction completed: pages=%s raw_blocks=%s annotations=%s figures=%s",
@@ -282,7 +292,6 @@ def raw_block_entry(page_number: int, block_index: int, block: dict[str, Any]) -
                 "block_type": block.get("type"),
                 "block_number": block.get("number"),
                 "line_count": len(block.get("lines", [])),
-                "raw_block": safe_value(block),
             }
         },
     }

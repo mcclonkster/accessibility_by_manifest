@@ -2,12 +2,16 @@ from __future__ import annotations
 
 from pdf_accessibility.models.events import NodeEvent, region_discovery_event
 from pdf_accessibility.models.state import Confidence, DocumentState, RegionState, RegionStatus, TextBlockEvidence
+from pdf_accessibility.services.manifest_bridge import document_uses_shared_pdf_bridge
 from pdf_accessibility.utils.ids import event_id
 
 NODE_NAME = "region_proposal"
 
 
 def run(document: DocumentState) -> list[NodeEvent]:
+    if document_uses_shared_pdf_bridge(document):
+        bridge_regions = _shared_bridge_region_augmentation(document)
+        return [region_discovery_event(event_id(NODE_NAME, document.document_id, len(bridge_regions)), NODE_NAME, bridge_regions)] if bridge_regions else []
     regions: list[RegionState] = []
     for page in document.pages:
         if page.regions:
@@ -54,6 +58,30 @@ def run(document: DocumentState) -> list[NodeEvent]:
     if not regions:
         return []
     return [region_discovery_event(event_id(NODE_NAME, document.document_id, len(regions)), NODE_NAME, regions)]
+
+
+def _shared_bridge_region_augmentation(document: DocumentState) -> list[RegionState]:
+    regions: list[RegionState] = []
+    for page in document.pages:
+        existing_region_ids = {region.region_id for region in page.regions}
+        existing_source_refs = {source_ref for region in page.regions for source_ref in region.source_refs}
+        for image in page.images:
+            region_id = f"region-{image.image_id}"
+            if region_id in existing_region_ids or image.source_ref in existing_source_refs:
+                continue
+            regions.append(
+                RegionState(
+                    region_id=region_id,
+                    page_number=page.page_number,
+                    bbox=image.bbox,
+                    status=RegionStatus.EVIDENCE_COLLECTED,
+                    current_role="figure_candidate",
+                    confidence=Confidence.MEDIUM,
+                    source_refs=[image.source_ref],
+                    evidence_basis=["pymupdf image block"],
+                )
+            )
+    return regions
 
 
 def _role_for_text_block(block: TextBlockEvidence, median_font_size: float | None) -> tuple[str, Confidence, list[str]]:

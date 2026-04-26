@@ -34,6 +34,7 @@ class ManifestBuilder:
     document_navigation: dict[str, Any] = field(default_factory=dict)
     document_security: dict[str, Any] = field(default_factory=dict)
     document_interactivity: dict[str, Any] = field(default_factory=dict)
+    debug_evidence: dict[str, Any] = field(default_factory=dict)
     page_entries: list[dict[str, Any]] = field(default_factory=list)
     raw_block_entries: list[dict[str, Any]] = field(default_factory=list)
     document_warning_entries: list[dict[str, Any]] = field(default_factory=list)

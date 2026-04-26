@@ -1,6 +1,7 @@
 import json
 from pathlib import Path
 
+from accessibility_by_manifest.normalize.docx_accessibility_model import normalize_docx_manifest_to_accessibility_model
 from accessibility_by_manifest.inputs.docx.config import DocxManifestConfig
 from accessibility_by_manifest.inputs.docx.paths import DocxRun, discover_docx_files, output_paths, plan_runs
 from accessibility_by_manifest.pipelines.docx import run_docx
@@ -106,6 +107,18 @@ def test_docx_manifest_pipeline_writes_manifest(tmp_path: Path) -> None:
     assert any(node["node_type"] == "paragraph" for node in normalized_ir["node_entries"])
     assert normalized_ir["table_entries"][0]["header_candidate_row_indexes"] == [1]
     assert normalized_ir["node_entries"][0]["source_refs"]
+
+    accessibility_model = normalize_docx_manifest_to_accessibility_model(manifest)
+    assert accessibility_model.view_kind == "normalized_accessibility_model"
+    assert accessibility_model.source_format == "DOCX"
+    assert accessibility_model.document.document_id.startswith("sha256:")
+    assert accessibility_model.summary.unit_count == len(accessibility_model.unit_entries)
+    assert accessibility_model.summary.table_count == 1
+    assert any(unit.unit_type == "heading" for unit in accessibility_model.unit_entries)
+    assert any(unit.unit_type == "paragraph" for unit in accessibility_model.unit_entries)
+    assert accessibility_model.table_entries[0].header_candidate_row_indexes == [1]
+    assert accessibility_model.unit_entries[0].source_refs
+    assert accessibility_model.unit_entries[0].page_numbers == []
 
 
 def test_docx_manifest_can_inline_rebuild_payloads_when_requested(tmp_path: Path) -> None:

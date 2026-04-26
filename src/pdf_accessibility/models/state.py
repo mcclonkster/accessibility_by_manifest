@@ -227,8 +227,17 @@ class WritebackReport(BaseModel):
     content_streams_modified: bool = False
     content_stream_marking_details: list[dict[str, Any]] = Field(default_factory=list)
     planned_element_count: int = 0
+    supported_element_count: int = 0
     written_structure_element_count: int = 0
+    skipped_supported_element_count: int = 0
     unsupported_element_count: int = 0
+    planned_role_counts: dict[str, int] = Field(default_factory=dict)
+    supported_role_counts: dict[str, int] = Field(default_factory=dict)
+    written_role_counts: dict[str, int] = Field(default_factory=dict)
+    skipped_role_counts: dict[str, int] = Field(default_factory=dict)
+    unsupported_role_counts: dict[str, int] = Field(default_factory=dict)
+    blocking_categories: list[str] = Field(default_factory=list)
+    blocking_details: dict[str, Any] = Field(default_factory=dict)
     limitations: list[str] = Field(default_factory=list)
     finalization_blocked: bool = True
 
@@ -291,6 +300,9 @@ class WorkflowTraceEntry(BaseModel):
 
     node_name: str
     action: str
+    started_at: str | None = None
+    ended_at: str | None = None
+    duration_ms: int | None = None
     reason: str | None = None
     before_status: DocumentStatus
     after_status: DocumentStatus
@@ -311,12 +323,21 @@ class ArtifactRecord(BaseModel):
 
 
 class OutputArtifacts(BaseModel):
+    execution_log: Path | None = None
+    debug_log: Path | None = None
+    events_jsonl: Path | None = None
     tagged_draft_pdf: Path | None = None
     writeback_report_json: Path | None = None
     validator_findings_json: Path | None = None
     review_tasks_json: Path | None = None
+    review_decisions_template_json: Path | None = None
+    ocr_recovery_template_json: Path | None = None
+    operator_guide_json: Path | None = None
     finalization_status_json: Path | None = None
+    run_explanation_markdown: Path | None = None
+    run_explanation_log: Path | None = None
     accessible_output_pdf: Path | None = None
+    accessible_output_html: Path | None = None
 
 
 class RegionState(BaseModel):

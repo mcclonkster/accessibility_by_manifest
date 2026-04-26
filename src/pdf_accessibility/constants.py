@@ -37,5 +37,6 @@ PDF_OUTPUT_ARTIFACT_NAMES = (
     "validator_findings.json",
     "finalization_status.json",
     "accessible_output.pdf",
+    "accessible_output.html",
     "artifact_manifest.json",
 )

@@ -10,6 +10,7 @@ from accessibility_by_manifest.inputs.pdf.paths import PdfOutputPaths
 
 
 PDF_EXTRACTOR_NAMES = ("pymupdf", "pypdf", "pikepdf", "pdfminer.six")
+DEBUG_EVIDENCE_TEMP_KEY = "_debug_evidence"
 
 
 def write_json_manifest(path: Path, data: dict[str, Any], overwrite: bool) -> None:
@@ -29,15 +30,23 @@ def write_json_manifest(path: Path, data: dict[str, Any], overwrite: bool) -> No
 
 
 def write_pdf_manifest_bundle(output_paths: PdfOutputPaths, manifest: dict[str, Any], overwrite: bool) -> None:
+    debug_evidence = manifest.pop(DEBUG_EVIDENCE_TEMP_KEY, None)
     write_json_manifest(output_paths.manifest_json, manifest, overwrite)
     write_json_manifest(output_paths.normalized_manifest_json, normalized_manifest_view(manifest), overwrite)
     write_json_manifest(output_paths.review_queue_json, review_queue_view(manifest), overwrite)
     for extractor_name in pdf_extractor_names(manifest):
         write_json_manifest(
             output_paths.extractor_manifest_json(extractor_name),
-            extractor_manifest_view(manifest, extractor_name),
+            extractor_manifest_view(manifest, extractor_name, debug_evidence=debug_evidence),
             overwrite,
         )
+    if debug_evidence:
+        write_debug_evidence_bundle(output_paths, debug_evidence, overwrite)
+
+
+def write_debug_evidence_bundle(output_paths: PdfOutputPaths, debug_evidence: dict[str, Any], overwrite: bool) -> None:
+    for extractor_name, payload in debug_evidence.items():
+        write_json_manifest(output_paths.debug_evidence_json(extractor_name), payload, overwrite)
 
 
 def normalized_manifest_view(manifest: dict[str, Any]) -> dict[str, Any]:
@@ -70,7 +79,12 @@ def review_queue_view(manifest: dict[str, Any]) -> dict[str, Any]:
     }
 
 
-def extractor_manifest_view(manifest: dict[str, Any], extractor_name: str) -> dict[str, Any]:
+def extractor_manifest_view(
+    manifest: dict[str, Any],
+    extractor_name: str,
+    *,
+    debug_evidence: dict[str, Any] | None = None,
+) -> dict[str, Any]:
     data = deepcopy(manifest)
     extractor_versions = manifest.get("extractor_provenance", {}).get("extractor_versions", {})
     data["extractor_provenance"] = {
@@ -90,12 +104,12 @@ def extractor_manifest_view(manifest: dict[str, Any], extractor_name: str) -> di
     data["review_entries"] = []
     data["page_entries"] = [extractor_page_entry(page_entry, extractor_name) for page_entry in manifest.get("page_entries", [])]
     data["raw_block_entries"] = [
-        extractor_block_entry(block_entry, extractor_name)
+        extractor_block_entry(block_entry, extractor_name, debug_evidence=debug_evidence)
         for block_entry in manifest.get("raw_block_entries", [])
         if extractor_name in block_entry.get("extractor_evidence", {})
     ]
     data["normalized_block_entries"] = [
-        extractor_block_entry(block_entry, extractor_name)
+        extractor_block_entry(block_entry, extractor_name, debug_evidence=debug_evidence)
         for block_entry in manifest.get("normalized_block_entries", [])
         if extractor_name in block_entry.get("extractor_evidence", {})
     ]
@@ -117,10 +131,77 @@ def extractor_page_entry(page_entry: dict[str, Any], extractor_name: str) -> dic
     return page
 
 
-def extractor_block_entry(block_entry: dict[str, Any], extractor_name: str) -> dict[str, Any]:
+def extractor_block_entry(
+    block_entry: dict[str, Any],
+    extractor_name: str,
+    *,
+    debug_evidence: dict[str, Any] | None = None,
+) -> dict[str, Any]:
     block = deepcopy(block_entry)
     block["extractor_evidence"] = keep_extractor_evidence(block_entry.get("extractor_evidence", {}), extractor_name)
+    debug_block = debug_block_lookup(debug_evidence, extractor_name).get(str(block.get("block_id")))
+    if extractor_name == "pdfminer.six" and debug_block:
+        block["text_items"] = enrich_pdfminer_text_items(block.get("text_items", []), debug_block.get("text_items", []))
+    if extractor_name == "pymupdf" and debug_block:
+        block["text_items"] = enrich_pymupdf_text_items(block.get("text_items", []), debug_block.get("raw_block", {}))
+        block["extractor_evidence"]["pymupdf"].update(pymupdf_medium_summary(debug_block.get("raw_block", {})))
     return block
+
+
+def debug_block_lookup(debug_evidence: dict[str, Any] | None, extractor_name: str) -> dict[str, dict[str, Any]]:
+    if not debug_evidence:
+        return {}
+    blocks = (debug_evidence.get(extractor_name) or {}).get("raw_block_entries", [])
+    return {str(block.get("block_id")): deepcopy(block) for block in blocks}
+
+
+def enrich_pdfminer_text_items(text_items: list[dict[str, Any]], debug_text_items: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    enriched: list[dict[str, Any]] = []
+    for index, item in enumerate(text_items):
+        merged = deepcopy(item)
+        debug_item = debug_text_items[index] if index < len(debug_text_items) else {}
+        chars = debug_item.get("chars", [])
+        if chars:
+            merged["char_count"] = len(chars)
+            merged["font_names"] = sorted({str(char.get("fontName")) for char in chars if char.get("fontName")})
+            merged["font_sizes"] = sorted({float(char.get("font_size")) for char in chars if char.get("font_size") is not None})
+        enriched.append(merged)
+    return enriched
+
+
+def enrich_pymupdf_text_items(text_items: list[dict[str, Any]], raw_block: dict[str, Any]) -> list[dict[str, Any]]:
+    enriched: list[dict[str, Any]] = []
+    spans = [
+        span
+        for line in raw_block.get("lines", [])
+        for span in line.get("spans", [])
+        if span.get("text")
+    ]
+    for index, item in enumerate(text_items):
+        merged = deepcopy(item)
+        span = spans[index] if index < len(spans) else {}
+        if span:
+            if span.get("bbox") is not None:
+                merged["bbox"] = span.get("bbox")
+            if span.get("size") is not None:
+                merged["font_size"] = float(span.get("size"))
+            if span.get("flags") is not None:
+                merged["font_flags"] = int(span.get("flags"))
+        enriched.append(merged)
+    return enriched
+
+
+def pymupdf_medium_summary(raw_block: dict[str, Any]) -> dict[str, Any]:
+    spans = [
+        span
+        for line in raw_block.get("lines", [])
+        for span in line.get("spans", [])
+        if span.get("text")
+    ]
+    return {
+        "span_count": len(spans),
+        "font_names": sorted({str(span.get("font")) for span in spans if span.get("font")}),
+    }
 
 
 def keep_extractor_evidence(evidence: dict[str, Any], extractor_name: str) -> dict[str, Any]:
