@@ -1,0 +1,4 @@
+# Preserve captured source/reference documents as imported evidence.
+# They may contain source formatting that should not block source-code checks.
+docs/reference/** -whitespace
+quarantine/** -whitespace

@@ -1,5 +1,14 @@
 # Manifest Design
 
+Supporting reference only.
+
+Canonical system reference:
+
+- [system_reference.md](./system_reference.md)
+
+This file is the focused manifest/IR companion doc. Use the system reference for
+the broader pipeline and architecture overview.
+
 The manifest is the canonical intermediate representation for the system.
 
 The master manifest is the system of record. Per-extractor manifests are

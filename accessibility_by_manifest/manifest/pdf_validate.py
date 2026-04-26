@@ -9,7 +9,7 @@ from jsonschema import Draft202012Validator
 
 
 def schema_path() -> Path:
-    return Path(__file__).resolve().parents[2] / "reference" / "pdf_accessibility_manifest.json"
+    return Path(__file__).resolve().parent / "schemas" / "pdf_accessibility_manifest.json"
 
 
 @lru_cache(maxsize=1)

@@ -1,5 +1,14 @@
 # PDF Pipeline Decisions
 
+Supporting reference only.
+
+Canonical system reference:
+
+- [system_reference.md](./system_reference.md)
+
+This file specializes the umbrella architecture for PDF. Use the system
+reference for the broader system shape and stage boundaries.
+
 PDF is the active first serious input for the project.
 
 The PDF pipeline should remain:

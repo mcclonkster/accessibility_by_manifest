@@ -1,24 +1,196 @@
 # Accessibility by Manifest
 
-Manifest-centered accessibility pipelines move documents through:
+## First Run
 
-1. input-specific extraction
-2. normalized accessibility evidence
-3. output-specific projection
+```bash
+python3 -m venv .venv
+./.venv/bin/python -m pip install -e .
+scripts/verify.sh -q
+```
 
-The core code path is `input -> manifest -> output`. Each input adapter writes
-evidence into a manifest, and each output adapter reads from that manifest. That
-keeps the architecture flexible: PPTX, PDF, DOCX, Markdown, and later PDF output
-can share the same normalization contract instead of becoming one-off
-input/output converters.
+Run the current PDF workflow:
 
-Shared orchestration lives in `accessibility_by_manifest.pipeline`. Input
-adapters live in `accessibility_by_manifest.inputs`, output adapters live in
-`accessibility_by_manifest.outputs`, and compatibility entry points wire those
-modules into the shared lifecycle.
+```bash
+PYTHONPATH=src ./.venv/bin/python -m pdf_accessibility.cli run test_inputs/finreport25.pdf --output-dir test_outputs/finreport25_workflow_runs
+```
 
-Project intent and architecture decisions are tracked as living docs in
-`docs/design/`.
+Clean local generated artifacts without touching source:
+
+```bash
+scripts/clean-local-artifacts.sh
+scripts/clean-local-artifacts.sh --apply
+```
+
+Add `--include-venvs` only when you intentionally want to remove local virtual
+environments too.
+
+Active repo guide only:
+
+- architecture truth: [docs/design/system_reference.md](./docs/design/system_reference.md)
+- run observability contract:
+  [docs/design/run_observability_schema.md](./docs/design/run_observability_schema.md)
+- active product plan:
+  [plans/start-to-finish-product-plan.md](./plans/start-to-finish-product-plan.md)
+- active v0.1 acceptance gate:
+  [plans/v0.1-product-acceptance-pack.md](./plans/v0.1-product-acceptance-pack.md)
+- active execution status:
+  [plans/status.md](./plans/status.md)
+
+Canonical architecture reference:
+
+- [docs/design/system_reference.md](./docs/design/system_reference.md)
+
+The repository is best understood as a role-based accessibility pipeline:
+
+1. inputs
+2. extract
+3. normalize
+4. make accessible
+5. review
+6. output
+
+The current code layout is transitional, but the conceptual umbrella is one
+system: `accessibility_by_manifest`.
+
+The shared core lives in `accessibility_by_manifest/`. It owns input adapters,
+evidence extraction, normalization, review signals, and shared projection
+helpers.
+
+The first fully integrated format-specific workflow lives in
+`src/pdf_accessibility/`. It consumes the shared normalized model and drives the
+current PDF remediation path:
+
+1. PDF input
+2. shared extraction and normalization
+3. PDF-specific accessibility orchestration
+4. PDF QA and finalization gating
+5. accessible PDF and accessible HTML artifacts
+
+That means the repository is broader than PDF, but PDF is the first active
+serious slice. Accessible HTML is a sibling output path from the same resolved
+structure, not a separate ingestion pipeline.
+
+## Entrypoints
+
+Use these entry points based on what you are trying to do:
+
+- `pdf-accessibility`
+  The current user-facing integrated workflow for PDF remediation. This is the
+  main path for `PDF -> accessible PDF` with `accessible HTML` as a sibling
+  output when finalization is legal.
+- `accessibility-manifest-pdf`
+  Shared-core PDF extraction and normalization. Useful for debugging, evidence
+  inspection, bridge development, and source-specific pipeline work.
+- `accessibility-manifest-docx`
+  Shared-core DOCX extraction and normalization.
+- `accessibility-manifest-pptx`
+  Shared-core PPTX extraction and normalization.
+- `accessibility-vision-alt-text`
+  Optional local sidecar alt-text generation.
+
+Use `AGENTS.md` for the governed v0.1.0 PDF workflow rules. Use `plans/` for
+active planning, status, task, cleanup, and decision tracking. Use
+`docs/design/system_reference.md` for the canonical architecture/reference
+story.
+
+## Current Product Path
+
+The current v0.1 product entrypoint is the PDF workflow CLI:
+
+```bash
+PYTHONPATH=src ./.venv/bin/python -m pdf_accessibility.cli run "/path/to/input.pdf" --output-dir "/path/to/runs"
+```
+
+The terminal now prints the operator-facing run summary directly:
+
+- `run_dir`
+- `document_status`
+- `finalization_state`
+- `blocker_count`
+- `review_decisions_template`
+- `ocr_recovery_template`
+- `primary_next_step`
+
+For finalized simple documents, that summary ends with `primary_next_step: none`.
+For blocked runs, it points at the next template file to fill.
+
+Each run directory is also now a proper run record. The current contract is in
+[docs/design/run_observability_schema.md](./docs/design/run_observability_schema.md)
+and includes:
+
+- `status.json`
+- `manifest.json`
+- `environment.txt`
+- `git.txt`
+- `metrics/summary.json`
+- `metrics/timings.csv`
+- `logs/execution.log`
+- `logs/debug.log`
+- `logs/events.jsonl`
+
+## Operator Loop
+
+The current PDF workflow is meant to be used like this:
+
+1. run the workflow
+2. read the CLI summary or open `operator_guide.json`
+3. fill `review_decisions_template.json` if present
+4. fill `ocr_recovery_template.json` if present
+5. rerun with:
+
+```bash
+PYTHONPATH=src ./.venv/bin/python -m pdf_accessibility.cli run "/path/to/input.pdf" --output-dir "/path/to/runs" --review-decisions "/path/to/review_decisions.json" --ocr-recovery "/path/to/ocr_recovery.json"
+```
+
+The workflow stays honest:
+
+- if blockers are resolved, it can finalize and emit:
+  - `accessible_output.pdf`
+  - `accessible_output.html`
+- if blockers remain, it stops in `needs_review` and leaves the next operator step behind in the run directory
+
+## Real Example: finreport25
+
+The current real complex-PDF demo path is `test_inputs/finreport25.pdf`.
+
+An untreated run currently produces an operator guide like:
+
+- blocker count around `101`
+- `review_decisions_template.json` present
+- `ocr_recovery_template.json` present
+- `primary_next_step: fill_review_decisions`
+
+After a real combined rerun using:
+
+- one title decision
+- one table review decision
+- one figure alt-text decision
+- OCR recovery text for pages `75` and `94`
+
+the blocker count dropped from `101` to `29`, and the OCR template disappeared
+because those OCR blockers were actually cleared.
+
+That is the current proof that the operator loop is real, even though the
+document still honestly remains in `needs_review`.
+
+## v0.1 Limits
+
+What currently works best:
+
+- simple born-digital PDFs
+- document title and primary language remediation
+- flat simple list HTML/PDF output
+- human-reviewed table, figure, and OCR blocker reduction
+
+What still remains narrow:
+
+- complex table writeback/finalization
+- broad figure completion on complex reports
+- annotation/link writeback
+- complex content-stream situations
+
+So `needs_review` is not a failure state by itself. It means the workflow found
+real unresolved work and refused to bluff past it.
 
 ## Input: PPTX
 
@@ -97,11 +269,37 @@ Outputs for each PDF:
 - run log at `{pdf_stem}.log`
 - master JSON manifest
 - extractor-specific JSON manifests under `{pdf_stem}_extractor_manifests/`
+- optional debug evidence JSON under `{pdf_stem}_debug_evidence/` when deep
+  payload flags are enabled
 - normalized manifest view
 - review queue view
 - draft DOCX review artifact
 - Adobe reference comparison JSON/Markdown, when same-stem Adobe exports are
   present beside the input PDF
+
+### PDF Evidence Layers
+
+The PDF output path now uses three evidence layers:
+
+1. master manifest
+   compact canonical evidence for routine use, normalization, review, and
+   downstream workflow bridges
+2. extractor manifests
+   medium-detail single-extractor views that are richer than the master manifest
+   but still human-inspectable
+3. debug evidence sidecars
+   opt-in heavy payloads for rebuild/debug work, such as `pdfminer.six`
+   character arrays and PyMuPDF `raw_block` payloads
+
+The default run keeps the master manifest practical. If you need the heaviest
+payloads, request them explicitly:
+
+```bash
+python -m accessibility_by_manifest.cli.pdf "/path/to/pdf" --output-dir "/path/to/output-folder" --overwrite --include-rebuild-payloads --include-char-level-evidence
+```
+
+Those flags do not make the master manifest huge again. They write the heaviest
+payloads into debug sidecars instead.
 
 Optional whole-document AI parser sidecars can be enabled explicitly:
 

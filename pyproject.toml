@@ -38,6 +38,9 @@ where = [".", "src"]
 include = ["accessibility_by_manifest*", "pdf_accessibility*"]
 exclude = ["archive*", "test_inputs*", "test_outputs*", "tests*"]
 
+[tool.setuptools.package-data]
+accessibility_by_manifest = ["manifest/schemas/*.json"]
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["src", "."]

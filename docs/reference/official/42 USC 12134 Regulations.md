@@ -1,0 +1,40 @@
+---
+created: 2026-04-26T13:22:58 (UTC -05:00)
+tags: []
+source: https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title42-section12134&num=0&edition=prelim
+author: 
+---
+
+# 42 USC 12134: Regulations
+
+> ## Excerpt
+> Not later than 1 year after July 26, 1990, the Attorney General shall promulgate regulations in an accessible format that implement this part. Such regulations shall not include any matter within the scope of the authority of the Secretary of Transportation under section 12143, 12149, or 12164 of this title.
+
+---
+### §12134. Regulations
+
+#### (a) In general
+
+Not later than 1 year after July 26, 1990, the Attorney General shall promulgate regulations in an accessible format that implement this part. Such regulations shall not include any matter within the scope of the authority of the Secretary of Transportation under section 12143, 12149, or 12164 of this title.
+
+#### (b) Relationship to other regulations
+
+Except for "program accessibility, existing facilities", and "communications", regulations under subsection (a) shall be consistent with this chapter and with the coordination regulations under part 41 of title 28, Code of Federal Regulations (as promulgated by the Department of Health, Education, and Welfare on January 13, 1978), applicable to recipients of Federal financial assistance under section 794 of title 29. With respect to "program accessibility, existing facilities", and "communications", such regulations shall be consistent with regulations and analysis as in part 39 of title 28 of the Code of Federal Regulations, applicable to federally conducted activities under section 794 of title 29.
+
+#### (c) Standards
+
+Regulations under subsection (a) shall include standards applicable to facilities and vehicles covered by this part, other than facilities, stations, rail passenger cars, and vehicles covered by part B. Such standards shall be consistent with the minimum guidelines and requirements issued by the Architectural and Transportation Barriers Compliance Board in accordance with section 12204(a) of this title.
+
+( [Pub. L. 101–336, title II, §204, July 26, 1990, 104 Stat. 337](https://uscode.house.gov/statviewer.htm?volume=104&page=337) .)
+
+#### **Editorial Notes**
+
+#### References in Text
+
+This chapter, referred to in subsec. (b), was in the original "this Act", meaning [Pub. L. 101–336, July 26, 1990, 104 Stat. 327](https://uscode.house.gov/statviewer.htm?volume=104&page=327) , which is classified principally to this chapter. For complete classification of this Act to the Code, see Short Title note set out under section 12101 of this title and Tables.
+
+#### **Statutory Notes and Related Subsidiaries**
+
+#### Effective Date
+
+Section effective July 26, 1990, see section 205(b) of Pub. L. 101–336, set out as a note under section 12131 of this title.

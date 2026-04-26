@@ -1,5 +1,7 @@
 # Desired Outputs
 
+Supporting reference only.
+
 The first output is the manifest.
 
 For PDF, the current expected outputs are:

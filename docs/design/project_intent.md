@@ -1,5 +1,14 @@
 # Project Intent
 
+Supporting reference only.
+
+Canonical system reference:
+
+- [system_reference.md](./system_reference.md)
+
+This file is the original high-level intent note. Use the system reference for
+the current umbrella architecture and stage boundaries.
+
 This project is a manifest-first, evidence-first document accessibility pipeline.
 It is not a converter-first project, and it is specifically not a renamed
 `pdf_to_docx` workflow.

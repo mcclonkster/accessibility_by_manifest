@@ -1,5 +1,7 @@
 # Accessibility Requirements
 
+Supporting reference only.
+
 The project should treat accessibility as structured evidence plus reviewable
 decisions, not as a single pass/fail checkbox.
 

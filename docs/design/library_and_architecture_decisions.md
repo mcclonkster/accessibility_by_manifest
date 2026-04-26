@@ -1,5 +1,14 @@
 # Library and Architecture Decisions
 
+Supporting reference only.
+
+Canonical system reference:
+
+- [system_reference.md](./system_reference.md)
+
+This file records narrower package-role and library-role decisions. Use the
+system reference for the broader umbrella pipeline shape.
+
 The codebase is organized by pipeline role, not by input/output converter pair.
 
 Current top-level package boundaries:
