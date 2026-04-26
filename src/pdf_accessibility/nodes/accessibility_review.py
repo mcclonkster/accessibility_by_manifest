@@ -16,12 +16,15 @@ from pdf_accessibility.models.state import (
     RegionStatus,
     ReviewTask,
 )
+from pdf_accessibility.services.manifest_bridge import document_uses_shared_pdf_bridge
 from pdf_accessibility.utils.ids import event_id, stable_id
 
 NODE_NAME = "accessibility_review"
 
 
 def run(document: DocumentState) -> list[NodeEvent]:
+    if document_uses_shared_pdf_bridge(document) and document.normalized_units:
+        return _shared_bridge_review_events(document)
     events: list[NodeEvent] = []
     normalized_units: list[NormalizedUnit] = []
     text_by_ref = {
@@ -29,12 +32,7 @@ def run(document: DocumentState) -> list[NodeEvent]:
         for page in document.pages
         for block in page.text_blocks
     }
-    page_text_counts = {page.page_number: len(page.text_blocks) for page in document.pages}
-    page_sizes = {
-        page.page_number: (page.geometry.width, page.geometry.height)
-        for page in document.pages
-        if page.geometry is not None
-    }
+    page_text_counts, page_sizes = _page_context(document)
     order = 0
     for page in document.pages:
         for region in page.regions:
@@ -52,6 +50,30 @@ def run(document: DocumentState) -> list[NodeEvent]:
         events.append(normalized_structure_event(event_id(NODE_NAME, "normalized", document.document_id), NODE_NAME, normalized_units))
     events.extend(_document_review_tasks(document, normalized_units))
     events.append(workflow_state_event(event_id(NODE_NAME, "workflow", document.document_id), NODE_NAME, DocumentStatus.PLANNING_IN_PROGRESS))
+    return events
+
+
+def _shared_bridge_review_events(document: DocumentState) -> list[NodeEvent]:
+    events: list[NodeEvent] = []
+    page_text_counts, page_sizes = _page_context(document)
+    existing_task_ids = {task.task_id for task in document.review_tasks}
+    for page in document.pages:
+        for region in page.regions:
+            if region.current_role != "figure_candidate":
+                continue
+            review_event = _figure_review_event(region, page_text_counts, page_sizes)
+            review_task = review_event.review_task
+            if review_task is None or review_task.task_id in existing_task_ids:
+                continue
+            events.append(review_event)
+            existing_task_ids.add(review_task.task_id)
+    events.append(
+        workflow_state_event(
+            event_id(NODE_NAME, "workflow", document.document_id),
+            NODE_NAME,
+            DocumentStatus.PLANNING_IN_PROGRESS,
+        )
+    )
     return events
 
 
@@ -84,6 +106,16 @@ def _unit_type(role: str | None) -> str:
     if role == "paragraph_candidate":
         return "paragraph"
     return "unknown"
+
+
+def _page_context(document: DocumentState) -> tuple[dict[int, int], dict[int, tuple[float, float]]]:
+    page_text_counts = {page.page_number: len(page.text_blocks) for page in document.pages}
+    page_sizes = {
+        page.page_number: (page.geometry.width, page.geometry.height)
+        for page in document.pages
+        if page.geometry is not None
+    }
+    return page_text_counts, page_sizes
 
 
 def _document_review_tasks(document: DocumentState, normalized_units: list[NormalizedUnit]) -> list[NodeEvent]:

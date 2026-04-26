@@ -3,7 +3,7 @@ from __future__ import annotations
 from pdf_accessibility.models.state import StructureElementPlan
 
 
-MCID_DRAFT_ROLES = {"H", "P"}
+MCID_DRAFT_ROLES = {"H", "P", "LI"}
 
 
 def can_plan_mcid(element: StructureElementPlan) -> bool:
@@ -40,4 +40,3 @@ def assign_mcid_plan(elements: list[StructureElementPlan]) -> list[StructureElem
 
 def mcid_planned_count(elements: list[StructureElementPlan]) -> int:
     return sum(1 for element in elements if element.mcid is not None)
-

@@ -4,12 +4,15 @@ from collections import Counter, defaultdict
 
 from pdf_accessibility.models.events import NodeEvent, finding_event, normalized_structure_event
 from pdf_accessibility.models.state import Confidence, DocumentState, Finding, FindingClass, NormalizedUnit, TextBlockEvidence
+from pdf_accessibility.services.manifest_bridge import document_uses_shared_pdf_bridge
 from pdf_accessibility.utils.ids import event_id, stable_id
 
 NODE_NAME = "artifact_check"
 
 
 def run(document: DocumentState) -> list[NodeEvent]:
+    if document_uses_shared_pdf_bridge(document):
+        return []
     repeated = _repeated_header_footer_blocks(document)
     events: list[NodeEvent] = [
         finding_event(

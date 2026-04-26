@@ -16,6 +16,7 @@ class PdfOutputPaths:
     manifest_json: Path
     log_file: Path
     extractor_manifest_dir: Path
+    debug_evidence_dir: Path
     ai_parser_output_dir: Path
     normalized_manifest_json: Path
     review_queue_json: Path
@@ -28,6 +29,11 @@ class PdfOutputPaths:
         stem = self.manifest_json.stem.removesuffix("_manifest")
         extractor_slug = safe_name(extractor_name.replace(".", "_")).lower()
         return self.extractor_manifest_dir / f"{stem}_{extractor_slug}_manifest.json"
+
+    def debug_evidence_json(self, extractor_name: str) -> Path:
+        stem = self.manifest_json.stem.removesuffix("_manifest")
+        extractor_slug = safe_name(extractor_name.replace(".", "_")).lower()
+        return self.debug_evidence_dir / f"{stem}_{extractor_slug}_debug.json"
 
     def ai_parser_dir(self, parser_name: str) -> Path:
         parser_slug = safe_name(parser_name.replace(".", "_")).lower()
@@ -80,6 +86,7 @@ def output_paths(run: PdfRun) -> PdfOutputPaths:
         manifest_json=run.output_dir / f"{stem}_manifest.json",
         log_file=run.output_dir / f"{stem}.log",
         extractor_manifest_dir=run.output_dir / f"{stem}_extractor_manifests",
+        debug_evidence_dir=run.output_dir / f"{stem}_debug_evidence",
         ai_parser_output_dir=run.output_dir / f"{stem}_ai_parser_outputs",
         normalized_manifest_json=run.output_dir / f"{stem}_normalized_manifest.json",
         review_queue_json=run.output_dir / f"{stem}_review_queue.json",

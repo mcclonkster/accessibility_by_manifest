@@ -48,6 +48,10 @@ def append_image_only_page(path: Path) -> None:
     document.close()
 
 
+def json_size(value: object) -> int:
+    return len(json.dumps(value, sort_keys=True, ensure_ascii=False))
+
+
 def test_pdf_cli_accepts_ai_parser_flags(tmp_path: Path) -> None:
     pdf_path = tmp_path / "accessible.pdf"
     pdf_path.write_text("not a real pdf", encoding="utf-8")
@@ -64,6 +68,8 @@ def test_pdf_cli_accepts_ai_parser_flags(tmp_path: Path) -> None:
             "artifacts",
             "--ocr-parser",
             "doctr",
+            "--include-rebuild-payloads",
+            "--include-char-level-evidence",
         ]
     )
     config = config_from_args(args)
@@ -71,6 +77,8 @@ def test_pdf_cli_accepts_ai_parser_flags(tmp_path: Path) -> None:
     assert config.ai_parser == "docling"
     assert config.ai_parser_output_mode == "artifacts"
     assert config.ocr_parser == "doctr"
+    assert config.include_rebuild_payloads is True
+    assert config.include_char_level_evidence is True
 
 
 def test_pymupdf_first_pass_writes_schema_valid_manifest(tmp_path: Path) -> None:
@@ -88,6 +96,7 @@ def test_pymupdf_first_pass_writes_schema_valid_manifest(tmp_path: Path) -> None
     assert result.output_paths.review_queue_json.exists()
     assert result.output_paths.projected_docx.exists()
     assert not result.output_paths.ai_parser_output_dir.exists()
+    assert not result.output_paths.debug_evidence_dir.exists()
     assert not result.output_paths.adobe_reference_comparison_json.exists()
     assert not result.output_paths.adobe_reference_comparison_markdown.exists()
     manifest = result.manifest
@@ -101,6 +110,12 @@ def test_pymupdf_first_pass_writes_schema_valid_manifest(tmp_path: Path) -> None
     assert manifest["document_metadata"]["title"] == "Accessible PDF"
     assert manifest["page_entries"][0]["observed_source"]["text_layer_detected"] is True
     assert manifest["raw_block_entries"][0]["source_evidence_type"] == "untagged_text"
+    for block in manifest["raw_block_entries"]:
+        if "pymupdf" in block.get("extractor_evidence", {}):
+            assert "raw_block" not in block["extractor_evidence"]["pymupdf"]
+        if "pdfminer.six" in block.get("extractor_evidence", {}):
+            for item in block.get("text_items", []):
+                assert "chars" not in item
     normalized_block = manifest["normalized_block_entries"][0]
     assert normalized_block["observed_source_refs"]
     assert normalized_block["normalized_workflow"]["reading_order_index"] == 1
@@ -134,6 +149,127 @@ def test_pymupdf_first_pass_writes_schema_valid_manifest(tmp_path: Path) -> None
             assert set(page_entry["extractor_evidence"]).issubset({extractor_name})
         for block_entry in extractor_manifest["raw_block_entries"]:
             assert set(block_entry["extractor_evidence"]) == {extractor_name}
+
+
+def test_pdf_pipeline_can_opt_in_to_deeper_block_payloads(tmp_path: Path) -> None:
+    pdf_path = tmp_path / "accessible.pdf"
+    output_dir = tmp_path / "out"
+    make_pdf(pdf_path)
+    config = PdfManifestConfig(
+        input_path=pdf_path,
+        output_root=output_dir,
+        overwrite=True,
+        include_rebuild_payloads=True,
+        include_char_level_evidence=True,
+    )
+
+    result = run_pdf(config, PdfRun(pdf_path=pdf_path, output_dir=output_dir))
+
+    assert result.ok, result.message
+    manifest = result.manifest
+    assert manifest is not None
+    assert all(
+        "raw_block" not in block.get("extractor_evidence", {}).get("pymupdf", {})
+        for block in manifest["raw_block_entries"]
+        if "pymupdf" in block.get("extractor_evidence", {})
+    )
+    assert all(
+        all("chars" not in item for item in block.get("text_items", []))
+        for block in manifest["raw_block_entries"]
+        if "pdfminer.six" in block.get("extractor_evidence", {})
+    )
+    assert result.output_paths.debug_evidence_dir.exists()
+    pdfminer_manifest = json.loads(result.output_paths.extractor_manifest_json("pdfminer.six").read_text(encoding="utf-8"))
+    pymupdf_manifest = json.loads(result.output_paths.extractor_manifest_json("pymupdf").read_text(encoding="utf-8"))
+    pdfminer_debug = json.loads(result.output_paths.debug_evidence_json("pdfminer.six").read_text(encoding="utf-8"))
+    pymupdf_debug = json.loads(result.output_paths.debug_evidence_json("pymupdf").read_text(encoding="utf-8"))
+    assert pdfminer_manifest["raw_block_entries"]
+    assert any(
+        any("char_count" in item for item in block.get("text_items", []))
+        for block in pdfminer_manifest["raw_block_entries"]
+    )
+    assert all(
+        all("chars" not in item for item in block.get("text_items", []))
+        for block in pdfminer_manifest["raw_block_entries"]
+    )
+    assert pymupdf_manifest["raw_block_entries"]
+    assert any(
+        any("font_size" in item or "bbox" in item for item in block.get("text_items", []))
+        for block in pymupdf_manifest["raw_block_entries"]
+    )
+    assert any(
+        "span_count" in block.get("extractor_evidence", {}).get("pymupdf", {})
+        for block in pymupdf_manifest["raw_block_entries"]
+    )
+    assert pdfminer_debug["raw_block_entries"]
+    assert any(
+        any("chars" in item for item in block.get("text_items", []))
+        for block in pdfminer_debug["raw_block_entries"]
+    )
+    assert pymupdf_debug["raw_block_entries"]
+    assert any("raw_block" in block for block in pymupdf_debug["raw_block_entries"])
+
+
+def test_pdf_pipeline_maintains_three_layer_evidence_contract(tmp_path: Path) -> None:
+    pdf_path = tmp_path / "accessible.pdf"
+    output_dir = tmp_path / "out"
+    make_pdf(pdf_path)
+    config = PdfManifestConfig(
+        input_path=pdf_path,
+        output_root=output_dir,
+        overwrite=True,
+        include_rebuild_payloads=True,
+        include_char_level_evidence=True,
+    )
+
+    result = run_pdf(config, PdfRun(pdf_path=pdf_path, output_dir=output_dir))
+
+    assert result.ok, result.message
+    manifest = result.manifest
+    assert manifest is not None
+
+    master_manifest_size = result.output_paths.manifest_json.stat().st_size
+    pdfminer_debug_size = result.output_paths.debug_evidence_json("pdfminer.six").stat().st_size
+    pymupdf_debug_size = result.output_paths.debug_evidence_json("pymupdf").stat().st_size
+
+    pdfminer_manifest = json.loads(result.output_paths.extractor_manifest_json("pdfminer.six").read_text(encoding="utf-8"))
+    pymupdf_manifest = json.loads(result.output_paths.extractor_manifest_json("pymupdf").read_text(encoding="utf-8"))
+    pdfminer_debug = json.loads(result.output_paths.debug_evidence_json("pdfminer.six").read_text(encoding="utf-8"))
+    pymupdf_debug = json.loads(result.output_paths.debug_evidence_json("pymupdf").read_text(encoding="utf-8"))
+
+    master_pdfminer_block = next(
+        block for block in manifest["raw_block_entries"] if "pdfminer.six" in block.get("extractor_evidence", {})
+    )
+    extractor_pdfminer_block = pdfminer_manifest["raw_block_entries"][0]
+    debug_pdfminer_block = pdfminer_debug["raw_block_entries"][0]
+
+    assert all("chars" not in item for item in master_pdfminer_block.get("text_items", []))
+    assert any("char_count" in item for item in extractor_pdfminer_block.get("text_items", []))
+    assert all("chars" not in item for item in extractor_pdfminer_block.get("text_items", []))
+    assert any("chars" in item for item in debug_pdfminer_block.get("text_items", []))
+    assert json_size(master_pdfminer_block.get("text_items", [])) < json_size(extractor_pdfminer_block.get("text_items", []))
+    assert json_size(extractor_pdfminer_block.get("text_items", [])) < json_size(debug_pdfminer_block.get("text_items", []))
+
+    master_pymupdf_block = next(block for block in manifest["raw_block_entries"] if "pymupdf" in block.get("extractor_evidence", {}))
+    extractor_pymupdf_block = pymupdf_manifest["raw_block_entries"][0]
+    debug_pymupdf_block = pymupdf_debug["raw_block_entries"][0]
+
+    assert "raw_block" not in master_pymupdf_block.get("extractor_evidence", {}).get("pymupdf", {})
+    assert "span_count" in extractor_pymupdf_block.get("extractor_evidence", {}).get("pymupdf", {})
+    assert "raw_block" not in extractor_pymupdf_block.get("extractor_evidence", {}).get("pymupdf", {})
+    assert "raw_block" in debug_pymupdf_block
+    assert any(
+        "bbox" in item or "font_size" in item or "font_flags" in item
+        for item in extractor_pymupdf_block.get("text_items", [])
+    )
+    assert json_size(master_pymupdf_block.get("extractor_evidence", {}).get("pymupdf", {})) < json_size(
+        extractor_pymupdf_block.get("extractor_evidence", {}).get("pymupdf", {})
+    )
+    assert json_size(extractor_pymupdf_block.get("extractor_evidence", {}).get("pymupdf", {})) < json_size(
+        debug_pymupdf_block
+    )
+
+    assert master_manifest_size < pdfminer_debug_size + pymupdf_debug_size
 
 
 def test_pdf_pipeline_writes_adobe_reference_comparison_when_exports_exist(tmp_path: Path) -> None:

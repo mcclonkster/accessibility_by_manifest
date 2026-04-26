@@ -61,13 +61,13 @@ def apply_events(document: DocumentState, events: Iterable[NodeEvent]) -> Docume
         elif event.event_type is EventType.WRITEBACK_REPORT:
             updated = _apply_writeback_report(updated, event)
         elif event.event_type is EventType.FINDING and event.finding is not None:
-            updated.findings.append(event.finding)
+            updated = _upsert_finding(updated, event.finding)
         elif event.event_type is EventType.VALIDATOR_FINDING and event.validator_finding is not None:
-            updated.validator_findings.append(event.validator_finding)
+            updated = _upsert_validator_finding(updated, event.validator_finding)
         elif event.event_type is EventType.WORKFLOW_TRACE and event.workflow_trace is not None:
             updated.workflow_trace.append(event.workflow_trace)
         elif event.event_type is EventType.REVIEW_TASK and event.review_task is not None:
-            updated.review_tasks.append(event.review_task)
+            updated = _upsert_review_task(updated, event.review_task)
         elif event.event_type is EventType.REVIEW_DECISION and event.review_decision is not None:
             updated = _apply_review_decision(updated, event.review_decision)
         elif event.event_type is EventType.REVIEW_RESOLUTION and event.review_task_id is not None:
@@ -88,6 +88,7 @@ def apply_events(document: DocumentState, events: Iterable[NodeEvent]) -> Docume
 
 
 def recompute_blockers(document: DocumentState) -> DocumentState:
+    _sync_derived_review_tasks(document)
     blocker_ids: list[str] = []
     for finding in document.findings:
         if finding.finding_class is FindingClass.BLOCKING_ISSUE and finding.status is FindingStatus.ACTIVE:
@@ -192,11 +193,17 @@ def _apply_review_resolution(document: DocumentState, review_task_id: str) -> Do
 NON_RESOLVABLE_ISSUE_CODES = {
     "TAGGED_DRAFT_NOT_FINAL",
     "STRUCTURE_MAPPING_PLAN_MISSING",
+    "FIGURE_CANDIDATES_REQUIRE_REVIEW",
+}
+
+FIGURE_REVIEW_ISSUE_CODES = {
+    "FIGURE_ALT_TEXT_REQUIRED",
+    "FIGURE_ALT_TEXT_SPOT_CHECK",
 }
 
 
 def _apply_review_decision(document: DocumentState, decision: ReviewDecision) -> DocumentState:
-    task = next((task for task in document.review_tasks if task.task_id == decision.target_review_task_id), None)
+    task = _match_review_task(document, decision)
     if task is None:
         document.review_decisions.append(decision.model_copy(update={"blocked_reason": "target review task not found"}))
         return document
@@ -223,10 +230,30 @@ def _apply_review_decision(document: DocumentState, decision: ReviewDecision) ->
         _resolve_task(document, task.task_id)
         document.review_decisions.append(decision.model_copy(update={"resolved": True}))
         return document
-    if decision.decision_type in {"mark_figure_decorative", "provide_alt_text"} and task.issue_code in {
-        "FIGURE_ALT_TEXT_REQUIRED",
-        "FIGURE_ALT_TEXT_SPOT_CHECK",
+    if decision.decision_type == "provide_alt_text" and task.issue_code in FIGURE_REVIEW_ISSUE_CODES:
+        value = (decision.value or "").strip()
+        if not value:
+            document.review_decisions.append(decision.model_copy(update={"blocked_reason": "alt text value is empty"}))
+            return document
+        _resolve_task(document, task.task_id)
+        _sync_figure_summary_tasks(document)
+        document.review_decisions.append(decision.model_copy(update={"resolved": True}))
+        return document
+    if decision.decision_type == "mark_figure_decorative" and task.issue_code in FIGURE_REVIEW_ISSUE_CODES:
+        _resolve_task(document, task.task_id)
+        _sync_figure_summary_tasks(document)
+        document.review_decisions.append(decision.model_copy(update={"resolved": True}))
+        return document
+    if decision.decision_type == "confirm_table_reviewed" and task.issue_code in {
+        "TABLE_HEADERS_UNCERTAIN",
+        "TABLE_STRUCTURE_SPOT_CHECK",
     }:
+        value = (decision.value or "").strip()
+        if not value:
+            document.review_decisions.append(
+                decision.model_copy(update={"blocked_reason": "table review summary is empty"})
+            )
+            return document
         _resolve_task(document, task.task_id)
         document.review_decisions.append(decision.model_copy(update={"resolved": True}))
         return document
@@ -246,9 +273,71 @@ def _apply_review_decision(document: DocumentState, decision: ReviewDecision) ->
     return document
 
 
+def _match_review_task(document: DocumentState, decision: ReviewDecision):
+    direct = next((task for task in document.review_tasks if task.task_id == decision.target_review_task_id), None)
+    if direct is not None:
+        return direct
+
+    fallback_issue_code = {
+        "set_document_title": "DOCUMENT_TITLE_MISSING",
+        "set_primary_language": "DOCUMENT_LANGUAGE_MISSING",
+    }.get(decision.decision_type)
+    if fallback_issue_code is None:
+        return None
+
+    candidates = [
+        task
+        for task in document.review_tasks
+        if task.issue_code == fallback_issue_code
+        and task.target_ref in {"document", "document_metadata.title", "document_metadata.language"}
+        and not task.resolved
+    ]
+    if len(candidates) == 1:
+        return candidates[0]
+    return None
+
+
+def _upsert_finding(document: DocumentState, finding) -> DocumentState:
+    document.findings = [existing for existing in document.findings if existing.finding_id != finding.finding_id]
+    document.findings.append(finding)
+    return document
+
+
+def _upsert_review_task(document: DocumentState, review_task) -> DocumentState:
+    if any(existing.task_id == review_task.task_id for existing in document.review_tasks):
+        return document
+    document.review_tasks.append(review_task)
+    return document
+
+
+def _upsert_validator_finding(document: DocumentState, finding) -> DocumentState:
+    document.validator_findings = [
+        existing for existing in document.validator_findings if existing.finding_id != finding.finding_id
+    ]
+    document.validator_findings.append(finding)
+    return document
+
+
 def _resolve_task(document: DocumentState, task_id: str) -> None:
     document.review_tasks = [
         task.model_copy(update={"resolved": True}) if task.task_id == task_id else task
+        for task in document.review_tasks
+    ]
+
+
+def _sync_derived_review_tasks(document: DocumentState) -> None:
+    _sync_figure_summary_tasks(document)
+
+
+def _sync_figure_summary_tasks(document: DocumentState) -> None:
+    figure_tasks = [task for task in document.review_tasks if task.issue_code in FIGURE_REVIEW_ISSUE_CODES]
+    if not figure_tasks:
+        return
+    all_resolved = all(task.resolved for task in figure_tasks)
+    document.review_tasks = [
+        task.model_copy(update={"resolved": all_resolved})
+        if task.issue_code == "FIGURE_CANDIDATES_REQUIRE_REVIEW"
+        else task
         for task in document.review_tasks
     ]
 
@@ -284,10 +373,18 @@ def _apply_artifact_registration(document: DocumentState, event: NodeEvent) -> D
         document.output_artifacts.validator_findings_json = artifact.path
     elif artifact.name == "review_tasks.json":
         document.output_artifacts.review_tasks_json = artifact.path
+    elif artifact.name == "review_decisions_template.json":
+        document.output_artifacts.review_decisions_template_json = artifact.path
+    elif artifact.name == "ocr_recovery_template.json":
+        document.output_artifacts.ocr_recovery_template_json = artifact.path
+    elif artifact.name == "operator_guide.json":
+        document.output_artifacts.operator_guide_json = artifact.path
     elif artifact.name == "finalization_status.json":
         document.output_artifacts.finalization_status_json = artifact.path
     elif artifact.name == "accessible_output.pdf":
         document.output_artifacts.accessible_output_pdf = artifact.path
+    elif artifact.name == "accessible_output.html":
+        document.output_artifacts.accessible_output_html = artifact.path
     return document
 
 

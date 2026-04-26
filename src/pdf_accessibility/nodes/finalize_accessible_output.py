@@ -14,7 +14,19 @@ NODE_NAME = "finalize_accessible_output"
 def run(document: DocumentState) -> list[NodeEvent]:
     status_path = document.run_dir / "finalization_status.json"
     if not can_finalize(document):
-        write_json(status_path, {"finalization_state": "needs_review", "blocker_ids": document.blocker_ids})
+        report = document.writeback_report
+        write_json(
+            status_path,
+            {
+                "document_status": document.document_status.value,
+                "finalization_state": "needs_review",
+                "blocker_ids": document.blocker_ids,
+                "can_finalize": False,
+                "writeback_finalization_blocked": report.finalization_blocked if report is not None else None,
+                "writeback_blocking_categories": report.blocking_categories if report is not None else [],
+                "writeback_blocking_details": report.blocking_details if report is not None else {},
+            },
+        )
         status_artifact = artifact_record(
             artifact_id=f"artifact-{stable_id(NODE_NAME, status_path)}",
             name="finalization_status.json",
@@ -29,7 +41,18 @@ def run(document: DocumentState) -> list[NodeEvent]:
         ]
     output_path = document.run_dir / "accessible_output.pdf"
     shutil.copyfile(document.output_artifacts.tagged_draft_pdf, output_path)
-    write_json(status_path, {"finalization_state": "finalized", "blocker_ids": []})
+    write_json(
+        status_path,
+        {
+            "document_status": document.document_status.value,
+            "finalization_state": "finalized",
+            "blocker_ids": [],
+            "can_finalize": True,
+            "writeback_finalization_blocked": False,
+            "writeback_blocking_categories": [],
+            "writeback_blocking_details": {},
+        },
+    )
     output_artifact = artifact_record(
         artifact_id=f"artifact-{stable_id(NODE_NAME, output_path)}",
         name="accessible_output.pdf",

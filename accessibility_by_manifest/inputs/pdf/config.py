@@ -19,3 +19,5 @@ class PdfManifestConfig:
     include_warning_appendix: bool = True
     include_page_traceback: bool = True
     prefer_outline_for_headings: bool = True
+    include_rebuild_payloads: bool = False
+    include_char_level_evidence: bool = False

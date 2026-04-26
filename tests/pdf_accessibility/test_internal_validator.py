@@ -8,7 +8,7 @@ import pikepdf
 from pdf_accessibility.models.state import DocumentMetadataEvidence, DocumentState, DocumentStatus, NormalizedUnit
 from pdf_accessibility.nodes import structure_mapping_plan, validator_check, write_tagged_draft
 from pdf_accessibility.reducers.apply_events import apply_events
-from pdf_accessibility.services.internal_validator import validate_tagged_draft
+from pdf_accessibility.services.internal_validator import validate_tagged_draft, validator_report_payload
 from pdf_accessibility.writeback.draft_writer import write_tagged_draft as write_draft
 
 
@@ -106,3 +106,15 @@ def test_validator_check_node_records_no_findings_for_tiny_draft(tmp_path: Path)
     assert updated.output_artifacts.validator_findings_json is not None
     assert updated.validator_findings == []
     assert updated.output_artifacts.validator_findings_json.exists()
+
+
+def test_validator_report_payload_is_honest_when_no_draft_exists(tmp_path: Path) -> None:
+    missing_draft = tmp_path / "tagged_draft.pdf"
+
+    payload = validator_report_payload(missing_draft, [], skipped_reason="no_tagged_draft_available")
+
+    assert payload["checked_path"] is None
+    assert payload["draft_available"] is False
+    assert payload["validation_state"] == "skipped"
+    assert payload["skipped_reason"] == "no_tagged_draft_available"
+    assert payload["passed"] is False

@@ -50,6 +50,8 @@ def build_manifest_from_pdf(context: ManifestPipelineContext[PdfManifestConfig, 
     manifest = review_pdf_manifest(manifest)
     logger.info("Validating PDF manifest schema")
     validate_manifest(manifest)
+    if builder.debug_evidence and not context.config.dry_run:
+        manifest["_debug_evidence"] = builder.debug_evidence
     logger.info(
         "PDF manifest build completed: pages=%s raw_blocks=%s normalized_blocks=%s review_entries=%s",
         manifest.get("document_summary", {}).get("total_pages"),

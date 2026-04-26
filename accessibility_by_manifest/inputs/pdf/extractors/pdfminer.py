@@ -49,7 +49,22 @@ class PdfminerAdapter:
                     if not text:
                         continue
                     block_index_by_page[page_number] = block_index_by_page.get(page_number, 0) + 1
-                    text_items, style_hints, stats = text_items_for_element(element, LTTextLine, LTChar)
+                    text_items, style_hints, stats, debug_text_items = text_items_for_element(
+                        element,
+                        LTTextLine,
+                        LTChar,
+                        include_char_level_evidence=builder.config.include_char_level_evidence,
+                    )
+                    block_id = f"pdfminer_p{page_number:04d}_b{block_index_by_page[page_number]:04d}"
+                    if debug_text_items:
+                        builder.debug_evidence.setdefault(self.extractor_name, {}).setdefault("raw_block_entries", []).append(
+                            {
+                                "block_id": block_id,
+                                "page_number": page_number,
+                                "source_ref": f"pdfminer:page:{page_number}/text_container:{block_index_by_page[page_number]}",
+                                "text_items": debug_text_items,
+                            }
+                        )
                     page_evidence["text_container_count"] += 1
                     page_evidence["line_count"] += stats["line_count"]
                     page_evidence["char_count"] += stats["char_count"]
@@ -57,7 +72,7 @@ class PdfminerAdapter:
                         page_evidence["fonts"][font_name] = page_evidence["fonts"].get(font_name, 0) + count
                     builder.raw_block_entries.append(
                         {
-                            "block_id": f"pdfminer_p{page_number:04d}_b{block_index_by_page[page_number]:04d}",
+                            "block_id": block_id,
                             "page_number": page_number,
                             "source_evidence_type": "untagged_text",
                             "source_ref": f"pdfminer:page:{page_number}/text_container:{block_index_by_page[page_number]}",
@@ -102,8 +117,15 @@ class PdfminerAdapter:
             logger.exception("pdfminer.six extraction failed")
 
 
-def text_items_for_element(element: Any, line_type: type, char_type: type) -> tuple[list[dict[str, Any]], dict[str, Any], dict[str, Any]]:
+def text_items_for_element(
+    element: Any,
+    line_type: type,
+    char_type: type,
+    *,
+    include_char_level_evidence: bool,
+) -> tuple[list[dict[str, Any]], dict[str, Any], dict[str, Any], list[dict[str, Any]]]:
     items: list[dict[str, Any]] = []
+    debug_items: list[dict[str, Any]] = []
     fonts: dict[str, int] = {}
     sizes: list[float] = []
     line_count = 0
@@ -125,25 +147,33 @@ def text_items_for_element(element: Any, line_type: type, char_type: type) -> tu
             fonts[font_name or "unknown"] = fonts.get(font_name or "unknown", 0) + 1
             sizes.append(font_size)
             char_count += 1
-            line_chars.append(
+            if include_char_level_evidence:
+                line_chars.append(
+                    {
+                        "str": text,
+                        "bbox": bbox_to_list(getattr(item, "bbox", None)),
+                        "fontName": font_name,
+                        "font_size": font_size,
+                        "adv": getattr(item, "adv", None),
+                        "upright": getattr(item, "upright", None),
+                        "extractor": "pdfminer.six",
+                    }
+                )
+        line_entry = {
+            "str": line_text,
+            "bbox": bbox_to_list(getattr(line, "bbox", None)),
+            "extractor": "pdfminer.six",
+        }
+        items.append(line_entry)
+        if include_char_level_evidence:
+            debug_items.append(
                 {
-                    "str": text,
-                    "bbox": bbox_to_list(getattr(item, "bbox", None)),
-                    "fontName": font_name,
-                    "font_size": font_size,
-                    "adv": getattr(item, "adv", None),
-                    "upright": getattr(item, "upright", None),
+                    "str": line_text,
+                    "bbox": bbox_to_list(getattr(line, "bbox", None)),
+                    "chars": line_chars,
                     "extractor": "pdfminer.six",
                 }
             )
-        items.append(
-            {
-                "str": line_text,
-                "bbox": bbox_to_list(getattr(line, "bbox", None)),
-                "chars": line_chars,
-                "extractor": "pdfminer.six",
-            }
-        )
     dominant_font = max(fonts, key=fonts.get) if fonts else None
     style_hints = {
         "font_name": dominant_font,
@@ -153,7 +183,7 @@ def text_items_for_element(element: Any, line_type: type, char_type: type) -> tu
         "font_names": fonts,
         "font_sizes": sorted(set(round(size, 3) for size in sizes)),
     }
-    return items, style_hints, {"line_count": line_count, "char_count": char_count, "fonts": fonts}
+    return items, style_hints, {"line_count": line_count, "char_count": char_count, "fonts": fonts}, debug_items
 
 
 def bbox_to_list(value: Any) -> list[float] | None:

@@ -28,6 +28,16 @@ def build_parser() -> argparse.ArgumentParser:
         default="artifacts",
         help="How optional AI parser sidecar outputs are written.",
     )
+    parser.add_argument(
+        "--include-rebuild-payloads",
+        action="store_true",
+        help="Inline heavier raw PDF-native extractor payloads for debug/rebuild analysis.",
+    )
+    parser.add_argument(
+        "--include-char-level-evidence",
+        action="store_true",
+        help="Include pdfminer.six per-character evidence in text items.",
+    )
     return parser
 
 
@@ -41,6 +51,8 @@ def config_from_args(args: argparse.Namespace) -> PdfManifestConfig:
         ai_parser=args.ai_parser,
         ai_parser_output_mode=args.ai_parser_output_mode,
         ocr_parser=args.ocr_parser,
+        include_rebuild_payloads=args.include_rebuild_payloads,
+        include_char_level_evidence=args.include_char_level_evidence,
     )
 
 
